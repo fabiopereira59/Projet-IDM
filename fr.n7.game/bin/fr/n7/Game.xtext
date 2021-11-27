@@ -1,0 +1,107 @@
+grammar fr.n7.Game with org.eclipse.xtext.common.Terminals
+
+generate game "http://www.n7.fr/Game"
+
+Game : 
+	'Game'
+	name=ID
+	'{'
+		gameElements+=gameElement
+	'}';
+
+gameElement :
+	Territoire;
+	
+territoireElement :
+	Explorateur | Lieu
+;
+	
+Explorateur :
+	'explorateur'
+	name=ID
+	'{'
+		explorateurElements+=Sac
+		explorateurElements+=Connaissances
+		explorateurElements+=Lieu?
+	'}'
+;
+
+Sac :
+	'sac'
+	taille=INT
+	'{'
+		sacElements+=Objet*
+	'}'
+;
+
+Territoire :
+	'territoire'
+	name=ID
+	'{'
+		territoireElements+=territoireElement*
+	'}'
+;
+
+Lieu :
+	'lieu'
+	name=ID
+	'{'
+		lieuElements+=Personnes
+	'}'
+;
+
+Personnes :
+	'personnes'
+	'{'
+		listePersonne+=Personne*
+	'}'
+;
+
+Personne :
+	'personne'
+	name=ID
+	'{'
+		'visible'
+		'obligatoire'
+		personneElements+=Interaction
+	'}'
+;
+
+Interaction :
+	'interaction'
+	name=ID
+	'{'
+		'texte'
+		interactionElements+=Choix*
+	'}'
+;
+
+Texte :
+	texte=STRING
+;
+
+Choix :
+	'choix'
+	name=ID
+;
+
+Objet :
+	'objet'
+	name=ID
+	taille=INT
+	quantite=INT
+;
+
+Connaissances :
+	'connaissances'
+	'{'
+		listeConnaissance+=Connaissance*
+	'}'
+;
+
+Connaissance :
+	'connaissance'
+	name=ID
+;
+
+
