@@ -5,16 +5,20 @@ package fr.n7.game.impl;
 
 import fr.n7.game.GamePackage;
 import fr.n7.game.Lieu;
-import fr.n7.game.Personnes;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -27,13 +31,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getLieuElements <em>Lieu Elements</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LieuImpl extends territoireElementImpl implements Lieu
+public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getLieuElements() <em>Lieu Elements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -42,7 +67,7 @@ public class LieuImpl extends territoireElementImpl implements Lieu
    * @generated
    * @ordered
    */
-  protected EList<Personnes> lieuElements;
+  protected EList<EObject> lieuElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +96,36 @@ public class LieuImpl extends territoireElementImpl implements Lieu
    * @generated
    */
   @Override
-  public EList<Personnes> getLieuElements()
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<EObject> getLieuElements()
   {
     if (lieuElements == null)
     {
-      lieuElements = new EObjectContainmentEList<Personnes>(Personnes.class, this, GamePackage.LIEU__LIEU_ELEMENTS);
+      lieuElements = new EObjectContainmentEList<EObject>(EObject.class, this, GamePackage.LIEU__LIEU_ELEMENTS);
     }
     return lieuElements;
   }
@@ -106,6 +156,8 @@ public class LieuImpl extends territoireElementImpl implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__NAME:
+        return getName();
       case GamePackage.LIEU__LIEU_ELEMENTS:
         return getLieuElements();
     }
@@ -123,9 +175,12 @@ public class LieuImpl extends territoireElementImpl implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__NAME:
+        setName((String)newValue);
+        return;
       case GamePackage.LIEU__LIEU_ELEMENTS:
         getLieuElements().clear();
-        getLieuElements().addAll((Collection<? extends Personnes>)newValue);
+        getLieuElements().addAll((Collection<? extends EObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,6 +196,9 @@ public class LieuImpl extends territoireElementImpl implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case GamePackage.LIEU__LIEU_ELEMENTS:
         getLieuElements().clear();
         return;
@@ -158,10 +216,29 @@ public class LieuImpl extends territoireElementImpl implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.LIEU__LIEU_ELEMENTS:
         return lieuElements != null && !lieuElements.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //LieuImpl

@@ -5,7 +5,6 @@ package fr.n7.game.impl;
 
 import fr.n7.game.GamePackage;
 import fr.n7.game.Territoire;
-import fr.n7.game.territoireElement;
 
 import java.util.Collection;
 
@@ -15,6 +14,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -66,7 +66,7 @@ public class TerritoireImpl extends gameElementImpl implements Territoire
    * @generated
    * @ordered
    */
-  protected EList<territoireElement> territoireElements;
+  protected EList<EObject> territoireElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,11 +120,11 @@ public class TerritoireImpl extends gameElementImpl implements Territoire
    * @generated
    */
   @Override
-  public EList<territoireElement> getTerritoireElements()
+  public EList<EObject> getTerritoireElements()
   {
     if (territoireElements == null)
     {
-      territoireElements = new EObjectContainmentEList<territoireElement>(territoireElement.class, this, GamePackage.TERRITOIRE__TERRITOIRE_ELEMENTS);
+      territoireElements = new EObjectContainmentEList<EObject>(EObject.class, this, GamePackage.TERRITOIRE__TERRITOIRE_ELEMENTS);
     }
     return territoireElements;
   }
@@ -179,7 +179,7 @@ public class TerritoireImpl extends gameElementImpl implements Territoire
         return;
       case GamePackage.TERRITOIRE__TERRITOIRE_ELEMENTS:
         getTerritoireElements().clear();
-        getTerritoireElements().addAll((Collection<? extends territoireElement>)newValue);
+        getTerritoireElements().addAll((Collection<? extends EObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

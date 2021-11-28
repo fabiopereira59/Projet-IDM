@@ -31,31 +31,42 @@ public class GameParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, GameGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getTerritoireElementAccess().getAlternatives(), "rule__TerritoireElement__Alternatives");
 			builder.put(grammarAccess.getGameAccess().getGroup(), "rule__Game__Group__0");
+			builder.put(grammarAccess.getTerritoireAccess().getGroup(), "rule__Territoire__Group__0");
 			builder.put(grammarAccess.getExplorateurAccess().getGroup(), "rule__Explorateur__Group__0");
 			builder.put(grammarAccess.getSacAccess().getGroup(), "rule__Sac__Group__0");
-			builder.put(grammarAccess.getTerritoireAccess().getGroup(), "rule__Territoire__Group__0");
 			builder.put(grammarAccess.getLieuAccess().getGroup(), "rule__Lieu__Group__0");
+			builder.put(grammarAccess.getLieuDebutAccess().getGroup(), "rule__LieuDebut__Group__0");
+			builder.put(grammarAccess.getLieuFinAccess().getGroup(), "rule__LieuFin__Group__0");
 			builder.put(grammarAccess.getPersonnesAccess().getGroup(), "rule__Personnes__Group__0");
 			builder.put(grammarAccess.getPersonneAccess().getGroup(), "rule__Personne__Group__0");
 			builder.put(grammarAccess.getInteractionAccess().getGroup(), "rule__Interaction__Group__0");
 			builder.put(grammarAccess.getChoixAccess().getGroup(), "rule__Choix__Group__0");
 			builder.put(grammarAccess.getObjetAccess().getGroup(), "rule__Objet__Group__0");
+			builder.put(grammarAccess.getObjetsAccess().getGroup(), "rule__Objets__Group__0");
 			builder.put(grammarAccess.getConnaissancesAccess().getGroup(), "rule__Connaissances__Group__0");
 			builder.put(grammarAccess.getConnaissanceAccess().getGroup(), "rule__Connaissance__Group__0");
 			builder.put(grammarAccess.getGameAccess().getNameAssignment_1(), "rule__Game__NameAssignment_1");
 			builder.put(grammarAccess.getGameAccess().getGameElementsAssignment_3(), "rule__Game__GameElementsAssignment_3");
+			builder.put(grammarAccess.getTerritoireAccess().getNameAssignment_1(), "rule__Territoire__NameAssignment_1");
+			builder.put(grammarAccess.getTerritoireAccess().getTerritoireElementsAssignment_3(), "rule__Territoire__TerritoireElementsAssignment_3");
+			builder.put(grammarAccess.getTerritoireAccess().getTerritoireElementsAssignment_4(), "rule__Territoire__TerritoireElementsAssignment_4");
+			builder.put(grammarAccess.getTerritoireAccess().getTerritoireElementsAssignment_5(), "rule__Territoire__TerritoireElementsAssignment_5");
+			builder.put(grammarAccess.getTerritoireAccess().getTerritoireElementsAssignment_6(), "rule__Territoire__TerritoireElementsAssignment_6");
 			builder.put(grammarAccess.getExplorateurAccess().getNameAssignment_1(), "rule__Explorateur__NameAssignment_1");
 			builder.put(grammarAccess.getExplorateurAccess().getExplorateurElementsAssignment_3(), "rule__Explorateur__ExplorateurElementsAssignment_3");
 			builder.put(grammarAccess.getExplorateurAccess().getExplorateurElementsAssignment_4(), "rule__Explorateur__ExplorateurElementsAssignment_4");
 			builder.put(grammarAccess.getExplorateurAccess().getExplorateurElementsAssignment_5(), "rule__Explorateur__ExplorateurElementsAssignment_5");
 			builder.put(grammarAccess.getSacAccess().getTailleAssignment_1(), "rule__Sac__TailleAssignment_1");
 			builder.put(grammarAccess.getSacAccess().getSacElementsAssignment_3(), "rule__Sac__SacElementsAssignment_3");
-			builder.put(grammarAccess.getTerritoireAccess().getNameAssignment_1(), "rule__Territoire__NameAssignment_1");
-			builder.put(grammarAccess.getTerritoireAccess().getTerritoireElementsAssignment_3(), "rule__Territoire__TerritoireElementsAssignment_3");
 			builder.put(grammarAccess.getLieuAccess().getNameAssignment_1(), "rule__Lieu__NameAssignment_1");
 			builder.put(grammarAccess.getLieuAccess().getLieuElementsAssignment_3(), "rule__Lieu__LieuElementsAssignment_3");
+			builder.put(grammarAccess.getLieuAccess().getLieuElementsAssignment_4(), "rule__Lieu__LieuElementsAssignment_4");
+			builder.put(grammarAccess.getLieuAccess().getLieuElementsAssignment_5(), "rule__Lieu__LieuElementsAssignment_5");
+			builder.put(grammarAccess.getLieuDebutAccess().getNameAssignment_1(), "rule__LieuDebut__NameAssignment_1");
+			builder.put(grammarAccess.getLieuDebutAccess().getLieudebutElementsAssignment_3(), "rule__LieuDebut__LieudebutElementsAssignment_3");
+			builder.put(grammarAccess.getLieuFinAccess().getNameAssignment_1(), "rule__LieuFin__NameAssignment_1");
+			builder.put(grammarAccess.getLieuFinAccess().getLieudebutElementsAssignment_3(), "rule__LieuFin__LieudebutElementsAssignment_3");
 			builder.put(grammarAccess.getPersonnesAccess().getListePersonneAssignment_2(), "rule__Personnes__ListePersonneAssignment_2");
 			builder.put(grammarAccess.getPersonneAccess().getNameAssignment_1(), "rule__Personne__NameAssignment_1");
 			builder.put(grammarAccess.getPersonneAccess().getPersonneElementsAssignment_5(), "rule__Personne__PersonneElementsAssignment_5");
@@ -66,6 +77,7 @@ public class GameParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getObjetAccess().getNameAssignment_1(), "rule__Objet__NameAssignment_1");
 			builder.put(grammarAccess.getObjetAccess().getTailleAssignment_2(), "rule__Objet__TailleAssignment_2");
 			builder.put(grammarAccess.getObjetAccess().getQuantiteAssignment_3(), "rule__Objet__QuantiteAssignment_3");
+			builder.put(grammarAccess.getObjetsAccess().getListeObjetsAssignment_2(), "rule__Objets__ListeObjetsAssignment_2");
 			builder.put(grammarAccess.getConnaissancesAccess().getListeConnaissanceAssignment_2(), "rule__Connaissances__ListeConnaissanceAssignment_2");
 			builder.put(grammarAccess.getConnaissanceAccess().getNameAssignment_1(), "rule__Connaissance__NameAssignment_1");
 		}

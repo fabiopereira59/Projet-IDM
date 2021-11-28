@@ -11,22 +11,29 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Game/gameElements"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//gameElement"/>
-    <genClasses ecoreClass="Game.ecore#//territoireElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//territoireElement/name"/>
+    <genClasses ecoreClass="Game.ecore#//Territoire">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Territoire/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Territoire/territoireElements"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Explorateur">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Explorateur/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Explorateur/explorateurElements"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Sac">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Sac/taille"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Sac/sacElements"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//Territoire">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Territoire/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Territoire/territoireElements"/>
-    </genClasses>
     <genClasses ecoreClass="Game.ecore#//Lieu">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Lieu/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Lieu/lieuElements"/>
+    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//LieuDebut">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//LieuDebut/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//LieuDebut/lieudebutElements"/>
+    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//LieuFin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//LieuFin/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//LieuFin/lieudebutElements"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Personnes">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Personnes/listePersonne"/>
@@ -49,6 +56,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Objet/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Objet/taille"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Objet/quantite"/>
+    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//Objets">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Objets/listeObjets"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Connaissances">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Connaissances/listeConnaissance"/>

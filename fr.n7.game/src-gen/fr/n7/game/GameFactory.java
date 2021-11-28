@@ -42,13 +42,13 @@ public interface GameFactory extends EFactory
   gameElement creategameElement();
 
   /**
-   * Returns a new object of class '<em>territoire Element</em>'.
+   * Returns a new object of class '<em>Territoire</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>territoire Element</em>'.
+   * @return a new object of class '<em>Territoire</em>'.
    * @generated
    */
-  territoireElement createterritoireElement();
+  Territoire createTerritoire();
 
   /**
    * Returns a new object of class '<em>Explorateur</em>'.
@@ -69,15 +69,6 @@ public interface GameFactory extends EFactory
   Sac createSac();
 
   /**
-   * Returns a new object of class '<em>Territoire</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Territoire</em>'.
-   * @generated
-   */
-  Territoire createTerritoire();
-
-  /**
    * Returns a new object of class '<em>Lieu</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +76,24 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Lieu createLieu();
+
+  /**
+   * Returns a new object of class '<em>Lieu Debut</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lieu Debut</em>'.
+   * @generated
+   */
+  LieuDebut createLieuDebut();
+
+  /**
+   * Returns a new object of class '<em>Lieu Fin</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lieu Fin</em>'.
+   * @generated
+   */
+  LieuFin createLieuFin();
 
   /**
    * Returns a new object of class '<em>Personnes</em>'.
@@ -139,6 +148,15 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Objet createObjet();
+
+  /**
+   * Returns a new object of class '<em>Objets</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Objets</em>'.
+   * @generated
+   */
+  Objets createObjets();
 
   /**
    * Returns a new object of class '<em>Connaissances</em>'.

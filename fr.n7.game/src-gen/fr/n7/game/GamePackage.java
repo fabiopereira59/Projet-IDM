@@ -114,14 +114,14 @@ public interface GamePackage extends EPackage
   int GAME_ELEMENT_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link fr.n7.game.impl.territoireElementImpl <em>territoire Element</em>}' class.
+   * The meta object id for the '{@link fr.n7.game.impl.TerritoireImpl <em>Territoire</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see fr.n7.game.impl.territoireElementImpl
-   * @see fr.n7.game.impl.GamePackageImpl#getterritoireElement()
+   * @see fr.n7.game.impl.TerritoireImpl
+   * @see fr.n7.game.impl.GamePackageImpl#getTerritoire()
    * @generated
    */
-  int TERRITOIRE_ELEMENT = 2;
+  int TERRITOIRE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -130,16 +130,25 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TERRITOIRE_ELEMENT__NAME = 0;
+  int TERRITOIRE__NAME = GAME_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>territoire Element</em>' class.
+   * The feature id for the '<em><b>Territoire Elements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TERRITOIRE_ELEMENT_FEATURE_COUNT = 1;
+  int TERRITOIRE__TERRITOIRE_ELEMENTS = GAME_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Territoire</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERRITOIRE_FEATURE_COUNT = GAME_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.n7.game.impl.ExplorateurImpl <em>Explorateur</em>}' class.
@@ -158,7 +167,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPLORATEUR__NAME = TERRITOIRE_ELEMENT__NAME;
+  int EXPLORATEUR__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Explorateur Elements</b></em>' containment reference list.
@@ -167,7 +176,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPLORATEUR__EXPLORATEUR_ELEMENTS = TERRITOIRE_ELEMENT_FEATURE_COUNT + 0;
+  int EXPLORATEUR__EXPLORATEUR_ELEMENTS = 1;
 
   /**
    * The number of structural features of the '<em>Explorateur</em>' class.
@@ -176,7 +185,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPLORATEUR_FEATURE_COUNT = TERRITOIRE_ELEMENT_FEATURE_COUNT + 1;
+  int EXPLORATEUR_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link fr.n7.game.impl.SacImpl <em>Sac</em>}' class.
@@ -216,43 +225,6 @@ public interface GamePackage extends EPackage
   int SAC_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link fr.n7.game.impl.TerritoireImpl <em>Territoire</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.n7.game.impl.TerritoireImpl
-   * @see fr.n7.game.impl.GamePackageImpl#getTerritoire()
-   * @generated
-   */
-  int TERRITOIRE = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TERRITOIRE__NAME = GAME_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Territoire Elements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TERRITOIRE__TERRITOIRE_ELEMENTS = GAME_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Territoire</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TERRITOIRE_FEATURE_COUNT = GAME_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link fr.n7.game.impl.LieuImpl <em>Lieu</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -260,7 +232,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getLieu()
    * @generated
    */
-  int LIEU = 6;
+  int LIEU = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -269,7 +241,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIEU__NAME = TERRITOIRE_ELEMENT__NAME;
+  int LIEU__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Lieu Elements</b></em>' containment reference list.
@@ -278,7 +250,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIEU__LIEU_ELEMENTS = TERRITOIRE_ELEMENT_FEATURE_COUNT + 0;
+  int LIEU__LIEU_ELEMENTS = 1;
 
   /**
    * The number of structural features of the '<em>Lieu</em>' class.
@@ -287,7 +259,81 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIEU_FEATURE_COUNT = TERRITOIRE_ELEMENT_FEATURE_COUNT + 1;
+  int LIEU_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link fr.n7.game.impl.LieuDebutImpl <em>Lieu Debut</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.n7.game.impl.LieuDebutImpl
+   * @see fr.n7.game.impl.GamePackageImpl#getLieuDebut()
+   * @generated
+   */
+  int LIEU_DEBUT = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIEU_DEBUT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Lieudebut Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIEU_DEBUT__LIEUDEBUT_ELEMENTS = 1;
+
+  /**
+   * The number of structural features of the '<em>Lieu Debut</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIEU_DEBUT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link fr.n7.game.impl.LieuFinImpl <em>Lieu Fin</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.n7.game.impl.LieuFinImpl
+   * @see fr.n7.game.impl.GamePackageImpl#getLieuFin()
+   * @generated
+   */
+  int LIEU_FIN = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIEU_FIN__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Lieudebut Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIEU_FIN__LIEUDEBUT_ELEMENTS = 1;
+
+  /**
+   * The number of structural features of the '<em>Lieu Fin</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIEU_FIN_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link fr.n7.game.impl.PersonnesImpl <em>Personnes</em>}' class.
@@ -297,7 +343,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getPersonnes()
    * @generated
    */
-  int PERSONNES = 7;
+  int PERSONNES = 8;
 
   /**
    * The feature id for the '<em><b>Liste Personne</b></em>' containment reference list.
@@ -325,7 +371,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getPersonne()
    * @generated
    */
-  int PERSONNE = 8;
+  int PERSONNE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -362,7 +408,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getInteraction()
    * @generated
    */
-  int INTERACTION = 9;
+  int INTERACTION = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -399,7 +445,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getTexte()
    * @generated
    */
-  int TEXTE = 10;
+  int TEXTE = 11;
 
   /**
    * The feature id for the '<em><b>Texte</b></em>' attribute.
@@ -427,7 +473,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getChoix()
    * @generated
    */
-  int CHOIX = 11;
+  int CHOIX = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -455,7 +501,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getObjet()
    * @generated
    */
-  int OBJET = 12;
+  int OBJET = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -494,6 +540,34 @@ public interface GamePackage extends EPackage
   int OBJET_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link fr.n7.game.impl.ObjetsImpl <em>Objets</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.n7.game.impl.ObjetsImpl
+   * @see fr.n7.game.impl.GamePackageImpl#getObjets()
+   * @generated
+   */
+  int OBJETS = 14;
+
+  /**
+   * The feature id for the '<em><b>Liste Objets</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJETS__LISTE_OBJETS = 0;
+
+  /**
+   * The number of structural features of the '<em>Objets</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJETS_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link fr.n7.game.impl.ConnaissancesImpl <em>Connaissances</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -501,7 +575,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getConnaissances()
    * @generated
    */
-  int CONNAISSANCES = 13;
+  int CONNAISSANCES = 15;
 
   /**
    * The feature id for the '<em><b>Liste Connaissance</b></em>' containment reference list.
@@ -529,7 +603,7 @@ public interface GamePackage extends EPackage
    * @see fr.n7.game.impl.GamePackageImpl#getConnaissance()
    * @generated
    */
-  int CONNAISSANCE = 14;
+  int CONNAISSANCE = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -593,25 +667,36 @@ public interface GamePackage extends EPackage
   EClass getgameElement();
 
   /**
-   * Returns the meta object for class '{@link fr.n7.game.territoireElement <em>territoire Element</em>}'.
+   * Returns the meta object for class '{@link fr.n7.game.Territoire <em>Territoire</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>territoire Element</em>'.
-   * @see fr.n7.game.territoireElement
+   * @return the meta object for class '<em>Territoire</em>'.
+   * @see fr.n7.game.Territoire
    * @generated
    */
-  EClass getterritoireElement();
+  EClass getTerritoire();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.n7.game.territoireElement#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link fr.n7.game.Territoire#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.n7.game.territoireElement#getName()
-   * @see #getterritoireElement()
+   * @see fr.n7.game.Territoire#getName()
+   * @see #getTerritoire()
    * @generated
    */
-  EAttribute getterritoireElement_Name();
+  EAttribute getTerritoire_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.n7.game.Territoire#getTerritoireElements <em>Territoire Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Territoire Elements</em>'.
+   * @see fr.n7.game.Territoire#getTerritoireElements()
+   * @see #getTerritoire()
+   * @generated
+   */
+  EReference getTerritoire_TerritoireElements();
 
   /**
    * Returns the meta object for class '{@link fr.n7.game.Explorateur <em>Explorateur</em>}'.
@@ -622,6 +707,17 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getExplorateur();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.n7.game.Explorateur#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.n7.game.Explorateur#getName()
+   * @see #getExplorateur()
+   * @generated
+   */
+  EAttribute getExplorateur_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.n7.game.Explorateur#getExplorateurElements <em>Explorateur Elements</em>}'.
@@ -667,38 +763,6 @@ public interface GamePackage extends EPackage
   EReference getSac_SacElements();
 
   /**
-   * Returns the meta object for class '{@link fr.n7.game.Territoire <em>Territoire</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Territoire</em>'.
-   * @see fr.n7.game.Territoire
-   * @generated
-   */
-  EClass getTerritoire();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.n7.game.Territoire#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.n7.game.Territoire#getName()
-   * @see #getTerritoire()
-   * @generated
-   */
-  EAttribute getTerritoire_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.n7.game.Territoire#getTerritoireElements <em>Territoire Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Territoire Elements</em>'.
-   * @see fr.n7.game.Territoire#getTerritoireElements()
-   * @see #getTerritoire()
-   * @generated
-   */
-  EReference getTerritoire_TerritoireElements();
-
-  /**
    * Returns the meta object for class '{@link fr.n7.game.Lieu <em>Lieu</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -707,6 +771,17 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getLieu();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.n7.game.Lieu#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.n7.game.Lieu#getName()
+   * @see #getLieu()
+   * @generated
+   */
+  EAttribute getLieu_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.n7.game.Lieu#getLieuElements <em>Lieu Elements</em>}'.
@@ -718,6 +793,70 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EReference getLieu_LieuElements();
+
+  /**
+   * Returns the meta object for class '{@link fr.n7.game.LieuDebut <em>Lieu Debut</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Lieu Debut</em>'.
+   * @see fr.n7.game.LieuDebut
+   * @generated
+   */
+  EClass getLieuDebut();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.n7.game.LieuDebut#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.n7.game.LieuDebut#getName()
+   * @see #getLieuDebut()
+   * @generated
+   */
+  EAttribute getLieuDebut_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.n7.game.LieuDebut#getLieudebutElements <em>Lieudebut Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Lieudebut Elements</em>'.
+   * @see fr.n7.game.LieuDebut#getLieudebutElements()
+   * @see #getLieuDebut()
+   * @generated
+   */
+  EReference getLieuDebut_LieudebutElements();
+
+  /**
+   * Returns the meta object for class '{@link fr.n7.game.LieuFin <em>Lieu Fin</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Lieu Fin</em>'.
+   * @see fr.n7.game.LieuFin
+   * @generated
+   */
+  EClass getLieuFin();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.n7.game.LieuFin#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.n7.game.LieuFin#getName()
+   * @see #getLieuFin()
+   * @generated
+   */
+  EAttribute getLieuFin_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.n7.game.LieuFin#getLieudebutElements <em>Lieudebut Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Lieudebut Elements</em>'.
+   * @see fr.n7.game.LieuFin#getLieudebutElements()
+   * @see #getLieuFin()
+   * @generated
+   */
+  EReference getLieuFin_LieudebutElements();
 
   /**
    * Returns the meta object for class '{@link fr.n7.game.Personnes <em>Personnes</em>}'.
@@ -890,6 +1029,27 @@ public interface GamePackage extends EPackage
   EAttribute getObjet_Quantite();
 
   /**
+   * Returns the meta object for class '{@link fr.n7.game.Objets <em>Objets</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Objets</em>'.
+   * @see fr.n7.game.Objets
+   * @generated
+   */
+  EClass getObjets();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.n7.game.Objets#getListeObjets <em>Liste Objets</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Liste Objets</em>'.
+   * @see fr.n7.game.Objets#getListeObjets()
+   * @see #getObjets()
+   * @generated
+   */
+  EReference getObjets_ListeObjets();
+
+  /**
    * Returns the meta object for class '{@link fr.n7.game.Connaissances <em>Connaissances</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -991,14 +1151,14 @@ public interface GamePackage extends EPackage
     EClass GAME_ELEMENT = eINSTANCE.getgameElement();
 
     /**
-     * The meta object literal for the '{@link fr.n7.game.impl.territoireElementImpl <em>territoire Element</em>}' class.
+     * The meta object literal for the '{@link fr.n7.game.impl.TerritoireImpl <em>Territoire</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see fr.n7.game.impl.territoireElementImpl
-     * @see fr.n7.game.impl.GamePackageImpl#getterritoireElement()
+     * @see fr.n7.game.impl.TerritoireImpl
+     * @see fr.n7.game.impl.GamePackageImpl#getTerritoire()
      * @generated
      */
-    EClass TERRITOIRE_ELEMENT = eINSTANCE.getterritoireElement();
+    EClass TERRITOIRE = eINSTANCE.getTerritoire();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1006,7 +1166,15 @@ public interface GamePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TERRITOIRE_ELEMENT__NAME = eINSTANCE.getterritoireElement_Name();
+    EAttribute TERRITOIRE__NAME = eINSTANCE.getTerritoire_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Territoire Elements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TERRITOIRE__TERRITOIRE_ELEMENTS = eINSTANCE.getTerritoire_TerritoireElements();
 
     /**
      * The meta object literal for the '{@link fr.n7.game.impl.ExplorateurImpl <em>Explorateur</em>}' class.
@@ -1017,6 +1185,14 @@ public interface GamePackage extends EPackage
      * @generated
      */
     EClass EXPLORATEUR = eINSTANCE.getExplorateur();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPLORATEUR__NAME = eINSTANCE.getExplorateur_Name();
 
     /**
      * The meta object literal for the '<em><b>Explorateur Elements</b></em>' containment reference list feature.
@@ -1053,32 +1229,6 @@ public interface GamePackage extends EPackage
     EReference SAC__SAC_ELEMENTS = eINSTANCE.getSac_SacElements();
 
     /**
-     * The meta object literal for the '{@link fr.n7.game.impl.TerritoireImpl <em>Territoire</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.n7.game.impl.TerritoireImpl
-     * @see fr.n7.game.impl.GamePackageImpl#getTerritoire()
-     * @generated
-     */
-    EClass TERRITOIRE = eINSTANCE.getTerritoire();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TERRITOIRE__NAME = eINSTANCE.getTerritoire_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Territoire Elements</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TERRITOIRE__TERRITOIRE_ELEMENTS = eINSTANCE.getTerritoire_TerritoireElements();
-
-    /**
      * The meta object literal for the '{@link fr.n7.game.impl.LieuImpl <em>Lieu</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1089,12 +1239,72 @@ public interface GamePackage extends EPackage
     EClass LIEU = eINSTANCE.getLieu();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LIEU__NAME = eINSTANCE.getLieu_Name();
+
+    /**
      * The meta object literal for the '<em><b>Lieu Elements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference LIEU__LIEU_ELEMENTS = eINSTANCE.getLieu_LieuElements();
+
+    /**
+     * The meta object literal for the '{@link fr.n7.game.impl.LieuDebutImpl <em>Lieu Debut</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.n7.game.impl.LieuDebutImpl
+     * @see fr.n7.game.impl.GamePackageImpl#getLieuDebut()
+     * @generated
+     */
+    EClass LIEU_DEBUT = eINSTANCE.getLieuDebut();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LIEU_DEBUT__NAME = eINSTANCE.getLieuDebut_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Lieudebut Elements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIEU_DEBUT__LIEUDEBUT_ELEMENTS = eINSTANCE.getLieuDebut_LieudebutElements();
+
+    /**
+     * The meta object literal for the '{@link fr.n7.game.impl.LieuFinImpl <em>Lieu Fin</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.n7.game.impl.LieuFinImpl
+     * @see fr.n7.game.impl.GamePackageImpl#getLieuFin()
+     * @generated
+     */
+    EClass LIEU_FIN = eINSTANCE.getLieuFin();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LIEU_FIN__NAME = eINSTANCE.getLieuFin_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Lieudebut Elements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIEU_FIN__LIEUDEBUT_ELEMENTS = eINSTANCE.getLieuFin_LieudebutElements();
 
     /**
      * The meta object literal for the '{@link fr.n7.game.impl.PersonnesImpl <em>Personnes</em>}' class.
@@ -1235,6 +1445,24 @@ public interface GamePackage extends EPackage
      * @generated
      */
     EAttribute OBJET__QUANTITE = eINSTANCE.getObjet_Quantite();
+
+    /**
+     * The meta object literal for the '{@link fr.n7.game.impl.ObjetsImpl <em>Objets</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.n7.game.impl.ObjetsImpl
+     * @see fr.n7.game.impl.GamePackageImpl#getObjets()
+     * @generated
+     */
+    EClass OBJETS = eINSTANCE.getObjets();
+
+    /**
+     * The meta object literal for the '<em><b>Liste Objets</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OBJETS__LISTE_OBJETS = eINSTANCE.getObjets_ListeObjets();
 
     /**
      * The meta object literal for the '{@link fr.n7.game.impl.ConnaissancesImpl <em>Connaissances</em>}' class.

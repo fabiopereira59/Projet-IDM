@@ -12,14 +12,16 @@ import fr.n7.game.GameFactory;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Interaction;
 import fr.n7.game.Lieu;
+import fr.n7.game.LieuDebut;
+import fr.n7.game.LieuFin;
 import fr.n7.game.Objet;
+import fr.n7.game.Objets;
 import fr.n7.game.Personne;
 import fr.n7.game.Personnes;
 import fr.n7.game.Sac;
 import fr.n7.game.Territoire;
 import fr.n7.game.Texte;
 import fr.n7.game.gameElement;
-import fr.n7.game.territoireElement;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -55,7 +57,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass territoireElementEClass = null;
+  private EClass territoireEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -76,14 +78,21 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass territoireEClass = null;
+  private EClass lieuEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass lieuEClass = null;
+  private EClass lieuDebutEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lieuFinEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -126,6 +135,13 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   private EClass objetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass objetsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -254,9 +270,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
-  public EClass getterritoireElement()
+  public EClass getTerritoire()
   {
-    return territoireElementEClass;
+    return territoireEClass;
   }
 
   /**
@@ -265,9 +281,20 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
-  public EAttribute getterritoireElement_Name()
+  public EAttribute getTerritoire_Name()
   {
-    return (EAttribute)territoireElementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)territoireEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTerritoire_TerritoireElements()
+  {
+    return (EReference)territoireEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -287,9 +314,20 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
+  public EAttribute getExplorateur_Name()
+  {
+    return (EAttribute)explorateurEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getExplorateur_ExplorateurElements()
   {
-    return (EReference)explorateurEClass.getEStructuralFeatures().get(0);
+    return (EReference)explorateurEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -331,39 +369,6 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
-  public EClass getTerritoire()
-  {
-    return territoireEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getTerritoire_Name()
-  {
-    return (EAttribute)territoireEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTerritoire_TerritoireElements()
-  {
-    return (EReference)territoireEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getLieu()
   {
     return lieuEClass;
@@ -375,9 +380,86 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
+  public EAttribute getLieu_Name()
+  {
+    return (EAttribute)lieuEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getLieu_LieuElements()
   {
-    return (EReference)lieuEClass.getEStructuralFeatures().get(0);
+    return (EReference)lieuEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLieuDebut()
+  {
+    return lieuDebutEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLieuDebut_Name()
+  {
+    return (EAttribute)lieuDebutEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLieuDebut_LieudebutElements()
+  {
+    return (EReference)lieuDebutEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLieuFin()
+  {
+    return lieuFinEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLieuFin_Name()
+  {
+    return (EAttribute)lieuFinEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLieuFin_LieudebutElements()
+  {
+    return (EReference)lieuFinEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -562,6 +644,28 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
+  public EClass getObjets()
+  {
+    return objetsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getObjets_ListeObjets()
+  {
+    return (EReference)objetsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getConnaissances()
   {
     return connaissancesEClass;
@@ -637,22 +741,29 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     gameElementEClass = createEClass(GAME_ELEMENT);
 
-    territoireElementEClass = createEClass(TERRITOIRE_ELEMENT);
-    createEAttribute(territoireElementEClass, TERRITOIRE_ELEMENT__NAME);
+    territoireEClass = createEClass(TERRITOIRE);
+    createEAttribute(territoireEClass, TERRITOIRE__NAME);
+    createEReference(territoireEClass, TERRITOIRE__TERRITOIRE_ELEMENTS);
 
     explorateurEClass = createEClass(EXPLORATEUR);
+    createEAttribute(explorateurEClass, EXPLORATEUR__NAME);
     createEReference(explorateurEClass, EXPLORATEUR__EXPLORATEUR_ELEMENTS);
 
     sacEClass = createEClass(SAC);
     createEAttribute(sacEClass, SAC__TAILLE);
     createEReference(sacEClass, SAC__SAC_ELEMENTS);
 
-    territoireEClass = createEClass(TERRITOIRE);
-    createEAttribute(territoireEClass, TERRITOIRE__NAME);
-    createEReference(territoireEClass, TERRITOIRE__TERRITOIRE_ELEMENTS);
-
     lieuEClass = createEClass(LIEU);
+    createEAttribute(lieuEClass, LIEU__NAME);
     createEReference(lieuEClass, LIEU__LIEU_ELEMENTS);
+
+    lieuDebutEClass = createEClass(LIEU_DEBUT);
+    createEAttribute(lieuDebutEClass, LIEU_DEBUT__NAME);
+    createEReference(lieuDebutEClass, LIEU_DEBUT__LIEUDEBUT_ELEMENTS);
+
+    lieuFinEClass = createEClass(LIEU_FIN);
+    createEAttribute(lieuFinEClass, LIEU_FIN__NAME);
+    createEReference(lieuFinEClass, LIEU_FIN__LIEUDEBUT_ELEMENTS);
 
     personnesEClass = createEClass(PERSONNES);
     createEReference(personnesEClass, PERSONNES__LISTE_PERSONNE);
@@ -675,6 +786,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     createEAttribute(objetEClass, OBJET__NAME);
     createEAttribute(objetEClass, OBJET__TAILLE);
     createEAttribute(objetEClass, OBJET__QUANTITE);
+
+    objetsEClass = createEClass(OBJETS);
+    createEReference(objetsEClass, OBJETS__LISTE_OBJETS);
 
     connaissancesEClass = createEClass(CONNAISSANCES);
     createEReference(connaissancesEClass, CONNAISSANCES__LISTE_CONNAISSANCE);
@@ -712,9 +826,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    explorateurEClass.getESuperTypes().add(this.getterritoireElement());
     territoireEClass.getESuperTypes().add(this.getgameElement());
-    lieuEClass.getESuperTypes().add(this.getterritoireElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(gameEClass, Game.class, "Game", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -723,22 +835,29 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     initEClass(gameElementEClass, gameElement.class, "gameElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(territoireElementEClass, territoireElement.class, "territoireElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getterritoireElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, territoireElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(territoireEClass, Territoire.class, "Territoire", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTerritoire_Name(), ecorePackage.getEString(), "name", null, 0, 1, Territoire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTerritoire_TerritoireElements(), ecorePackage.getEObject(), null, "territoireElements", null, 0, -1, Territoire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(explorateurEClass, Explorateur.class, "Explorateur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExplorateur_Name(), ecorePackage.getEString(), "name", null, 0, 1, Explorateur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExplorateur_ExplorateurElements(), ecorePackage.getEObject(), null, "explorateurElements", null, 0, -1, Explorateur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sacEClass, Sac.class, "Sac", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSac_Taille(), ecorePackage.getEInt(), "taille", null, 0, 1, Sac.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSac_SacElements(), this.getObjet(), null, "sacElements", null, 0, -1, Sac.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(territoireEClass, Territoire.class, "Territoire", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTerritoire_Name(), ecorePackage.getEString(), "name", null, 0, 1, Territoire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTerritoire_TerritoireElements(), this.getterritoireElement(), null, "territoireElements", null, 0, -1, Territoire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(lieuEClass, Lieu.class, "Lieu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLieu_LieuElements(), this.getPersonnes(), null, "lieuElements", null, 0, -1, Lieu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLieu_Name(), ecorePackage.getEString(), "name", null, 0, 1, Lieu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLieu_LieuElements(), ecorePackage.getEObject(), null, "lieuElements", null, 0, -1, Lieu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(lieuDebutEClass, LieuDebut.class, "LieuDebut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLieuDebut_Name(), ecorePackage.getEString(), "name", null, 0, 1, LieuDebut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLieuDebut_LieudebutElements(), this.getPersonnes(), null, "lieudebutElements", null, 0, -1, LieuDebut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(lieuFinEClass, LieuFin.class, "LieuFin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLieuFin_Name(), ecorePackage.getEString(), "name", null, 0, 1, LieuFin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLieuFin_LieudebutElements(), this.getPersonnes(), null, "lieudebutElements", null, 0, -1, LieuFin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(personnesEClass, Personnes.class, "Personnes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPersonnes_ListePersonne(), this.getPersonne(), null, "listePersonne", null, 0, -1, Personnes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -761,6 +880,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     initEAttribute(getObjet_Name(), ecorePackage.getEString(), "name", null, 0, 1, Objet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getObjet_Taille(), ecorePackage.getEInt(), "taille", null, 0, 1, Objet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getObjet_Quantite(), ecorePackage.getEInt(), "quantite", null, 0, 1, Objet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(objetsEClass, Objets.class, "Objets", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getObjets_ListeObjets(), this.getObjet(), null, "listeObjets", null, 0, -1, Objets.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(connaissancesEClass, Connaissances.class, "Connaissances", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConnaissances_ListeConnaissance(), this.getConnaissance(), null, "listeConnaissance", null, 0, -1, Connaissances.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -5,6 +5,8 @@ package fr.n7.game;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Lieu</b></em>'.
@@ -14,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.Lieu#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getLieuElements <em>Lieu Elements</em>}</li>
  * </ul>
  *
@@ -21,11 +24,33 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Lieu extends territoireElement
+public interface Lieu extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.n7.game.GamePackage#getLieu_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
    * Returns the value of the '<em><b>Lieu Elements</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Personnes}.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Lieu Elements</em>' containment reference list.
@@ -33,6 +58,6 @@ public interface Lieu extends territoireElement
    * @model containment="true"
    * @generated
    */
-  EList<Personnes> getLieuElements();
+  EList<EObject> getLieuElements();
 
 } // Lieu

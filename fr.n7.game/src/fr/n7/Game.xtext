@@ -11,9 +11,16 @@ Game :
 
 gameElement :
 	Territoire;
-	
-territoireElement :
-	Explorateur | Lieu
+
+Territoire :
+	'territoire'
+	name=ID
+	'{'
+		territoireElements+=Explorateur
+		territoireElements+=LieuDebut
+		territoireElements+=LieuFin+
+		territoireElements+=Lieu*
+	'}'
 ;
 	
 Explorateur :
@@ -21,7 +28,7 @@ Explorateur :
 	name=ID
 	'{'
 		explorateurElements+=Sac
-		explorateurElements+=Connaissances
+		explorateurElements+=Connaissances?
 		explorateurElements+=Lieu?
 	'}'
 ;
@@ -34,19 +41,29 @@ Sac :
 	'}'
 ;
 
-Territoire :
-	'territoire'
-	name=ID
-	'{'
-		territoireElements+=territoireElement*
-	'}'
-;
-
 Lieu :
 	'lieu'
 	name=ID
 	'{'
-		lieuElements+=Personnes
+		lieuElements+=Personnes?
+		lieuElements+=Connaissances?
+		lieuElements+=Objets?
+	'}'
+;
+
+LieuDebut : 
+	'lieudebut'
+	name=ID
+	'{'
+		lieudebutElements+=Personnes?
+	'}'
+;
+
+LieuFin : 
+	'lieufin'
+	name=ID
+	'{'
+		lieudebutElements+=Personnes?
 	'}'
 ;
 
@@ -90,6 +107,13 @@ Objet :
 	name=ID
 	taille=INT
 	quantite=INT
+;
+
+Objets : 
+	'objets'
+	'{'
+		listeObjets+=Objet*
+	'}'
 ;
 
 Connaissances :

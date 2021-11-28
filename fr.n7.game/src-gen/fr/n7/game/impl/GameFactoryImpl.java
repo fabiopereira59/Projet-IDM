@@ -67,17 +67,19 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
     {
       case GamePackage.GAME: return createGame();
       case GamePackage.GAME_ELEMENT: return creategameElement();
-      case GamePackage.TERRITOIRE_ELEMENT: return createterritoireElement();
+      case GamePackage.TERRITOIRE: return createTerritoire();
       case GamePackage.EXPLORATEUR: return createExplorateur();
       case GamePackage.SAC: return createSac();
-      case GamePackage.TERRITOIRE: return createTerritoire();
       case GamePackage.LIEU: return createLieu();
+      case GamePackage.LIEU_DEBUT: return createLieuDebut();
+      case GamePackage.LIEU_FIN: return createLieuFin();
       case GamePackage.PERSONNES: return createPersonnes();
       case GamePackage.PERSONNE: return createPersonne();
       case GamePackage.INTERACTION: return createInteraction();
       case GamePackage.TEXTE: return createTexte();
       case GamePackage.CHOIX: return createChoix();
       case GamePackage.OBJET: return createObjet();
+      case GamePackage.OBJETS: return createObjets();
       case GamePackage.CONNAISSANCES: return createConnaissances();
       case GamePackage.CONNAISSANCE: return createConnaissance();
       default:
@@ -115,10 +117,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public territoireElement createterritoireElement()
+  public Territoire createTerritoire()
   {
-    territoireElementImpl territoireElement = new territoireElementImpl();
-    return territoireElement;
+    TerritoireImpl territoire = new TerritoireImpl();
+    return territoire;
   }
 
   /**
@@ -151,10 +153,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public Territoire createTerritoire()
+  public Lieu createLieu()
   {
-    TerritoireImpl territoire = new TerritoireImpl();
-    return territoire;
+    LieuImpl lieu = new LieuImpl();
+    return lieu;
   }
 
   /**
@@ -163,10 +165,22 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public Lieu createLieu()
+  public LieuDebut createLieuDebut()
   {
-    LieuImpl lieu = new LieuImpl();
-    return lieu;
+    LieuDebutImpl lieuDebut = new LieuDebutImpl();
+    return lieuDebut;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LieuFin createLieuFin()
+  {
+    LieuFinImpl lieuFin = new LieuFinImpl();
+    return lieuFin;
   }
 
   /**
@@ -239,6 +253,18 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     ObjetImpl objet = new ObjetImpl();
     return objet;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Objets createObjets()
+  {
+    ObjetsImpl objets = new ObjetsImpl();
+    return objets;
   }
 
   /**

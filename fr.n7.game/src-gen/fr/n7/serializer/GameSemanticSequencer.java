@@ -12,7 +12,10 @@ import fr.n7.game.Game;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Interaction;
 import fr.n7.game.Lieu;
+import fr.n7.game.LieuDebut;
+import fr.n7.game.LieuFin;
 import fr.n7.game.Objet;
+import fr.n7.game.Objets;
 import fr.n7.game.Personne;
 import fr.n7.game.Personnes;
 import fr.n7.game.Sac;
@@ -65,8 +68,17 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case GamePackage.LIEU:
 				sequence_Lieu(context, (Lieu) semanticObject); 
 				return; 
+			case GamePackage.LIEU_DEBUT:
+				sequence_LieuDebut(context, (LieuDebut) semanticObject); 
+				return; 
+			case GamePackage.LIEU_FIN:
+				sequence_LieuFin(context, (LieuFin) semanticObject); 
+				return; 
 			case GamePackage.OBJET:
 				sequence_Objet(context, (Objet) semanticObject); 
+				return; 
+			case GamePackage.OBJETS:
+				sequence_Objets(context, (Objets) semanticObject); 
 				return; 
 			case GamePackage.PERSONNE:
 				sequence_Personne(context, (Personne) semanticObject); 
@@ -138,11 +150,10 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     territoireElement returns Explorateur
 	 *     Explorateur returns Explorateur
 	 *
 	 * Constraint:
-	 *     (name=ID explorateurElements+=Sac explorateurElements+=Connaissances explorateurElements+=Lieu?)
+	 *     (name=ID explorateurElements+=Sac explorateurElements+=Connaissances? explorateurElements+=Lieu?)
 	 */
 	protected void sequence_Explorateur(ISerializationContext context, Explorateur semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -175,11 +186,34 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     territoireElement returns Lieu
+	 *     LieuDebut returns LieuDebut
+	 *
+	 * Constraint:
+	 *     (name=ID lieudebutElements+=Personnes?)
+	 */
+	protected void sequence_LieuDebut(ISerializationContext context, LieuDebut semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LieuFin returns LieuFin
+	 *
+	 * Constraint:
+	 *     (name=ID lieudebutElements+=Personnes?)
+	 */
+	protected void sequence_LieuFin(ISerializationContext context, LieuFin semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Lieu returns Lieu
 	 *
 	 * Constraint:
-	 *     (name=ID lieuElements+=Personnes)
+	 *     (name=ID lieuElements+=Personnes? lieuElements+=Connaissances? lieuElements+=Objets?)
 	 */
 	protected void sequence_Lieu(ISerializationContext context, Lieu semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -207,6 +241,18 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getObjetAccess().getTailleINTTerminalRuleCall_2_0(), semanticObject.getTaille());
 		feeder.accept(grammarAccess.getObjetAccess().getQuantiteINTTerminalRuleCall_3_0(), semanticObject.getQuantite());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Objets returns Objets
+	 *
+	 * Constraint:
+	 *     listeObjets+=Objet+
+	 */
+	protected void sequence_Objets(ISerializationContext context, Objets semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -252,7 +298,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Territoire returns Territoire
 	 *
 	 * Constraint:
-	 *     (name=ID territoireElements+=territoireElement*)
+	 *     (name=ID territoireElements+=Explorateur territoireElements+=LieuDebut territoireElements+=LieuFin+ territoireElements+=Lieu*)
 	 */
 	protected void sequence_Territoire(ISerializationContext context, Territoire semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

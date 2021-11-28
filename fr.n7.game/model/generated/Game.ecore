@@ -7,10 +7,13 @@
         eType="#//gameElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="gameElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="territoireElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Territoire" eSuperTypes="#//gameElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="territoireElements" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Explorateur" eSuperTypes="#//territoireElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Explorateur">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="explorateurElements" upperBound="-1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
   </eClassifiers>
@@ -19,13 +22,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="sacElements" upperBound="-1"
         eType="#//Objet" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Territoire" eSuperTypes="#//gameElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Lieu">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="territoireElements" upperBound="-1"
-        eType="#//territoireElement" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Lieu" eSuperTypes="#//territoireElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="lieuElements" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LieuDebut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lieudebutElements" upperBound="-1"
+        eType="#//Personnes" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LieuFin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lieudebutElements" upperBound="-1"
         eType="#//Personnes" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Personnes">
@@ -52,6 +61,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="taille" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Objets">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjets" upperBound="-1"
+        eType="#//Objet" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Connaissances">
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeConnaissance" upperBound="-1"
