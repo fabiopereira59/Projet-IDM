@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.impl.ConnaissancesImpl#getListeConnaissance <em>Liste Connaissance</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ConnaissancesImpl#getListeConnaissances <em>Liste Connaissances</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements Connaissances
 {
   /**
-   * The cached value of the '{@link #getListeConnaissance() <em>Liste Connaissance</em>}' containment reference list.
+   * The cached value of the '{@link #getListeConnaissances() <em>Liste Connaissances</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getListeConnaissance()
+   * @see #getListeConnaissances()
    * @generated
    * @ordered
    */
-  protected EList<Connaissance> listeConnaissance;
+  protected EList<Connaissance> listeConnaissances;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +73,13 @@ public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements C
    * @generated
    */
   @Override
-  public EList<Connaissance> getListeConnaissance()
+  public EList<Connaissance> getListeConnaissances()
   {
-    if (listeConnaissance == null)
+    if (listeConnaissances == null)
     {
-      listeConnaissance = new EObjectContainmentEList<Connaissance>(Connaissance.class, this, GamePackage.CONNAISSANCES__LISTE_CONNAISSANCE);
+      listeConnaissances = new EObjectContainmentEList<Connaissance>(Connaissance.class, this, GamePackage.CONNAISSANCES__LISTE_CONNAISSANCES);
     }
-    return listeConnaissance;
+    return listeConnaissances;
   }
 
   /**
@@ -92,8 +92,8 @@ public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCE:
-        return ((InternalEList<?>)getListeConnaissance()).basicRemove(otherEnd, msgs);
+      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCES:
+        return ((InternalEList<?>)getListeConnaissances()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +108,8 @@ public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCE:
-        return getListeConnaissance();
+      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCES:
+        return getListeConnaissances();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +125,9 @@ public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCE:
-        getListeConnaissance().clear();
-        getListeConnaissance().addAll((Collection<? extends Connaissance>)newValue);
+      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCES:
+        getListeConnaissances().clear();
+        getListeConnaissances().addAll((Collection<? extends Connaissance>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +143,8 @@ public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCE:
-        getListeConnaissance().clear();
+      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCES:
+        getListeConnaissances().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +160,8 @@ public class ConnaissancesImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCE:
-        return listeConnaissance != null && !listeConnaissance.isEmpty();
+      case GamePackage.CONNAISSANCES__LISTE_CONNAISSANCES:
+        return listeConnaissances != null && !listeConnaissances.isEmpty();
     }
     return super.eIsSet(featureID);
   }

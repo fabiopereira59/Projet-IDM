@@ -3,6 +3,8 @@
  */
 package fr.n7.game.impl;
 
+import fr.n7.game.Chemin;
+import fr.n7.game.Condition;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Lieu;
 
@@ -32,7 +34,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getConditionDescription <em>Condition Description</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getLieuElements <em>Lieu Elements</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getDepotObjet <em>Depot Objet</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getListeChemins <em>Liste Chemins</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,6 +66,36 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
+  protected static final String DESCRIPTION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
+  protected String description = DESCRIPTION_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getConditionDescription() <em>Condition Description</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConditionDescription()
+   * @generated
+   * @ordered
+   */
+  protected Condition conditionDescription;
+
+  /**
    * The cached value of the '{@link #getLieuElements() <em>Lieu Elements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -68,6 +104,26 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
    * @ordered
    */
   protected EList<EObject> lieuElements;
+
+  /**
+   * The cached value of the '{@link #getDepotObjet() <em>Depot Objet</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDepotObjet()
+   * @generated
+   * @ordered
+   */
+  protected Condition depotObjet;
+
+  /**
+   * The cached value of the '{@link #getListeChemins() <em>Liste Chemins</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeChemins()
+   * @generated
+   * @ordered
+   */
+  protected EList<Chemin> listeChemins;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,6 +177,81 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
    * @generated
    */
   @Override
+  public String getDescription()
+  {
+    return description;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDescription(String newDescription)
+  {
+    String oldDescription = description;
+    description = newDescription;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__DESCRIPTION, oldDescription, description));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition getConditionDescription()
+  {
+    return conditionDescription;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConditionDescription(Condition newConditionDescription, NotificationChain msgs)
+  {
+    Condition oldConditionDescription = conditionDescription;
+    conditionDescription = newConditionDescription;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__CONDITION_DESCRIPTION, oldConditionDescription, newConditionDescription);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConditionDescription(Condition newConditionDescription)
+  {
+    if (newConditionDescription != conditionDescription)
+    {
+      NotificationChain msgs = null;
+      if (conditionDescription != null)
+        msgs = ((InternalEObject)conditionDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.LIEU__CONDITION_DESCRIPTION, null, msgs);
+      if (newConditionDescription != null)
+        msgs = ((InternalEObject)newConditionDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.LIEU__CONDITION_DESCRIPTION, null, msgs);
+      msgs = basicSetConditionDescription(newConditionDescription, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__CONDITION_DESCRIPTION, newConditionDescription, newConditionDescription));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<EObject> getLieuElements()
   {
     if (lieuElements == null)
@@ -136,12 +267,83 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
    * @generated
    */
   @Override
+  public Condition getDepotObjet()
+  {
+    return depotObjet;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDepotObjet(Condition newDepotObjet, NotificationChain msgs)
+  {
+    Condition oldDepotObjet = depotObjet;
+    depotObjet = newDepotObjet;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__DEPOT_OBJET, oldDepotObjet, newDepotObjet);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDepotObjet(Condition newDepotObjet)
+  {
+    if (newDepotObjet != depotObjet)
+    {
+      NotificationChain msgs = null;
+      if (depotObjet != null)
+        msgs = ((InternalEObject)depotObjet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.LIEU__DEPOT_OBJET, null, msgs);
+      if (newDepotObjet != null)
+        msgs = ((InternalEObject)newDepotObjet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.LIEU__DEPOT_OBJET, null, msgs);
+      msgs = basicSetDepotObjet(newDepotObjet, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__DEPOT_OBJET, newDepotObjet, newDepotObjet));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Chemin> getListeChemins()
+  {
+    if (listeChemins == null)
+    {
+      listeChemins = new EObjectContainmentEList<Chemin>(Chemin.class, this, GamePackage.LIEU__LISTE_CHEMINS);
+    }
+    return listeChemins;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__CONDITION_DESCRIPTION:
+        return basicSetConditionDescription(null, msgs);
       case GamePackage.LIEU__LIEU_ELEMENTS:
         return ((InternalEList<?>)getLieuElements()).basicRemove(otherEnd, msgs);
+      case GamePackage.LIEU__DEPOT_OBJET:
+        return basicSetDepotObjet(null, msgs);
+      case GamePackage.LIEU__LISTE_CHEMINS:
+        return ((InternalEList<?>)getListeChemins()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -158,8 +360,16 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
     {
       case GamePackage.LIEU__NAME:
         return getName();
+      case GamePackage.LIEU__DESCRIPTION:
+        return getDescription();
+      case GamePackage.LIEU__CONDITION_DESCRIPTION:
+        return getConditionDescription();
       case GamePackage.LIEU__LIEU_ELEMENTS:
         return getLieuElements();
+      case GamePackage.LIEU__DEPOT_OBJET:
+        return getDepotObjet();
+      case GamePackage.LIEU__LISTE_CHEMINS:
+        return getListeChemins();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -178,9 +388,22 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
       case GamePackage.LIEU__NAME:
         setName((String)newValue);
         return;
+      case GamePackage.LIEU__DESCRIPTION:
+        setDescription((String)newValue);
+        return;
+      case GamePackage.LIEU__CONDITION_DESCRIPTION:
+        setConditionDescription((Condition)newValue);
+        return;
       case GamePackage.LIEU__LIEU_ELEMENTS:
         getLieuElements().clear();
         getLieuElements().addAll((Collection<? extends EObject>)newValue);
+        return;
+      case GamePackage.LIEU__DEPOT_OBJET:
+        setDepotObjet((Condition)newValue);
+        return;
+      case GamePackage.LIEU__LISTE_CHEMINS:
+        getListeChemins().clear();
+        getListeChemins().addAll((Collection<? extends Chemin>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,8 +422,20 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
       case GamePackage.LIEU__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case GamePackage.LIEU__DESCRIPTION:
+        setDescription(DESCRIPTION_EDEFAULT);
+        return;
+      case GamePackage.LIEU__CONDITION_DESCRIPTION:
+        setConditionDescription((Condition)null);
+        return;
       case GamePackage.LIEU__LIEU_ELEMENTS:
         getLieuElements().clear();
+        return;
+      case GamePackage.LIEU__DEPOT_OBJET:
+        setDepotObjet((Condition)null);
+        return;
+      case GamePackage.LIEU__LISTE_CHEMINS:
+        getListeChemins().clear();
         return;
     }
     super.eUnset(featureID);
@@ -218,8 +453,16 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
     {
       case GamePackage.LIEU__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GamePackage.LIEU__DESCRIPTION:
+        return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case GamePackage.LIEU__CONDITION_DESCRIPTION:
+        return conditionDescription != null;
       case GamePackage.LIEU__LIEU_ELEMENTS:
         return lieuElements != null && !lieuElements.isEmpty();
+      case GamePackage.LIEU__DEPOT_OBJET:
+        return depotObjet != null;
+      case GamePackage.LIEU__LISTE_CHEMINS:
+        return listeChemins != null && !listeChemins.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -237,6 +480,8 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", description: ");
+    result.append(description);
     result.append(')');
     return result.toString();
   }

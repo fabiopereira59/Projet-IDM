@@ -123,15 +123,6 @@ public interface GameFactory extends EFactory
   Interaction createInteraction();
 
   /**
-   * Returns a new object of class '<em>Texte</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Texte</em>'.
-   * @generated
-   */
-  Texte createTexte();
-
-  /**
    * Returns a new object of class '<em>Choix</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -139,6 +130,15 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Choix createChoix();
+
+  /**
+   * Returns a new object of class '<em>Action</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Action</em>'.
+   * @generated
+   */
+  Action createAction();
 
   /**
    * Returns a new object of class '<em>Objet</em>'.
@@ -175,6 +175,24 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Connaissance createConnaissance();
+
+  /**
+   * Returns a new object of class '<em>Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condition</em>'.
+   * @generated
+   */
+  Condition createCondition();
+
+  /**
+   * Returns a new object of class '<em>Chemin</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Chemin</em>'.
+   * @generated
+   */
+  Chemin createChemin();
 
   /**
    * Returns the package supported by this factory.

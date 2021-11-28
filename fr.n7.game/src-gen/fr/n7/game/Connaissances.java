@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.Connaissances#getListeConnaissance <em>Liste Connaissance</em>}</li>
+ *   <li>{@link fr.n7.game.Connaissances#getListeConnaissances <em>Liste Connaissances</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getConnaissances()
@@ -26,15 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface Connaissances extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Liste Connaissance</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Liste Connaissances</b></em>' containment reference list.
    * The list contents are of type {@link fr.n7.game.Connaissance}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Connaissance</em>' containment reference list.
-   * @see fr.n7.game.GamePackage#getConnaissances_ListeConnaissance()
+   * @return the value of the '<em>Liste Connaissances</em>' containment reference list.
+   * @see fr.n7.game.GamePackage#getConnaissances_ListeConnaissances()
    * @model containment="true"
    * @generated
    */
-  EList<Connaissance> getListeConnaissance();
+  EList<Connaissance> getListeConnaissances();
 
 } // Connaissances

@@ -17,7 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Lieu#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getConditionDescription <em>Condition Description</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getLieuElements <em>Lieu Elements</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getDepotObjet <em>Depot Objet</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getListeChemins <em>Liste Chemins</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getLieu()
@@ -49,6 +53,50 @@ public interface Lieu extends EObject
   void setName(String value);
 
   /**
+   * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Description</em>' attribute.
+   * @see #setDescription(String)
+   * @see fr.n7.game.GamePackage#getLieu_Description()
+   * @model
+   * @generated
+   */
+  String getDescription();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getDescription <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Description</em>' attribute.
+   * @see #getDescription()
+   * @generated
+   */
+  void setDescription(String value);
+
+  /**
+   * Returns the value of the '<em><b>Condition Description</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Condition Description</em>' containment reference.
+   * @see #setConditionDescription(Condition)
+   * @see fr.n7.game.GamePackage#getLieu_ConditionDescription()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getConditionDescription();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getConditionDescription <em>Condition Description</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Condition Description</em>' containment reference.
+   * @see #getConditionDescription()
+   * @generated
+   */
+  void setConditionDescription(Condition value);
+
+  /**
    * Returns the value of the '<em><b>Lieu Elements</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
@@ -59,5 +107,39 @@ public interface Lieu extends EObject
    * @generated
    */
   EList<EObject> getLieuElements();
+
+  /**
+   * Returns the value of the '<em><b>Depot Objet</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Depot Objet</em>' containment reference.
+   * @see #setDepotObjet(Condition)
+   * @see fr.n7.game.GamePackage#getLieu_DepotObjet()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getDepotObjet();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getDepotObjet <em>Depot Objet</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Depot Objet</em>' containment reference.
+   * @see #getDepotObjet()
+   * @generated
+   */
+  void setDepotObjet(Condition value);
+
+  /**
+   * Returns the value of the '<em><b>Liste Chemins</b></em>' containment reference list.
+   * The list contents are of type {@link fr.n7.game.Chemin}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Liste Chemins</em>' containment reference list.
+   * @see fr.n7.game.GamePackage#getLieu_ListeChemins()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Chemin> getListeChemins();
 
 } // Lieu

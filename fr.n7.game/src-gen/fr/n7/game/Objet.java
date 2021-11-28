@@ -17,6 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.n7.game.Objet#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.Objet#getTaille <em>Taille</em>}</li>
  *   <li>{@link fr.n7.game.Objet#getQuantite <em>Quantite</em>}</li>
+ *   <li>{@link fr.n7.game.Objet#getConditionTransmission <em>Condition Transmission</em>}</li>
+ *   <li>{@link fr.n7.game.Objet#getConditionConsommation <em>Condition Consommation</em>}</li>
+ *   <li>{@link fr.n7.game.Objet#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.n7.game.Objet#getConditionDescription <em>Condition Description</em>}</li>
+ *   <li>{@link fr.n7.game.Objet#getTransformable <em>Transformable</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getObjet()
@@ -90,5 +95,115 @@ public interface Objet extends EObject
    * @generated
    */
   void setQuantite(int value);
+
+  /**
+   * Returns the value of the '<em><b>Condition Transmission</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Condition Transmission</em>' containment reference.
+   * @see #setConditionTransmission(Condition)
+   * @see fr.n7.game.GamePackage#getObjet_ConditionTransmission()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getConditionTransmission();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Objet#getConditionTransmission <em>Condition Transmission</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Condition Transmission</em>' containment reference.
+   * @see #getConditionTransmission()
+   * @generated
+   */
+  void setConditionTransmission(Condition value);
+
+  /**
+   * Returns the value of the '<em><b>Condition Consommation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Condition Consommation</em>' containment reference.
+   * @see #setConditionConsommation(Condition)
+   * @see fr.n7.game.GamePackage#getObjet_ConditionConsommation()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getConditionConsommation();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Objet#getConditionConsommation <em>Condition Consommation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Condition Consommation</em>' containment reference.
+   * @see #getConditionConsommation()
+   * @generated
+   */
+  void setConditionConsommation(Condition value);
+
+  /**
+   * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Description</em>' attribute.
+   * @see #setDescription(String)
+   * @see fr.n7.game.GamePackage#getObjet_Description()
+   * @model
+   * @generated
+   */
+  String getDescription();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Objet#getDescription <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Description</em>' attribute.
+   * @see #getDescription()
+   * @generated
+   */
+  void setDescription(String value);
+
+  /**
+   * Returns the value of the '<em><b>Condition Description</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Condition Description</em>' containment reference.
+   * @see #setConditionDescription(Condition)
+   * @see fr.n7.game.GamePackage#getObjet_ConditionDescription()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getConditionDescription();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Objet#getConditionDescription <em>Condition Description</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Condition Description</em>' containment reference.
+   * @see #getConditionDescription()
+   * @generated
+   */
+  void setConditionDescription(Condition value);
+
+  /**
+   * Returns the value of the '<em><b>Transformable</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Transformable</em>' containment reference.
+   * @see #setTransformable(Condition)
+   * @see fr.n7.game.GamePackage#getObjet_Transformable()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getTransformable();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Objet#getTransformable <em>Transformable</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Transformable</em>' containment reference.
+   * @see #getTransformable()
+   * @generated
+   */
+  void setTransformable(Condition value);
 
 } // Objet

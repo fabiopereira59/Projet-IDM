@@ -3,6 +3,8 @@
  */
 package fr.n7.game;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +16,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.Choix#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.Choix#getTexte <em>Texte</em>}</li>
+ *   <li>{@link fr.n7.game.Choix#getListeActions <em>Liste Actions</em>}</li>
+ *   <li>{@link fr.n7.game.Choix#getChoixdebut <em>Choixdebut</em>}</li>
+ *   <li>{@link fr.n7.game.Choix#getConditonChoixDebut <em>Conditon Choix Debut</em>}</li>
+ *   <li>{@link fr.n7.game.Choix#getChoixfin <em>Choixfin</em>}</li>
+ *   <li>{@link fr.n7.game.Choix#getConditionChoixFin <em>Condition Choix Fin</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getChoix()
@@ -24,25 +31,125 @@ import org.eclipse.emf.ecore.EObject;
 public interface Choix extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Texte</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see fr.n7.game.GamePackage#getChoix_Name()
+   * @return the value of the '<em>Texte</em>' attribute.
+   * @see #setTexte(String)
+   * @see fr.n7.game.GamePackage#getChoix_Texte()
    * @model
    * @generated
    */
-  String getName();
+  String getTexte();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Choix#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.Choix#getTexte <em>Texte</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Texte</em>' attribute.
+   * @see #getTexte()
    * @generated
    */
-  void setName(String value);
+  void setTexte(String value);
+
+  /**
+   * Returns the value of the '<em><b>Liste Actions</b></em>' containment reference list.
+   * The list contents are of type {@link fr.n7.game.Action}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Liste Actions</em>' containment reference list.
+   * @see fr.n7.game.GamePackage#getChoix_ListeActions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Action> getListeActions();
+
+  /**
+   * Returns the value of the '<em><b>Choixdebut</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Choixdebut</em>' attribute.
+   * @see #setChoixdebut(String)
+   * @see fr.n7.game.GamePackage#getChoix_Choixdebut()
+   * @model
+   * @generated
+   */
+  String getChoixdebut();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Choix#getChoixdebut <em>Choixdebut</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Choixdebut</em>' attribute.
+   * @see #getChoixdebut()
+   * @generated
+   */
+  void setChoixdebut(String value);
+
+  /**
+   * Returns the value of the '<em><b>Conditon Choix Debut</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Conditon Choix Debut</em>' containment reference.
+   * @see #setConditonChoixDebut(Condition)
+   * @see fr.n7.game.GamePackage#getChoix_ConditonChoixDebut()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getConditonChoixDebut();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Choix#getConditonChoixDebut <em>Conditon Choix Debut</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Conditon Choix Debut</em>' containment reference.
+   * @see #getConditonChoixDebut()
+   * @generated
+   */
+  void setConditonChoixDebut(Condition value);
+
+  /**
+   * Returns the value of the '<em><b>Choixfin</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Choixfin</em>' attribute.
+   * @see #setChoixfin(String)
+   * @see fr.n7.game.GamePackage#getChoix_Choixfin()
+   * @model
+   * @generated
+   */
+  String getChoixfin();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Choix#getChoixfin <em>Choixfin</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Choixfin</em>' attribute.
+   * @see #getChoixfin()
+   * @generated
+   */
+  void setChoixfin(String value);
+
+  /**
+   * Returns the value of the '<em><b>Condition Choix Fin</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Condition Choix Fin</em>' containment reference.
+   * @see #setConditionChoixFin(Condition)
+   * @see fr.n7.game.GamePackage#getChoix_ConditionChoixFin()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getConditionChoixFin();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Choix#getConditionChoixFin <em>Condition Choix Fin</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Condition Choix Fin</em>' containment reference.
+   * @see #getConditionChoixFin()
+   * @generated
+   */
+  void setConditionChoixFin(Condition value);
 
 } // Choix

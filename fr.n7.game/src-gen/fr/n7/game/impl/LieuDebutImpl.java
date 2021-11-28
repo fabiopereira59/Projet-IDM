@@ -3,22 +3,19 @@
  */
 package fr.n7.game.impl;
 
+import fr.n7.game.Chemin;
 import fr.n7.game.GamePackage;
 import fr.n7.game.LieuDebut;
-import fr.n7.game.Personnes;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,34 +28,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.impl.LieuDebutImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuDebutImpl#getLieudebutElements <em>Lieudebut Elements</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuDebutImpl#getListeChemins <em>Liste Chemins</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuDebut
+public class LieuDebutImpl extends CheminImpl implements LieuDebut
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getLieudebutElements() <em>Lieudebut Elements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -67,7 +44,17 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
    * @generated
    * @ordered
    */
-  protected EList<Personnes> lieudebutElements;
+  protected EList<EObject> lieudebutElements;
+
+  /**
+   * The cached value of the '{@link #getListeChemins() <em>Liste Chemins</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeChemins()
+   * @generated
+   * @ordered
+   */
+  protected EList<Chemin> listeChemins;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,38 +83,28 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU_DEBUT__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Personnes> getLieudebutElements()
+  public EList<EObject> getLieudebutElements()
   {
     if (lieudebutElements == null)
     {
-      lieudebutElements = new EObjectContainmentEList<Personnes>(Personnes.class, this, GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS);
+      lieudebutElements = new EObjectContainmentEList<EObject>(EObject.class, this, GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS);
     }
     return lieudebutElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Chemin> getListeChemins()
+  {
+    if (listeChemins == null)
+    {
+      listeChemins = new EObjectContainmentEList<Chemin>(Chemin.class, this, GamePackage.LIEU_DEBUT__LISTE_CHEMINS);
+    }
+    return listeChemins;
   }
 
   /**
@@ -142,6 +119,8 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
     {
       case GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS:
         return ((InternalEList<?>)getLieudebutElements()).basicRemove(otherEnd, msgs);
+      case GamePackage.LIEU_DEBUT__LISTE_CHEMINS:
+        return ((InternalEList<?>)getListeChemins()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -156,10 +135,10 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
   {
     switch (featureID)
     {
-      case GamePackage.LIEU_DEBUT__NAME:
-        return getName();
       case GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS:
         return getLieudebutElements();
+      case GamePackage.LIEU_DEBUT__LISTE_CHEMINS:
+        return getListeChemins();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -175,12 +154,13 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
   {
     switch (featureID)
     {
-      case GamePackage.LIEU_DEBUT__NAME:
-        setName((String)newValue);
-        return;
       case GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS:
         getLieudebutElements().clear();
-        getLieudebutElements().addAll((Collection<? extends Personnes>)newValue);
+        getLieudebutElements().addAll((Collection<? extends EObject>)newValue);
+        return;
+      case GamePackage.LIEU_DEBUT__LISTE_CHEMINS:
+        getListeChemins().clear();
+        getListeChemins().addAll((Collection<? extends Chemin>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,11 +176,11 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
   {
     switch (featureID)
     {
-      case GamePackage.LIEU_DEBUT__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS:
         getLieudebutElements().clear();
+        return;
+      case GamePackage.LIEU_DEBUT__LISTE_CHEMINS:
+        getListeChemins().clear();
         return;
     }
     super.eUnset(featureID);
@@ -216,29 +196,12 @@ public class LieuDebutImpl extends MinimalEObjectImpl.Container implements LieuD
   {
     switch (featureID)
     {
-      case GamePackage.LIEU_DEBUT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.LIEU_DEBUT__LIEUDEBUT_ELEMENTS:
         return lieudebutElements != null && !lieudebutElements.isEmpty();
+      case GamePackage.LIEU_DEBUT__LISTE_CHEMINS:
+        return listeChemins != null && !listeChemins.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //LieuDebutImpl

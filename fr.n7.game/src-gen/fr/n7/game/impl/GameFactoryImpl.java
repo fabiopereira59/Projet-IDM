@@ -76,12 +76,14 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
       case GamePackage.PERSONNES: return createPersonnes();
       case GamePackage.PERSONNE: return createPersonne();
       case GamePackage.INTERACTION: return createInteraction();
-      case GamePackage.TEXTE: return createTexte();
       case GamePackage.CHOIX: return createChoix();
+      case GamePackage.ACTION: return createAction();
       case GamePackage.OBJET: return createObjet();
       case GamePackage.OBJETS: return createObjets();
       case GamePackage.CONNAISSANCES: return createConnaissances();
       case GamePackage.CONNAISSANCE: return createConnaissance();
+      case GamePackage.CONDITION: return createCondition();
+      case GamePackage.CHEMIN: return createChemin();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -225,10 +227,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public Texte createTexte()
+  public Choix createChoix()
   {
-    TexteImpl texte = new TexteImpl();
-    return texte;
+    ChoixImpl choix = new ChoixImpl();
+    return choix;
   }
 
   /**
@@ -237,10 +239,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public Choix createChoix()
+  public Action createAction()
   {
-    ChoixImpl choix = new ChoixImpl();
-    return choix;
+    ActionImpl action = new ActionImpl();
+    return action;
   }
 
   /**
@@ -289,6 +291,30 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     ConnaissanceImpl connaissance = new ConnaissanceImpl();
     return connaissance;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition createCondition()
+  {
+    ConditionImpl condition = new ConditionImpl();
+    return condition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Chemin createChemin()
+  {
+    CheminImpl chemin = new CheminImpl();
+    return chemin;
   }
 
   /**

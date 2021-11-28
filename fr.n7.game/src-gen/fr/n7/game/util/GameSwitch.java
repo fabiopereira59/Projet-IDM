@@ -120,6 +120,7 @@ public class GameSwitch<T> extends Switch<T>
       {
         LieuDebut lieuDebut = (LieuDebut)theEObject;
         T result = caseLieuDebut(lieuDebut);
+        if (result == null) result = caseChemin(lieuDebut);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -127,6 +128,7 @@ public class GameSwitch<T> extends Switch<T>
       {
         LieuFin lieuFin = (LieuFin)theEObject;
         T result = caseLieuFin(lieuFin);
+        if (result == null) result = caseChemin(lieuFin);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -151,17 +153,17 @@ public class GameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.TEXTE:
-      {
-        Texte texte = (Texte)theEObject;
-        T result = caseTexte(texte);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case GamePackage.CHOIX:
       {
         Choix choix = (Choix)theEObject;
         T result = caseChoix(choix);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.ACTION:
+      {
+        Action action = (Action)theEObject;
+        T result = caseAction(action);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -190,6 +192,20 @@ public class GameSwitch<T> extends Switch<T>
       {
         Connaissance connaissance = (Connaissance)theEObject;
         T result = caseConnaissance(connaissance);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.CONDITION:
+      {
+        Condition condition = (Condition)theEObject;
+        T result = caseCondition(condition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.CHEMIN:
+      {
+        Chemin chemin = (Chemin)theEObject;
+        T result = caseChemin(chemin);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -374,22 +390,6 @@ public class GameSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Texte</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Texte</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTexte(Texte object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Choix</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -401,6 +401,22 @@ public class GameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseChoix(Choix object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Action</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAction(Action object)
   {
     return null;
   }
@@ -465,6 +481,38 @@ public class GameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConnaissance(Connaissance object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCondition(Condition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Chemin</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Chemin</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChemin(Chemin object)
   {
     return null;
   }

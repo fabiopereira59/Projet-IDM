@@ -3,12 +3,15 @@
  */
 package fr.n7.game.impl;
 
+import fr.n7.game.Condition;
 import fr.n7.game.Connaissance;
 import fr.n7.game.GamePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -22,6 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.ConnaissanceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ConnaissanceImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ConnaissanceImpl#getConditionConnaissance <em>Condition Connaissance</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +52,36 @@ public class ConnaissanceImpl extends MinimalEObjectImpl.Container implements Co
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
+  protected static final String DESCRIPTION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
+  protected String description = DESCRIPTION_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getConditionConnaissance() <em>Condition Connaissance</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConditionConnaissance()
+   * @generated
+   * @ordered
+   */
+  protected Condition conditionConnaissance;
 
   /**
    * <!-- begin-user-doc -->
@@ -100,12 +135,107 @@ public class ConnaissanceImpl extends MinimalEObjectImpl.Container implements Co
    * @generated
    */
   @Override
+  public String getDescription()
+  {
+    return description;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDescription(String newDescription)
+  {
+    String oldDescription = description;
+    description = newDescription;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CONNAISSANCE__DESCRIPTION, oldDescription, description));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition getConditionConnaissance()
+  {
+    return conditionConnaissance;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConditionConnaissance(Condition newConditionConnaissance, NotificationChain msgs)
+  {
+    Condition oldConditionConnaissance = conditionConnaissance;
+    conditionConnaissance = newConditionConnaissance;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE, oldConditionConnaissance, newConditionConnaissance);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConditionConnaissance(Condition newConditionConnaissance)
+  {
+    if (newConditionConnaissance != conditionConnaissance)
+    {
+      NotificationChain msgs = null;
+      if (conditionConnaissance != null)
+        msgs = ((InternalEObject)conditionConnaissance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE, null, msgs);
+      if (newConditionConnaissance != null)
+        msgs = ((InternalEObject)newConditionConnaissance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE, null, msgs);
+      msgs = basicSetConditionConnaissance(newConditionConnaissance, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE, newConditionConnaissance, newConditionConnaissance));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE:
+        return basicSetConditionConnaissance(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case GamePackage.CONNAISSANCE__NAME:
         return getName();
+      case GamePackage.CONNAISSANCE__DESCRIPTION:
+        return getDescription();
+      case GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE:
+        return getConditionConnaissance();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -122,6 +252,12 @@ public class ConnaissanceImpl extends MinimalEObjectImpl.Container implements Co
     {
       case GamePackage.CONNAISSANCE__NAME:
         setName((String)newValue);
+        return;
+      case GamePackage.CONNAISSANCE__DESCRIPTION:
+        setDescription((String)newValue);
+        return;
+      case GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE:
+        setConditionConnaissance((Condition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -140,6 +276,12 @@ public class ConnaissanceImpl extends MinimalEObjectImpl.Container implements Co
       case GamePackage.CONNAISSANCE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case GamePackage.CONNAISSANCE__DESCRIPTION:
+        setDescription(DESCRIPTION_EDEFAULT);
+        return;
+      case GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE:
+        setConditionConnaissance((Condition)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -156,6 +298,10 @@ public class ConnaissanceImpl extends MinimalEObjectImpl.Container implements Co
     {
       case GamePackage.CONNAISSANCE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GamePackage.CONNAISSANCE__DESCRIPTION:
+        return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case GamePackage.CONNAISSANCE__CONDITION_CONNAISSANCE:
+        return conditionConnaissance != null;
     }
     return super.eIsSet(featureID);
   }
@@ -173,6 +319,8 @@ public class ConnaissanceImpl extends MinimalEObjectImpl.Container implements Co
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", description: ");
+    result.append(description);
     result.append(')');
     return result.toString();
   }

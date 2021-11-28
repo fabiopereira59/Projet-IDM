@@ -11,6 +11,8 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -18,10 +20,20 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GameGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Choix_ChoixdebutKeyword_4_0_q;
+	protected AbstractElementAlias match_Choix_ChoixfinKeyword_5_0_q;
+	protected AbstractElementAlias match_Objet_ConsommationKeyword_5_0_q;
+	protected AbstractElementAlias match_Objet_TransformableKeyword_7_0_q;
+	protected AbstractElementAlias match_Objet_TransmissionKeyword_4_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (GameGrammarAccess) access;
+		match_Choix_ChoixdebutKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixdebutKeyword_4_0());
+		match_Choix_ChoixfinKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixfinKeyword_5_0());
+		match_Objet_ConsommationKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getObjetAccess().getConsommationKeyword_5_0());
+		match_Objet_TransformableKeyword_7_0_q = new TokenAlias(false, true, grammarAccess.getObjetAccess().getTransformableKeyword_7_0());
+		match_Objet_TransmissionKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getObjetAccess().getTransmissionKeyword_4_0());
 	}
 	
 	@Override
@@ -36,8 +48,87 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_Choix_ChoixdebutKeyword_4_0_q.equals(syntax))
+				emit_Choix_ChoixdebutKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Choix_ChoixfinKeyword_5_0_q.equals(syntax))
+				emit_Choix_ChoixfinKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Objet_ConsommationKeyword_5_0_q.equals(syntax))
+				emit_Objet_ConsommationKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Objet_TransformableKeyword_7_0_q.equals(syntax))
+				emit_Objet_TransformableKeyword_7_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Objet_TransmissionKeyword_4_0_q.equals(syntax))
+				emit_Objet_TransmissionKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     'choixdebut'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     listeActions+=Action (ambiguity) 'choixfin' choixfin=STRING
+	 *     listeActions+=Action (ambiguity) 'choixfin'? '}' (rule end)
+	 */
+	protected void emit_Choix_ChoixdebutKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'choixfin'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     conditonChoixDebut=Condition (ambiguity) '}' (rule end)
+	 *     listeActions+=Action 'choixdebut'? (ambiguity) '}' (rule end)
+	 */
+	protected void emit_Choix_ChoixfinKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'consommation'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     conditionTransmission=Condition (ambiguity) 'description' description=STRING
+	 *     conditionTransmission=Condition (ambiguity) 'transformable' transformable=Condition
+	 *     conditionTransmission=Condition (ambiguity) 'transformable'? (rule end)
+	 *     quantite=INT 'transmission'? (ambiguity) 'description' description=STRING
+	 *     quantite=INT 'transmission'? (ambiguity) 'transformable' transformable=Condition
+	 *     quantite=INT 'transmission'? (ambiguity) 'transformable'? (rule end)
+	 */
+	protected void emit_Objet_ConsommationKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'transformable'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     conditionConsommation=Condition (ambiguity) (rule end)
+	 *     conditionDescription=Condition (ambiguity) (rule end)
+	 *     conditionTransmission=Condition 'consommation'? (ambiguity) (rule end)
+	 *     description=STRING (ambiguity) (rule end)
+	 *     quantite=INT 'transmission'? 'consommation'? (ambiguity) (rule end)
+	 */
+	protected void emit_Objet_TransformableKeyword_7_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'transmission'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     quantite=INT (ambiguity) 'consommation' conditionConsommation=Condition
+	 *     quantite=INT (ambiguity) 'consommation'? 'description' description=STRING
+	 *     quantite=INT (ambiguity) 'consommation'? 'transformable' transformable=Condition
+	 *     quantite=INT (ambiguity) 'consommation'? 'transformable'? (rule end)
+	 */
+	protected void emit_Objet_TransmissionKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

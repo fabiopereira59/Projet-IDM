@@ -3,15 +3,26 @@
  */
 package fr.n7.game.impl;
 
+import fr.n7.game.Action;
 import fr.n7.game.Choix;
+import fr.n7.game.Condition;
 import fr.n7.game.GamePackage;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +32,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.impl.ChoixImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getTexte <em>Texte</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getListeActions <em>Liste Actions</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getChoixdebut <em>Choixdebut</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getConditonChoixDebut <em>Conditon Choix Debut</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getChoixfin <em>Choixfin</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getConditionChoixFin <em>Condition Choix Fin</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,24 +45,94 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getTexte() <em>Texte</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTexte()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TEXTE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getTexte() <em>Texte</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTexte()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String texte = TEXTE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getListeActions() <em>Liste Actions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeActions()
+   * @generated
+   * @ordered
+   */
+  protected EList<Action> listeActions;
+
+  /**
+   * The default value of the '{@link #getChoixdebut() <em>Choixdebut</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChoixdebut()
+   * @generated
+   * @ordered
+   */
+  protected static final String CHOIXDEBUT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getChoixdebut() <em>Choixdebut</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChoixdebut()
+   * @generated
+   * @ordered
+   */
+  protected String choixdebut = CHOIXDEBUT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getConditonChoixDebut() <em>Conditon Choix Debut</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConditonChoixDebut()
+   * @generated
+   * @ordered
+   */
+  protected Condition conditonChoixDebut;
+
+  /**
+   * The default value of the '{@link #getChoixfin() <em>Choixfin</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChoixfin()
+   * @generated
+   * @ordered
+   */
+  protected static final String CHOIXFIN_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getChoixfin() <em>Choixfin</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChoixfin()
+   * @generated
+   * @ordered
+   */
+  protected String choixfin = CHOIXFIN_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getConditionChoixFin() <em>Condition Choix Fin</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConditionChoixFin()
+   * @generated
+   * @ordered
+   */
+  protected Condition conditionChoixFin;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +161,9 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
    * @generated
    */
   @Override
-  public String getName()
+  public String getTexte()
   {
-    return name;
+    return texte;
   }
 
   /**
@@ -86,12 +172,197 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setTexte(String newTexte)
   {
-    String oldName = name;
-    name = newName;
+    String oldTexte = texte;
+    texte = newTexte;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__TEXTE, oldTexte, texte));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Action> getListeActions()
+  {
+    if (listeActions == null)
+    {
+      listeActions = new EObjectContainmentEList<Action>(Action.class, this, GamePackage.CHOIX__LISTE_ACTIONS);
+    }
+    return listeActions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getChoixdebut()
+  {
+    return choixdebut;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setChoixdebut(String newChoixdebut)
+  {
+    String oldChoixdebut = choixdebut;
+    choixdebut = newChoixdebut;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__CHOIXDEBUT, oldChoixdebut, choixdebut));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition getConditonChoixDebut()
+  {
+    return conditonChoixDebut;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConditonChoixDebut(Condition newConditonChoixDebut, NotificationChain msgs)
+  {
+    Condition oldConditonChoixDebut = conditonChoixDebut;
+    conditonChoixDebut = newConditonChoixDebut;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__CONDITON_CHOIX_DEBUT, oldConditonChoixDebut, newConditonChoixDebut);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConditonChoixDebut(Condition newConditonChoixDebut)
+  {
+    if (newConditonChoixDebut != conditonChoixDebut)
+    {
+      NotificationChain msgs = null;
+      if (conditonChoixDebut != null)
+        msgs = ((InternalEObject)conditonChoixDebut).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHOIX__CONDITON_CHOIX_DEBUT, null, msgs);
+      if (newConditonChoixDebut != null)
+        msgs = ((InternalEObject)newConditonChoixDebut).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHOIX__CONDITON_CHOIX_DEBUT, null, msgs);
+      msgs = basicSetConditonChoixDebut(newConditonChoixDebut, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__CONDITON_CHOIX_DEBUT, newConditonChoixDebut, newConditonChoixDebut));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getChoixfin()
+  {
+    return choixfin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setChoixfin(String newChoixfin)
+  {
+    String oldChoixfin = choixfin;
+    choixfin = newChoixfin;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__CHOIXFIN, oldChoixfin, choixfin));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition getConditionChoixFin()
+  {
+    return conditionChoixFin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConditionChoixFin(Condition newConditionChoixFin, NotificationChain msgs)
+  {
+    Condition oldConditionChoixFin = conditionChoixFin;
+    conditionChoixFin = newConditionChoixFin;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__CONDITION_CHOIX_FIN, oldConditionChoixFin, newConditionChoixFin);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConditionChoixFin(Condition newConditionChoixFin)
+  {
+    if (newConditionChoixFin != conditionChoixFin)
+    {
+      NotificationChain msgs = null;
+      if (conditionChoixFin != null)
+        msgs = ((InternalEObject)conditionChoixFin).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHOIX__CONDITION_CHOIX_FIN, null, msgs);
+      if (newConditionChoixFin != null)
+        msgs = ((InternalEObject)newConditionChoixFin).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHOIX__CONDITION_CHOIX_FIN, null, msgs);
+      msgs = basicSetConditionChoixFin(newConditionChoixFin, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__CONDITION_CHOIX_FIN, newConditionChoixFin, newConditionChoixFin));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GamePackage.CHOIX__LISTE_ACTIONS:
+        return ((InternalEList<?>)getListeActions()).basicRemove(otherEnd, msgs);
+      case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
+        return basicSetConditonChoixDebut(null, msgs);
+      case GamePackage.CHOIX__CONDITION_CHOIX_FIN:
+        return basicSetConditionChoixFin(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -104,8 +375,18 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   {
     switch (featureID)
     {
-      case GamePackage.CHOIX__NAME:
-        return getName();
+      case GamePackage.CHOIX__TEXTE:
+        return getTexte();
+      case GamePackage.CHOIX__LISTE_ACTIONS:
+        return getListeActions();
+      case GamePackage.CHOIX__CHOIXDEBUT:
+        return getChoixdebut();
+      case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
+        return getConditonChoixDebut();
+      case GamePackage.CHOIX__CHOIXFIN:
+        return getChoixfin();
+      case GamePackage.CHOIX__CONDITION_CHOIX_FIN:
+        return getConditionChoixFin();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -115,13 +396,30 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case GamePackage.CHOIX__NAME:
-        setName((String)newValue);
+      case GamePackage.CHOIX__TEXTE:
+        setTexte((String)newValue);
+        return;
+      case GamePackage.CHOIX__LISTE_ACTIONS:
+        getListeActions().clear();
+        getListeActions().addAll((Collection<? extends Action>)newValue);
+        return;
+      case GamePackage.CHOIX__CHOIXDEBUT:
+        setChoixdebut((String)newValue);
+        return;
+      case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
+        setConditonChoixDebut((Condition)newValue);
+        return;
+      case GamePackage.CHOIX__CHOIXFIN:
+        setChoixfin((String)newValue);
+        return;
+      case GamePackage.CHOIX__CONDITION_CHOIX_FIN:
+        setConditionChoixFin((Condition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +435,23 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   {
     switch (featureID)
     {
-      case GamePackage.CHOIX__NAME:
-        setName(NAME_EDEFAULT);
+      case GamePackage.CHOIX__TEXTE:
+        setTexte(TEXTE_EDEFAULT);
+        return;
+      case GamePackage.CHOIX__LISTE_ACTIONS:
+        getListeActions().clear();
+        return;
+      case GamePackage.CHOIX__CHOIXDEBUT:
+        setChoixdebut(CHOIXDEBUT_EDEFAULT);
+        return;
+      case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
+        setConditonChoixDebut((Condition)null);
+        return;
+      case GamePackage.CHOIX__CHOIXFIN:
+        setChoixfin(CHOIXFIN_EDEFAULT);
+        return;
+      case GamePackage.CHOIX__CONDITION_CHOIX_FIN:
+        setConditionChoixFin((Condition)null);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +467,18 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   {
     switch (featureID)
     {
-      case GamePackage.CHOIX__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GamePackage.CHOIX__TEXTE:
+        return TEXTE_EDEFAULT == null ? texte != null : !TEXTE_EDEFAULT.equals(texte);
+      case GamePackage.CHOIX__LISTE_ACTIONS:
+        return listeActions != null && !listeActions.isEmpty();
+      case GamePackage.CHOIX__CHOIXDEBUT:
+        return CHOIXDEBUT_EDEFAULT == null ? choixdebut != null : !CHOIXDEBUT_EDEFAULT.equals(choixdebut);
+      case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
+        return conditonChoixDebut != null;
+      case GamePackage.CHOIX__CHOIXFIN:
+        return CHOIXFIN_EDEFAULT == null ? choixfin != null : !CHOIXFIN_EDEFAULT.equals(choixfin);
+      case GamePackage.CHOIX__CONDITION_CHOIX_FIN:
+        return conditionChoixFin != null;
     }
     return super.eIsSet(featureID);
   }
@@ -171,8 +494,12 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (texte: ");
+    result.append(texte);
+    result.append(", choixdebut: ");
+    result.append(choixdebut);
+    result.append(", choixfin: ");
+    result.append(choixfin);
     result.append(')');
     return result.toString();
   }

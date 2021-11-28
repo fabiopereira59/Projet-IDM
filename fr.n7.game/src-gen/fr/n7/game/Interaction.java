@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Interaction#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.Interaction#getTexte <em>Texte</em>}</li>
  *   <li>{@link fr.n7.game.Interaction#getInteractionElements <em>Interaction Elements</em>}</li>
  * </ul>
  *
@@ -47,6 +48,28 @@ public interface Interaction extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Texte</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Texte</em>' attribute.
+   * @see #setTexte(String)
+   * @see fr.n7.game.GamePackage#getInteraction_Texte()
+   * @model
+   * @generated
+   */
+  String getTexte();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Interaction#getTexte <em>Texte</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Texte</em>' attribute.
+   * @see #getTexte()
+   * @generated
+   */
+  void setTexte(String value);
 
   /**
    * Returns the value of the '<em><b>Interaction Elements</b></em>' containment reference list.

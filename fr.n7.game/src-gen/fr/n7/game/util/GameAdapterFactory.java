@@ -131,14 +131,14 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createInteractionAdapter();
       }
       @Override
-      public Adapter caseTexte(Texte object)
-      {
-        return createTexteAdapter();
-      }
-      @Override
       public Adapter caseChoix(Choix object)
       {
         return createChoixAdapter();
+      }
+      @Override
+      public Adapter caseAction(Action object)
+      {
+        return createActionAdapter();
       }
       @Override
       public Adapter caseObjet(Objet object)
@@ -159,6 +159,16 @@ public class GameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseConnaissance(Connaissance object)
       {
         return createConnaissanceAdapter();
+      }
+      @Override
+      public Adapter caseCondition(Condition object)
+      {
+        return createConditionAdapter();
+      }
+      @Override
+      public Adapter caseChemin(Chemin object)
+      {
+        return createCheminAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -348,21 +358,6 @@ public class GameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.Texte <em>Texte</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.n7.game.Texte
-   * @generated
-   */
-  public Adapter createTexteAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link fr.n7.game.Choix <em>Choix</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -373,6 +368,21 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createChoixAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.n7.game.Action <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.n7.game.Action
+   * @generated
+   */
+  public Adapter createActionAdapter()
   {
     return null;
   }
@@ -433,6 +443,36 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConnaissanceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.n7.game.Condition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.n7.game.Condition
+   * @generated
+   */
+  public Adapter createConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.n7.game.Chemin <em>Chemin</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.n7.game.Chemin
+   * @generated
+   */
+  public Adapter createCheminAdapter()
   {
     return null;
   }

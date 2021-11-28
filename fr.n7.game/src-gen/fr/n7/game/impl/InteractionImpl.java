@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.InteractionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.impl.InteractionImpl#getTexte <em>Texte</em>}</li>
  *   <li>{@link fr.n7.game.impl.InteractionImpl#getInteractionElements <em>Interaction Elements</em>}</li>
  * </ul>
  *
@@ -58,6 +59,26 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getTexte() <em>Texte</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTexte()
+   * @generated
+   * @ordered
+   */
+  protected static final String TEXTE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTexte() <em>Texte</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTexte()
+   * @generated
+   * @ordered
+   */
+  protected String texte = TEXTE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getInteractionElements() <em>Interaction Elements</em>}' containment reference list.
@@ -121,6 +142,31 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
    * @generated
    */
   @Override
+  public String getTexte()
+  {
+    return texte;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTexte(String newTexte)
+  {
+    String oldTexte = texte;
+    texte = newTexte;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.INTERACTION__TEXTE, oldTexte, texte));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Choix> getInteractionElements()
   {
     if (interactionElements == null)
@@ -158,6 +204,8 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
     {
       case GamePackage.INTERACTION__NAME:
         return getName();
+      case GamePackage.INTERACTION__TEXTE:
+        return getTexte();
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
         return getInteractionElements();
     }
@@ -177,6 +225,9 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
     {
       case GamePackage.INTERACTION__NAME:
         setName((String)newValue);
+        return;
+      case GamePackage.INTERACTION__TEXTE:
+        setTexte((String)newValue);
         return;
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
         getInteractionElements().clear();
@@ -199,6 +250,9 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
       case GamePackage.INTERACTION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case GamePackage.INTERACTION__TEXTE:
+        setTexte(TEXTE_EDEFAULT);
+        return;
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
         getInteractionElements().clear();
         return;
@@ -218,6 +272,8 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
     {
       case GamePackage.INTERACTION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GamePackage.INTERACTION__TEXTE:
+        return TEXTE_EDEFAULT == null ? texte != null : !TEXTE_EDEFAULT.equals(texte);
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
         return interactionElements != null && !interactionElements.isEmpty();
     }
@@ -237,6 +293,8 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", texte: ");
+    result.append(texte);
     result.append(')');
     return result.toString();
   }

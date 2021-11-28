@@ -13,6 +13,10 @@ terminal BOOL returns ecore::EBoolean:
 	'true' | 'false'
 ;
 
+terminal COND returns ecore::EBoolean:
+	(ID(('&')ID)?)('|'ID(('&')(ID))?)+
+;
+
 gameElement :
 	Territoire;
 
@@ -49,9 +53,12 @@ Lieu :
 	'lieu'
 	name=ID
 	'{'
+		('description' description=STRING (conditionDescription=Condition)?)? //E39
 		lieuElements+=Personnes?
 		lieuElements+=Connaissances?
 		lieuElements+=Objets?
+		'depotO' (depotObjet=Condition)?
+		listeChemins+=Chemin+
 	'}'
 ;
 
@@ -59,7 +66,12 @@ LieuDebut :
 	'lieudebut'
 	name=ID
 	'{'
+		('description' description=STRING (conditionDescription=Condition)?)? //E39
 		lieudebutElements+=Personnes?
+		lieudebutElements+=Connaissances?
+		lieudebutElements+=Objets?
+		'depotO' (depotObjet=Condition)?
+		listeChemins+=Chemin+
 	'}'
 ;
 
@@ -67,7 +79,11 @@ LieuFin :
 	'lieufin'
 	name=ID
 	'{'
-		lieudebutElements+=Personnes?
+		('description' description=STRING (conditionDescription=Condition)?)? //E39 //Vu que c'est un lieu de fin, est-ce qu'on arrete le jeu direct ?
+		lieufinElements+=Personnes?
+		lieufinElements+=Connaissances?
+		lieufinElements+=Objets?
+		'depotO'(depotObjet=Condition)?
 	'}'
 ;
 
@@ -82,8 +98,8 @@ Personne :
 	'personne'
 	name=ID
 	'{'
-		'visible' visible=BOOL
-		'obligatoire' obligatoire=BOOL
+		('visible' visible=BOOL)?
+		('obligatoire' obligatoire=BOOL)?
 		personneElements+=Interaction
 	'}'
 ;
@@ -92,18 +108,33 @@ Interaction :
 	'interaction'
 	name=ID
 	'{'
-		'texte'
-		interactionElements+=Choix*
+		'texte' texte=STRING
+		interactionElements+=Choix* //E29
 	'}'
-;
-
-Texte :
-	texte=STRING
 ;
 
 Choix :
 	'choix'
-	name=ID
+	texte=STRING
+	'{'
+		listeActions+=Action+ //E31
+		('choixdebut' (choixdebut=STRING conditonChoixDebut=Condition)?)? //E30
+		('choixfin' (choixfin=STRING conditionChoixFin=Condition)?)? //E34
+	'}'
+;
+
+Action :
+	'action'
+	'{'
+		(conditionAction=Condition)? //E32 et E35
+		listeChoix+=Choix* //E35
+		listeConnaissances+=Connaissance* //E36
+		listeObjets+=Objet* //E36
+		'attributionC' attributionConnaissance=Condition //E37
+		('attributionO' attributionObjet=Condition)? //E37
+		listeObjetsConsommes+=Objet* //E38
+		('consommationO' consommationObjet=Condition)? //E38
+	'}'
 ;
 
 Objet :
@@ -111,6 +142,10 @@ Objet :
 	name=ID
 	taille=INT
 	quantite=INT
+	('transmission' (conditionTransmission=Condition)?)? //E22
+	('consommation' (conditionConsommation=Condition)?)? //E22
+	('description' description=STRING (conditionDescription=Condition)?)? //E39
+	('transformable' (transformable=Condition)?)? //E40
 ;
 
 Objets : 
@@ -123,13 +158,31 @@ Objets :
 Connaissances :
 	'connaissances'
 	'{'
-		listeConnaissance+=Connaissance*
+		listeConnaissances+=Connaissance*
 	'}'
 ;
 
 Connaissance :
 	'connaissance'
 	name=ID
+	('description' description=STRING (conditionConnaissance=Condition)?)? //E39
 ;
 
+Condition :
+	'condition'
+	name=ID
+	//'transmission' (conditiontransmission=COND)? //E22
+	//'consommation' (conditionconsommation=COND)? //E22
+	condition=COND
+;
 
+Chemin :
+	'chemin'
+	'description' description=STRING (conditionDescription=Condition)? //E39
+	'destination' destination=Lieu | LieuDebut | LieuFin
+	('obligatoire' obligatoire=Condition)?
+	('visible' visible=Condition)?
+	('ouvert' ouvert=Condition)?
+	listeConnaissances+=Connaissance*
+	listeObjets+=Objet*
+;

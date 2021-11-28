@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Personne#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.Personne#isVisible <em>Visible</em>}</li>
+ *   <li>{@link fr.n7.game.Personne#isObligatoire <em>Obligatoire</em>}</li>
  *   <li>{@link fr.n7.game.Personne#getPersonneElements <em>Personne Elements</em>}</li>
  * </ul>
  *
@@ -47,6 +49,50 @@ public interface Personne extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Visible</em>' attribute.
+   * @see #setVisible(boolean)
+   * @see fr.n7.game.GamePackage#getPersonne_Visible()
+   * @model
+   * @generated
+   */
+  boolean isVisible();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Personne#isVisible <em>Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Visible</em>' attribute.
+   * @see #isVisible()
+   * @generated
+   */
+  void setVisible(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Obligatoire</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Obligatoire</em>' attribute.
+   * @see #setObligatoire(boolean)
+   * @see fr.n7.game.GamePackage#getPersonne_Obligatoire()
+   * @model
+   * @generated
+   */
+  boolean isObligatoire();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Personne#isObligatoire <em>Obligatoire</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Obligatoire</em>' attribute.
+   * @see #isObligatoire()
+   * @generated
+   */
+  void setObligatoire(boolean value);
 
   /**
    * Returns the value of the '<em><b>Personne Elements</b></em>' containment reference list.

@@ -4,7 +4,9 @@
 package fr.n7.serializer;
 
 import com.google.inject.Inject;
+import fr.n7.game.Chemin;
 import fr.n7.game.Choix;
+import fr.n7.game.Condition;
 import fr.n7.game.Connaissance;
 import fr.n7.game.Connaissances;
 import fr.n7.game.Explorateur;
@@ -20,7 +22,6 @@ import fr.n7.game.Personne;
 import fr.n7.game.Personnes;
 import fr.n7.game.Sac;
 import fr.n7.game.Territoire;
-import fr.n7.game.Texte;
 import fr.n7.services.GameGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -47,8 +48,17 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == GamePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case GamePackage.ACTION:
+				sequence_Action(context, (fr.n7.game.Action) semanticObject); 
+				return; 
+			case GamePackage.CHEMIN:
+				sequence_Chemin(context, (Chemin) semanticObject); 
+				return; 
 			case GamePackage.CHOIX:
 				sequence_Choix(context, (Choix) semanticObject); 
+				return; 
+			case GamePackage.CONDITION:
+				sequence_Condition(context, (Condition) semanticObject); 
 				return; 
 			case GamePackage.CONNAISSANCE:
 				sequence_Connaissance(context, (Connaissance) semanticObject); 
@@ -72,8 +82,15 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_LieuDebut(context, (LieuDebut) semanticObject); 
 				return; 
 			case GamePackage.LIEU_FIN:
-				sequence_LieuFin(context, (LieuFin) semanticObject); 
-				return; 
+				if (rule == grammarAccess.getCheminRule()) {
+					sequence_Chemin_LieuFin(context, (LieuFin) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getLieuFinRule()) {
+					sequence_LieuFin(context, (LieuFin) semanticObject); 
+					return; 
+				}
+				else break;
 			case GamePackage.OBJET:
 				sequence_Objet(context, (Objet) semanticObject); 
 				return; 
@@ -92,9 +109,6 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case GamePackage.TERRITOIRE:
 				sequence_Territoire(context, (Territoire) semanticObject); 
 				return; 
-			case GamePackage.TEXTE:
-				sequence_Texte(context, (Texte) semanticObject); 
-				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -102,18 +116,90 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Action returns Action
+	 *
+	 * Constraint:
+	 *     (
+	 *         conditionAction=Condition? 
+	 *         listeChoix+=Choix* 
+	 *         listeConnaissances+=Connaissance* 
+	 *         listeObjets+=Objet* 
+	 *         attributionConnaissance=Condition 
+	 *         attributionObjet=Condition? 
+	 *         listeObjetsConsommes+=Objet* 
+	 *         consommationObjet=Condition?
+	 *     )
+	 */
+	protected void sequence_Action(ISerializationContext context, fr.n7.game.Action semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Chemin returns Chemin
+	 *
+	 * Constraint:
+	 *     (description=STRING conditionDescription=Condition? destination=Lieu)
+	 */
+	protected void sequence_Chemin(ISerializationContext context, Chemin semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Chemin returns LieuFin
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         (description=STRING conditionDescription=Condition?)? 
+	 *         lieufinElements+=Personnes? 
+	 *         lieufinElements+=Connaissances? 
+	 *         lieufinElements+=Objets? 
+	 *         depotObjet=Condition? 
+	 *         obligatoire=Condition? 
+	 *         visible=Condition? 
+	 *         ouvert=Condition? 
+	 *         listeConnaissances+=Connaissance* 
+	 *         listeObjets+=Objet*
+	 *     )
+	 */
+	protected void sequence_Chemin_LieuFin(ISerializationContext context, LieuFin semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Choix returns Choix
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (texte=STRING listeActions+=Action+ (choixdebut=STRING conditonChoixDebut=Condition)? (choixfin=STRING conditionChoixFin=Condition)?)
 	 */
 	protected void sequence_Choix(ISerializationContext context, Choix semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Condition returns Condition
+	 *
+	 * Constraint:
+	 *     (name=ID condition=COND)
+	 */
+	protected void sequence_Condition(ISerializationContext context, Condition semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.CHOIX__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.CHOIX__NAME));
+			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.CONDITION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.CONDITION__NAME));
+			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.CONDITION__CONDITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.CONDITION__CONDITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getChoixAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getConditionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getConditionAccess().getConditionCONDTerminalRuleCall_2_0(), semanticObject.isCondition());
 		feeder.finish();
 	}
 	
@@ -123,16 +209,10 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Connaissance returns Connaissance
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID (description=STRING conditionConnaissance=Condition?)?)
 	 */
 	protected void sequence_Connaissance(ISerializationContext context, Connaissance semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.CONNAISSANCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.CONNAISSANCE__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConnaissanceAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -141,7 +221,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Connaissances returns Connaissances
 	 *
 	 * Constraint:
-	 *     listeConnaissance+=Connaissance+
+	 *     listeConnaissances+=Connaissance+
 	 */
 	protected void sequence_Connaissances(ISerializationContext context, Connaissances semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -177,7 +257,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Interaction returns Interaction
 	 *
 	 * Constraint:
-	 *     (name=ID interactionElements+=Choix*)
+	 *     (name=ID texte=STRING interactionElements+=Choix*)
 	 */
 	protected void sequence_Interaction(ISerializationContext context, Interaction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -187,9 +267,18 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     LieuDebut returns LieuDebut
+	 *     Chemin returns LieuDebut
 	 *
 	 * Constraint:
-	 *     (name=ID lieudebutElements+=Personnes?)
+	 *     (
+	 *         name=ID 
+	 *         (description=STRING conditionDescription=Condition?)? 
+	 *         lieudebutElements+=Personnes? 
+	 *         lieudebutElements+=Connaissances? 
+	 *         lieudebutElements+=Objets? 
+	 *         depotObjet=Condition? 
+	 *         listeChemins+=Chemin+
+	 *     )
 	 */
 	protected void sequence_LieuDebut(ISerializationContext context, LieuDebut semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -201,7 +290,14 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LieuFin returns LieuFin
 	 *
 	 * Constraint:
-	 *     (name=ID lieudebutElements+=Personnes?)
+	 *     (
+	 *         name=ID 
+	 *         (description=STRING conditionDescription=Condition?)? 
+	 *         lieufinElements+=Personnes? 
+	 *         lieufinElements+=Connaissances? 
+	 *         lieufinElements+=Objets? 
+	 *         depotObjet=Condition?
+	 *     )
 	 */
 	protected void sequence_LieuFin(ISerializationContext context, LieuFin semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -213,7 +309,15 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Lieu returns Lieu
 	 *
 	 * Constraint:
-	 *     (name=ID lieuElements+=Personnes? lieuElements+=Connaissances? lieuElements+=Objets?)
+	 *     (
+	 *         name=ID 
+	 *         (description=STRING conditionDescription=Condition?)? 
+	 *         lieuElements+=Personnes? 
+	 *         lieuElements+=Connaissances? 
+	 *         lieuElements+=Objets? 
+	 *         depotObjet=Condition? 
+	 *         listeChemins+=Chemin+
+	 *     )
 	 */
 	protected void sequence_Lieu(ISerializationContext context, Lieu semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -225,22 +329,18 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Objet returns Objet
 	 *
 	 * Constraint:
-	 *     (name=ID taille=INT quantite=INT)
+	 *     (
+	 *         name=ID 
+	 *         taille=INT 
+	 *         quantite=INT 
+	 *         conditionTransmission=Condition? 
+	 *         conditionConsommation=Condition? 
+	 *         (description=STRING conditionDescription=Condition?)? 
+	 *         transformable=Condition?
+	 *     )
 	 */
 	protected void sequence_Objet(ISerializationContext context, Objet semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.OBJET__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.OBJET__NAME));
-			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.OBJET__TAILLE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.OBJET__TAILLE));
-			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.OBJET__QUANTITE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.OBJET__QUANTITE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getObjetAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getObjetAccess().getTailleINTTerminalRuleCall_2_0(), semanticObject.getTaille());
-		feeder.accept(grammarAccess.getObjetAccess().getQuantiteINTTerminalRuleCall_3_0(), semanticObject.getQuantite());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -261,7 +361,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Personne returns Personne
 	 *
 	 * Constraint:
-	 *     (name=ID personneElements+=Interaction)
+	 *     (name=ID visible=BOOL? obligatoire=BOOL? personneElements+=Interaction)
 	 */
 	protected void sequence_Personne(ISerializationContext context, Personne semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -302,24 +402,6 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Territoire(ISerializationContext context, Territoire semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Texte returns Texte
-	 *
-	 * Constraint:
-	 *     texte=STRING
-	 */
-	protected void sequence_Texte(ISerializationContext context, Texte semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.TEXTE__TEXTE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.TEXTE__TEXTE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTexteAccess().getTexteSTRINGTerminalRuleCall_0(), semanticObject.getTexte());
-		feeder.finish();
 	}
 	
 	
