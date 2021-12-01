@@ -115,6 +115,7 @@ Interaction :
 
 Choix :
 	'choix'
+	name=ID
 	texte=STRING
 	'{'
 		listeActions+=Action+ //E31
@@ -127,7 +128,7 @@ Action :
 	'action'
 	'{'
 		(conditionAction=Condition)? //E32 et E35
-		listeChoix+=Choix* //E35
+		listeChoix+=[Choix]* //E35
 		listeConnaissances+=Connaissance* //E36
 		listeObjets+=Objet* //E36
 		'attributionC' attributionConnaissance=Condition //E37
@@ -185,4 +186,5 @@ Chemin :
 	('ouvert' ouvert=Condition)?
 	listeConnaissances+=Connaissance*
 	listeObjets+=Objet*
+	listeObjetsConsommes+=Objet*
 ;
