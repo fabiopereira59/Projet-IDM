@@ -3,25 +3,19 @@
  */
 package fr.n7.game.impl;
 
+import fr.n7.game.Connaissance;
 import fr.n7.game.Explorateur;
 import fr.n7.game.GamePackage;
-
-import java.util.Collection;
+import fr.n7.game.Lieu;
+import fr.n7.game.Sac;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,12 +26,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.ExplorateurImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.impl.ExplorateurImpl#getExplorateurElements <em>Explorateur Elements</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ExplorateurImpl#getSac <em>Sac</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ExplorateurImpl#getConnaissances <em>Connaissances</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ExplorateurImpl#getPosition <em>Position</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Explorateur
+public class ExplorateurImpl extends territoireElementImpl implements Explorateur
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -60,14 +56,34 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getExplorateurElements() <em>Explorateur Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getSac() <em>Sac</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExplorateurElements()
+   * @see #getSac()
    * @generated
    * @ordered
    */
-  protected EList<EObject> explorateurElements;
+  protected Sac sac;
+
+  /**
+   * The cached value of the '{@link #getConnaissances() <em>Connaissances</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConnaissances()
+   * @generated
+   * @ordered
+   */
+  protected Connaissance connaissances;
+
+  /**
+   * The cached value of the '{@link #getPosition() <em>Position</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPosition()
+   * @generated
+   * @ordered
+   */
+  protected Lieu position;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,13 +137,138 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
    * @generated
    */
   @Override
-  public EList<EObject> getExplorateurElements()
+  public Sac getSac()
   {
-    if (explorateurElements == null)
+    return sac;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSac(Sac newSac, NotificationChain msgs)
+  {
+    Sac oldSac = sac;
+    sac = newSac;
+    if (eNotificationRequired())
     {
-      explorateurElements = new EObjectContainmentEList<EObject>(EObject.class, this, GamePackage.EXPLORATEUR__EXPLORATEUR_ELEMENTS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.EXPLORATEUR__SAC, oldSac, newSac);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return explorateurElements;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSac(Sac newSac)
+  {
+    if (newSac != sac)
+    {
+      NotificationChain msgs = null;
+      if (sac != null)
+        msgs = ((InternalEObject)sac).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.EXPLORATEUR__SAC, null, msgs);
+      if (newSac != null)
+        msgs = ((InternalEObject)newSac).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.EXPLORATEUR__SAC, null, msgs);
+      msgs = basicSetSac(newSac, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.EXPLORATEUR__SAC, newSac, newSac));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Connaissance getConnaissances()
+  {
+    if (connaissances != null && connaissances.eIsProxy())
+    {
+      InternalEObject oldConnaissances = (InternalEObject)connaissances;
+      connaissances = (Connaissance)eResolveProxy(oldConnaissances);
+      if (connaissances != oldConnaissances)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.EXPLORATEUR__CONNAISSANCES, oldConnaissances, connaissances));
+      }
+    }
+    return connaissances;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Connaissance basicGetConnaissances()
+  {
+    return connaissances;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConnaissances(Connaissance newConnaissances)
+  {
+    Connaissance oldConnaissances = connaissances;
+    connaissances = newConnaissances;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.EXPLORATEUR__CONNAISSANCES, oldConnaissances, connaissances));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Lieu getPosition()
+  {
+    if (position != null && position.eIsProxy())
+    {
+      InternalEObject oldPosition = (InternalEObject)position;
+      position = (Lieu)eResolveProxy(oldPosition);
+      if (position != oldPosition)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.EXPLORATEUR__POSITION, oldPosition, position));
+      }
+    }
+    return position;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Lieu basicGetPosition()
+  {
+    return position;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPosition(Lieu newPosition)
+  {
+    Lieu oldPosition = position;
+    position = newPosition;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.EXPLORATEUR__POSITION, oldPosition, position));
   }
 
   /**
@@ -140,8 +281,8 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
   {
     switch (featureID)
     {
-      case GamePackage.EXPLORATEUR__EXPLORATEUR_ELEMENTS:
-        return ((InternalEList<?>)getExplorateurElements()).basicRemove(otherEnd, msgs);
+      case GamePackage.EXPLORATEUR__SAC:
+        return basicSetSac(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -158,8 +299,14 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
     {
       case GamePackage.EXPLORATEUR__NAME:
         return getName();
-      case GamePackage.EXPLORATEUR__EXPLORATEUR_ELEMENTS:
-        return getExplorateurElements();
+      case GamePackage.EXPLORATEUR__SAC:
+        return getSac();
+      case GamePackage.EXPLORATEUR__CONNAISSANCES:
+        if (resolve) return getConnaissances();
+        return basicGetConnaissances();
+      case GamePackage.EXPLORATEUR__POSITION:
+        if (resolve) return getPosition();
+        return basicGetPosition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -169,7 +316,6 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -178,9 +324,14 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
       case GamePackage.EXPLORATEUR__NAME:
         setName((String)newValue);
         return;
-      case GamePackage.EXPLORATEUR__EXPLORATEUR_ELEMENTS:
-        getExplorateurElements().clear();
-        getExplorateurElements().addAll((Collection<? extends EObject>)newValue);
+      case GamePackage.EXPLORATEUR__SAC:
+        setSac((Sac)newValue);
+        return;
+      case GamePackage.EXPLORATEUR__CONNAISSANCES:
+        setConnaissances((Connaissance)newValue);
+        return;
+      case GamePackage.EXPLORATEUR__POSITION:
+        setPosition((Lieu)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,8 +350,14 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
       case GamePackage.EXPLORATEUR__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GamePackage.EXPLORATEUR__EXPLORATEUR_ELEMENTS:
-        getExplorateurElements().clear();
+      case GamePackage.EXPLORATEUR__SAC:
+        setSac((Sac)null);
+        return;
+      case GamePackage.EXPLORATEUR__CONNAISSANCES:
+        setConnaissances((Connaissance)null);
+        return;
+      case GamePackage.EXPLORATEUR__POSITION:
+        setPosition((Lieu)null);
         return;
     }
     super.eUnset(featureID);
@@ -218,8 +375,12 @@ public class ExplorateurImpl extends MinimalEObjectImpl.Container implements Exp
     {
       case GamePackage.EXPLORATEUR__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GamePackage.EXPLORATEUR__EXPLORATEUR_ELEMENTS:
-        return explorateurElements != null && !explorateurElements.isEmpty();
+      case GamePackage.EXPLORATEUR__SAC:
+        return sac != null;
+      case GamePackage.EXPLORATEUR__CONNAISSANCES:
+        return connaissances != null;
+      case GamePackage.EXPLORATEUR__POSITION:
+        return position != null;
     }
     return super.eIsSet(featureID);
   }

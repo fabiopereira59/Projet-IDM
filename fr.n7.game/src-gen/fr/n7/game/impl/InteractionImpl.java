@@ -7,21 +7,14 @@ import fr.n7.game.Choix;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Interaction;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,14 +74,14 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
   protected String texte = TEXTE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getInteractionElements() <em>Interaction Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getInteractionElements() <em>Interaction Elements</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getInteractionElements()
    * @generated
    * @ordered
    */
-  protected EList<Choix> interactionElements;
+  protected Choix interactionElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -167,13 +160,48 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
    * @generated
    */
   @Override
-  public EList<Choix> getInteractionElements()
+  public Choix getInteractionElements()
   {
-    if (interactionElements == null)
-    {
-      interactionElements = new EObjectContainmentEList<Choix>(Choix.class, this, GamePackage.INTERACTION__INTERACTION_ELEMENTS);
-    }
     return interactionElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInteractionElements(Choix newInteractionElements, NotificationChain msgs)
+  {
+    Choix oldInteractionElements = interactionElements;
+    interactionElements = newInteractionElements;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.INTERACTION__INTERACTION_ELEMENTS, oldInteractionElements, newInteractionElements);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setInteractionElements(Choix newInteractionElements)
+  {
+    if (newInteractionElements != interactionElements)
+    {
+      NotificationChain msgs = null;
+      if (interactionElements != null)
+        msgs = ((InternalEObject)interactionElements).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.INTERACTION__INTERACTION_ELEMENTS, null, msgs);
+      if (newInteractionElements != null)
+        msgs = ((InternalEObject)newInteractionElements).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.INTERACTION__INTERACTION_ELEMENTS, null, msgs);
+      msgs = basicSetInteractionElements(newInteractionElements, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.INTERACTION__INTERACTION_ELEMENTS, newInteractionElements, newInteractionElements));
   }
 
   /**
@@ -187,7 +215,7 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
     switch (featureID)
     {
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
-        return ((InternalEList<?>)getInteractionElements()).basicRemove(otherEnd, msgs);
+        return basicSetInteractionElements(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -217,7 +245,6 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -230,8 +257,7 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
         setTexte((String)newValue);
         return;
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
-        getInteractionElements().clear();
-        getInteractionElements().addAll((Collection<? extends Choix>)newValue);
+        setInteractionElements((Choix)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -254,7 +280,7 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
         setTexte(TEXTE_EDEFAULT);
         return;
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
-        getInteractionElements().clear();
+        setInteractionElements((Choix)null);
         return;
     }
     super.eUnset(featureID);
@@ -275,7 +301,7 @@ public class InteractionImpl extends MinimalEObjectImpl.Container implements Int
       case GamePackage.INTERACTION__TEXTE:
         return TEXTE_EDEFAULT == null ? texte != null : !TEXTE_EDEFAULT.equals(texte);
       case GamePackage.INTERACTION__INTERACTION_ELEMENTS:
-        return interactionElements != null && !interactionElements.isEmpty();
+        return interactionElements != null;
     }
     return super.eIsSet(featureID);
   }

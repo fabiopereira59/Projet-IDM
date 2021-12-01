@@ -3,8 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.Choix#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.Choix#getTexte <em>Texte</em>}</li>
  *   <li>{@link fr.n7.game.Choix#getListeActions <em>Liste Actions</em>}</li>
  *   <li>{@link fr.n7.game.Choix#getChoixdebut <em>Choixdebut</em>}</li>
@@ -30,6 +29,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Choix extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.n7.game.GamePackage#getChoix_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Choix#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Texte</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -53,16 +74,26 @@ public interface Choix extends EObject
   void setTexte(String value);
 
   /**
-   * Returns the value of the '<em><b>Liste Actions</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Action}.
+   * Returns the value of the '<em><b>Liste Actions</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Actions</em>' containment reference list.
+   * @return the value of the '<em>Liste Actions</em>' containment reference.
+   * @see #setListeActions(Action)
    * @see fr.n7.game.GamePackage#getChoix_ListeActions()
    * @model containment="true"
    * @generated
    */
-  EList<Action> getListeActions();
+  Action getListeActions();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Choix#getListeActions <em>Liste Actions</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Liste Actions</em>' containment reference.
+   * @see #getListeActions()
+   * @generated
+   */
+  void setListeActions(Action value);
 
   /**
    * Returns the value of the '<em><b>Choixdebut</b></em>' attribute.

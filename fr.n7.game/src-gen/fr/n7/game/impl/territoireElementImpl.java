@@ -4,7 +4,7 @@
 package fr.n7.game.impl;
 
 import fr.n7.game.GamePackage;
-import fr.n7.game.gameElement;
+import fr.n7.game.territoireElement;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -12,19 +12,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>game Element</b></em>'.
+ * An implementation of the model object '<em><b>territoire Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class gameElementImpl extends MinimalEObjectImpl.Container implements gameElement
+public class territoireElementImpl extends MinimalEObjectImpl.Container implements territoireElement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected gameElementImpl()
+  protected territoireElementImpl()
   {
     super();
   }
@@ -37,7 +37,7 @@ public class gameElementImpl extends MinimalEObjectImpl.Container implements gam
   @Override
   protected EClass eStaticClass()
   {
-    return GamePackage.Literals.GAME_ELEMENT;
+    return GamePackage.Literals.TERRITOIRE_ELEMENT;
   }
 
-} //gameElementImpl
+} //territoireElementImpl

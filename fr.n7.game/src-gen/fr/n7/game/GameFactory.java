@@ -33,22 +33,13 @@ public interface GameFactory extends EFactory
   Game createGame();
 
   /**
-   * Returns a new object of class '<em>game Element</em>'.
+   * Returns a new object of class '<em>territoire Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>game Element</em>'.
+   * @return a new object of class '<em>territoire Element</em>'.
    * @generated
    */
-  gameElement creategameElement();
-
-  /**
-   * Returns a new object of class '<em>Territoire</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Territoire</em>'.
-   * @generated
-   */
-  Territoire createTerritoire();
+  territoireElement createterritoireElement();
 
   /**
    * Returns a new object of class '<em>Explorateur</em>'.
@@ -76,24 +67,6 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Lieu createLieu();
-
-  /**
-   * Returns a new object of class '<em>Lieu Debut</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Lieu Debut</em>'.
-   * @generated
-   */
-  LieuDebut createLieuDebut();
-
-  /**
-   * Returns a new object of class '<em>Lieu Fin</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Lieu Fin</em>'.
-   * @generated
-   */
-  LieuFin createLieuFin();
 
   /**
    * Returns a new object of class '<em>Personnes</em>'.
@@ -141,22 +114,40 @@ public interface GameFactory extends EFactory
   Action createAction();
 
   /**
-   * Returns a new object of class '<em>Objet</em>'.
+   * Returns a new object of class '<em>Objet Explorateur</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Objet</em>'.
+   * @return a new object of class '<em>Objet Explorateur</em>'.
    * @generated
    */
-  Objet createObjet();
+  ObjetExplorateur createObjetExplorateur();
 
   /**
-   * Returns a new object of class '<em>Objets</em>'.
+   * Returns a new object of class '<em>Objet Lieu</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Objets</em>'.
+   * @return a new object of class '<em>Objet Lieu</em>'.
    * @generated
    */
-  Objets createObjets();
+  ObjetLieu createObjetLieu();
+
+  /**
+   * Returns a new object of class '<em>Objets Explorateur</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Objets Explorateur</em>'.
+   * @generated
+   */
+  ObjetsExplorateur createObjetsExplorateur();
+
+  /**
+   * Returns a new object of class '<em>Objets Lieu</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Objets Lieu</em>'.
+   * @generated
+   */
+  ObjetsLieu createObjetsLieu();
 
   /**
    * Returns a new object of class '<em>Connaissances</em>'.
@@ -184,6 +175,15 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Condition createCondition();
+
+  /**
+   * Returns a new object of class '<em>Chemins</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Chemins</em>'.
+   * @generated
+   */
+  Chemins createChemins();
 
   /**
    * Returns a new object of class '<em>Chemin</em>'.

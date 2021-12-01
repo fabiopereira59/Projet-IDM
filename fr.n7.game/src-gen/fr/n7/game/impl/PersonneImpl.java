@@ -7,21 +7,14 @@ import fr.n7.game.GamePackage;
 import fr.n7.game.Interaction;
 import fr.n7.game.Personne;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,14 +95,14 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
   protected boolean obligatoire = OBLIGATOIRE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getPersonneElements() <em>Personne Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getPersonneElements() <em>Personne Elements</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPersonneElements()
    * @generated
    * @ordered
    */
-  protected EList<Interaction> personneElements;
+  protected Interaction personneElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -213,13 +206,48 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
    * @generated
    */
   @Override
-  public EList<Interaction> getPersonneElements()
+  public Interaction getPersonneElements()
   {
-    if (personneElements == null)
-    {
-      personneElements = new EObjectContainmentEList<Interaction>(Interaction.class, this, GamePackage.PERSONNE__PERSONNE_ELEMENTS);
-    }
     return personneElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPersonneElements(Interaction newPersonneElements, NotificationChain msgs)
+  {
+    Interaction oldPersonneElements = personneElements;
+    personneElements = newPersonneElements;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.PERSONNE__PERSONNE_ELEMENTS, oldPersonneElements, newPersonneElements);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPersonneElements(Interaction newPersonneElements)
+  {
+    if (newPersonneElements != personneElements)
+    {
+      NotificationChain msgs = null;
+      if (personneElements != null)
+        msgs = ((InternalEObject)personneElements).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.PERSONNE__PERSONNE_ELEMENTS, null, msgs);
+      if (newPersonneElements != null)
+        msgs = ((InternalEObject)newPersonneElements).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.PERSONNE__PERSONNE_ELEMENTS, null, msgs);
+      msgs = basicSetPersonneElements(newPersonneElements, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.PERSONNE__PERSONNE_ELEMENTS, newPersonneElements, newPersonneElements));
   }
 
   /**
@@ -233,7 +261,7 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
     switch (featureID)
     {
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
-        return ((InternalEList<?>)getPersonneElements()).basicRemove(otherEnd, msgs);
+        return basicSetPersonneElements(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -265,7 +293,6 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -281,8 +308,7 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
         setObligatoire((Boolean)newValue);
         return;
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
-        getPersonneElements().clear();
-        getPersonneElements().addAll((Collection<? extends Interaction>)newValue);
+        setPersonneElements((Interaction)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -308,7 +334,7 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
         setObligatoire(OBLIGATOIRE_EDEFAULT);
         return;
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
-        getPersonneElements().clear();
+        setPersonneElements((Interaction)null);
         return;
     }
     super.eUnset(featureID);
@@ -331,7 +357,7 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
       case GamePackage.PERSONNE__OBLIGATOIRE:
         return obligatoire != OBLIGATOIRE_EDEFAULT;
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
-        return personneElements != null && !personneElements.isEmpty();
+        return personneElements != null;
     }
     return super.eIsSet(featureID);
   }

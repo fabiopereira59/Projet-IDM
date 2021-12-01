@@ -5,8 +5,11 @@ package fr.n7.game.impl;
 
 import fr.n7.game.Chemin;
 import fr.n7.game.Condition;
+import fr.n7.game.Connaissances;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Lieu;
+import fr.n7.game.ObjetsExplorateur;
+import fr.n7.game.ObjetsLieu;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,8 +31,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link fr.n7.game.impl.CheminImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.n7.game.impl.CheminImpl#getConditionDescription <em>Condition Description</em>}</li>
  *   <li>{@link fr.n7.game.impl.CheminImpl#getDestination <em>Destination</em>}</li>
- *   <li>{@link fr.n7.game.impl.CheminImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.impl.CheminImpl#getDepotObjet <em>Depot Objet</em>}</li>
+ *   <li>{@link fr.n7.game.impl.CheminImpl#getObligatoire <em>Obligatoire</em>}</li>
+ *   <li>{@link fr.n7.game.impl.CheminImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link fr.n7.game.impl.CheminImpl#getOuvert <em>Ouvert</em>}</li>
+ *   <li>{@link fr.n7.game.impl.CheminImpl#getListeConnaissances <em>Liste Connaissances</em>}</li>
+ *   <li>{@link fr.n7.game.impl.CheminImpl#getListeObjets <em>Liste Objets</em>}</li>
+ *   <li>{@link fr.n7.game.impl.CheminImpl#getListeObjetsConsommes <em>Liste Objets Consommes</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,34 +84,64 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
   protected Lieu destination;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getObligatoire() <em>Obligatoire</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getObligatoire()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected Condition obligatoire;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getVisible() <em>Visible</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getVisible()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected Condition visible;
 
   /**
-   * The cached value of the '{@link #getDepotObjet() <em>Depot Objet</em>}' containment reference.
+   * The cached value of the '{@link #getOuvert() <em>Ouvert</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDepotObjet()
+   * @see #getOuvert()
    * @generated
    * @ordered
    */
-  protected Condition depotObjet;
+  protected Condition ouvert;
+
+  /**
+   * The cached value of the '{@link #getListeConnaissances() <em>Liste Connaissances</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeConnaissances()
+   * @generated
+   * @ordered
+   */
+  protected Connaissances listeConnaissances;
+
+  /**
+   * The cached value of the '{@link #getListeObjets() <em>Liste Objets</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeObjets()
+   * @generated
+   * @ordered
+   */
+  protected ObjetsLieu listeObjets;
+
+  /**
+   * The cached value of the '{@link #getListeObjetsConsommes() <em>Liste Objets Consommes</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeObjetsConsommes()
+   * @generated
+   * @ordered
+   */
+  protected ObjetsExplorateur listeObjetsConsommes;
 
   /**
    * <!-- begin-user-doc -->
@@ -258,9 +295,9 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
    * @generated
    */
   @Override
-  public String getName()
+  public Condition getObligatoire()
   {
-    return name;
+    return obligatoire;
   }
 
   /**
@@ -268,38 +305,13 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setName(String newName)
+  public NotificationChain basicSetObligatoire(Condition newObligatoire, NotificationChain msgs)
   {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Condition getDepotObjet()
-  {
-    return depotObjet;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetDepotObjet(Condition newDepotObjet, NotificationChain msgs)
-  {
-    Condition oldDepotObjet = depotObjet;
-    depotObjet = newDepotObjet;
+    Condition oldObligatoire = obligatoire;
+    obligatoire = newObligatoire;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__DEPOT_OBJET, oldDepotObjet, newDepotObjet);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__OBLIGATOIRE, oldObligatoire, newObligatoire);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -311,20 +323,270 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
    * @generated
    */
   @Override
-  public void setDepotObjet(Condition newDepotObjet)
+  public void setObligatoire(Condition newObligatoire)
   {
-    if (newDepotObjet != depotObjet)
+    if (newObligatoire != obligatoire)
     {
       NotificationChain msgs = null;
-      if (depotObjet != null)
-        msgs = ((InternalEObject)depotObjet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__DEPOT_OBJET, null, msgs);
-      if (newDepotObjet != null)
-        msgs = ((InternalEObject)newDepotObjet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__DEPOT_OBJET, null, msgs);
-      msgs = basicSetDepotObjet(newDepotObjet, msgs);
+      if (obligatoire != null)
+        msgs = ((InternalEObject)obligatoire).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__OBLIGATOIRE, null, msgs);
+      if (newObligatoire != null)
+        msgs = ((InternalEObject)newObligatoire).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__OBLIGATOIRE, null, msgs);
+      msgs = basicSetObligatoire(newObligatoire, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__DEPOT_OBJET, newDepotObjet, newDepotObjet));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__OBLIGATOIRE, newObligatoire, newObligatoire));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition getVisible()
+  {
+    return visible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVisible(Condition newVisible, NotificationChain msgs)
+  {
+    Condition oldVisible = visible;
+    visible = newVisible;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__VISIBLE, oldVisible, newVisible);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVisible(Condition newVisible)
+  {
+    if (newVisible != visible)
+    {
+      NotificationChain msgs = null;
+      if (visible != null)
+        msgs = ((InternalEObject)visible).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__VISIBLE, null, msgs);
+      if (newVisible != null)
+        msgs = ((InternalEObject)newVisible).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__VISIBLE, null, msgs);
+      msgs = basicSetVisible(newVisible, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__VISIBLE, newVisible, newVisible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condition getOuvert()
+  {
+    return ouvert;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOuvert(Condition newOuvert, NotificationChain msgs)
+  {
+    Condition oldOuvert = ouvert;
+    ouvert = newOuvert;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__OUVERT, oldOuvert, newOuvert);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOuvert(Condition newOuvert)
+  {
+    if (newOuvert != ouvert)
+    {
+      NotificationChain msgs = null;
+      if (ouvert != null)
+        msgs = ((InternalEObject)ouvert).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__OUVERT, null, msgs);
+      if (newOuvert != null)
+        msgs = ((InternalEObject)newOuvert).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__OUVERT, null, msgs);
+      msgs = basicSetOuvert(newOuvert, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__OUVERT, newOuvert, newOuvert));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Connaissances getListeConnaissances()
+  {
+    return listeConnaissances;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetListeConnaissances(Connaissances newListeConnaissances, NotificationChain msgs)
+  {
+    Connaissances oldListeConnaissances = listeConnaissances;
+    listeConnaissances = newListeConnaissances;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__LISTE_CONNAISSANCES, oldListeConnaissances, newListeConnaissances);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListeConnaissances(Connaissances newListeConnaissances)
+  {
+    if (newListeConnaissances != listeConnaissances)
+    {
+      NotificationChain msgs = null;
+      if (listeConnaissances != null)
+        msgs = ((InternalEObject)listeConnaissances).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__LISTE_CONNAISSANCES, null, msgs);
+      if (newListeConnaissances != null)
+        msgs = ((InternalEObject)newListeConnaissances).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__LISTE_CONNAISSANCES, null, msgs);
+      msgs = basicSetListeConnaissances(newListeConnaissances, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__LISTE_CONNAISSANCES, newListeConnaissances, newListeConnaissances));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ObjetsLieu getListeObjets()
+  {
+    return listeObjets;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetListeObjets(ObjetsLieu newListeObjets, NotificationChain msgs)
+  {
+    ObjetsLieu oldListeObjets = listeObjets;
+    listeObjets = newListeObjets;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__LISTE_OBJETS, oldListeObjets, newListeObjets);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListeObjets(ObjetsLieu newListeObjets)
+  {
+    if (newListeObjets != listeObjets)
+    {
+      NotificationChain msgs = null;
+      if (listeObjets != null)
+        msgs = ((InternalEObject)listeObjets).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__LISTE_OBJETS, null, msgs);
+      if (newListeObjets != null)
+        msgs = ((InternalEObject)newListeObjets).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__LISTE_OBJETS, null, msgs);
+      msgs = basicSetListeObjets(newListeObjets, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__LISTE_OBJETS, newListeObjets, newListeObjets));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ObjetsExplorateur getListeObjetsConsommes()
+  {
+    return listeObjetsConsommes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetListeObjetsConsommes(ObjetsExplorateur newListeObjetsConsommes, NotificationChain msgs)
+  {
+    ObjetsExplorateur oldListeObjetsConsommes = listeObjetsConsommes;
+    listeObjetsConsommes = newListeObjetsConsommes;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES, oldListeObjetsConsommes, newListeObjetsConsommes);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListeObjetsConsommes(ObjetsExplorateur newListeObjetsConsommes)
+  {
+    if (newListeObjetsConsommes != listeObjetsConsommes)
+    {
+      NotificationChain msgs = null;
+      if (listeObjetsConsommes != null)
+        msgs = ((InternalEObject)listeObjetsConsommes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES, null, msgs);
+      if (newListeObjetsConsommes != null)
+        msgs = ((InternalEObject)newListeObjetsConsommes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES, null, msgs);
+      msgs = basicSetListeObjetsConsommes(newListeObjetsConsommes, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES, newListeObjetsConsommes, newListeObjetsConsommes));
   }
 
   /**
@@ -341,8 +603,18 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
         return basicSetConditionDescription(null, msgs);
       case GamePackage.CHEMIN__DESTINATION:
         return basicSetDestination(null, msgs);
-      case GamePackage.CHEMIN__DEPOT_OBJET:
-        return basicSetDepotObjet(null, msgs);
+      case GamePackage.CHEMIN__OBLIGATOIRE:
+        return basicSetObligatoire(null, msgs);
+      case GamePackage.CHEMIN__VISIBLE:
+        return basicSetVisible(null, msgs);
+      case GamePackage.CHEMIN__OUVERT:
+        return basicSetOuvert(null, msgs);
+      case GamePackage.CHEMIN__LISTE_CONNAISSANCES:
+        return basicSetListeConnaissances(null, msgs);
+      case GamePackage.CHEMIN__LISTE_OBJETS:
+        return basicSetListeObjets(null, msgs);
+      case GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES:
+        return basicSetListeObjetsConsommes(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -363,10 +635,18 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
         return getConditionDescription();
       case GamePackage.CHEMIN__DESTINATION:
         return getDestination();
-      case GamePackage.CHEMIN__NAME:
-        return getName();
-      case GamePackage.CHEMIN__DEPOT_OBJET:
-        return getDepotObjet();
+      case GamePackage.CHEMIN__OBLIGATOIRE:
+        return getObligatoire();
+      case GamePackage.CHEMIN__VISIBLE:
+        return getVisible();
+      case GamePackage.CHEMIN__OUVERT:
+        return getOuvert();
+      case GamePackage.CHEMIN__LISTE_CONNAISSANCES:
+        return getListeConnaissances();
+      case GamePackage.CHEMIN__LISTE_OBJETS:
+        return getListeObjets();
+      case GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES:
+        return getListeObjetsConsommes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -390,11 +670,23 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
       case GamePackage.CHEMIN__DESTINATION:
         setDestination((Lieu)newValue);
         return;
-      case GamePackage.CHEMIN__NAME:
-        setName((String)newValue);
+      case GamePackage.CHEMIN__OBLIGATOIRE:
+        setObligatoire((Condition)newValue);
         return;
-      case GamePackage.CHEMIN__DEPOT_OBJET:
-        setDepotObjet((Condition)newValue);
+      case GamePackage.CHEMIN__VISIBLE:
+        setVisible((Condition)newValue);
+        return;
+      case GamePackage.CHEMIN__OUVERT:
+        setOuvert((Condition)newValue);
+        return;
+      case GamePackage.CHEMIN__LISTE_CONNAISSANCES:
+        setListeConnaissances((Connaissances)newValue);
+        return;
+      case GamePackage.CHEMIN__LISTE_OBJETS:
+        setListeObjets((ObjetsLieu)newValue);
+        return;
+      case GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES:
+        setListeObjetsConsommes((ObjetsExplorateur)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -419,11 +711,23 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
       case GamePackage.CHEMIN__DESTINATION:
         setDestination((Lieu)null);
         return;
-      case GamePackage.CHEMIN__NAME:
-        setName(NAME_EDEFAULT);
+      case GamePackage.CHEMIN__OBLIGATOIRE:
+        setObligatoire((Condition)null);
         return;
-      case GamePackage.CHEMIN__DEPOT_OBJET:
-        setDepotObjet((Condition)null);
+      case GamePackage.CHEMIN__VISIBLE:
+        setVisible((Condition)null);
+        return;
+      case GamePackage.CHEMIN__OUVERT:
+        setOuvert((Condition)null);
+        return;
+      case GamePackage.CHEMIN__LISTE_CONNAISSANCES:
+        setListeConnaissances((Connaissances)null);
+        return;
+      case GamePackage.CHEMIN__LISTE_OBJETS:
+        setListeObjets((ObjetsLieu)null);
+        return;
+      case GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES:
+        setListeObjetsConsommes((ObjetsExplorateur)null);
         return;
     }
     super.eUnset(featureID);
@@ -445,10 +749,18 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
         return conditionDescription != null;
       case GamePackage.CHEMIN__DESTINATION:
         return destination != null;
-      case GamePackage.CHEMIN__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GamePackage.CHEMIN__DEPOT_OBJET:
-        return depotObjet != null;
+      case GamePackage.CHEMIN__OBLIGATOIRE:
+        return obligatoire != null;
+      case GamePackage.CHEMIN__VISIBLE:
+        return visible != null;
+      case GamePackage.CHEMIN__OUVERT:
+        return ouvert != null;
+      case GamePackage.CHEMIN__LISTE_CONNAISSANCES:
+        return listeConnaissances != null;
+      case GamePackage.CHEMIN__LISTE_OBJETS:
+        return listeObjets != null;
+      case GamePackage.CHEMIN__LISTE_OBJETS_CONSOMMES:
+        return listeObjetsConsommes != null;
     }
     return super.eIsSet(featureID);
   }
@@ -466,8 +778,6 @@ public class CheminImpl extends MinimalEObjectImpl.Container implements Chemin
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (description: ");
     result.append(description);
-    result.append(", name: ");
-    result.append(name);
     result.append(')');
     return result.toString();
   }

@@ -80,18 +80,10 @@ public class GameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.GAME_ELEMENT:
+      case GamePackage.TERRITOIRE_ELEMENT:
       {
-        gameElement gameElement = (gameElement)theEObject;
-        T result = casegameElement(gameElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GamePackage.TERRITOIRE:
-      {
-        Territoire territoire = (Territoire)theEObject;
-        T result = caseTerritoire(territoire);
-        if (result == null) result = casegameElement(territoire);
+        territoireElement territoireElement = (territoireElement)theEObject;
+        T result = caseterritoireElement(territoireElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -99,6 +91,7 @@ public class GameSwitch<T> extends Switch<T>
       {
         Explorateur explorateur = (Explorateur)theEObject;
         T result = caseExplorateur(explorateur);
+        if (result == null) result = caseterritoireElement(explorateur);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -113,22 +106,7 @@ public class GameSwitch<T> extends Switch<T>
       {
         Lieu lieu = (Lieu)theEObject;
         T result = caseLieu(lieu);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GamePackage.LIEU_DEBUT:
-      {
-        LieuDebut lieuDebut = (LieuDebut)theEObject;
-        T result = caseLieuDebut(lieuDebut);
-        if (result == null) result = caseChemin(lieuDebut);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GamePackage.LIEU_FIN:
-      {
-        LieuFin lieuFin = (LieuFin)theEObject;
-        T result = caseLieuFin(lieuFin);
-        if (result == null) result = caseChemin(lieuFin);
+        if (result == null) result = caseterritoireElement(lieu);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,6 +114,7 @@ public class GameSwitch<T> extends Switch<T>
       {
         Personnes personnes = (Personnes)theEObject;
         T result = casePersonnes(personnes);
+        if (result == null) result = caseterritoireElement(personnes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -167,17 +146,33 @@ public class GameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.OBJET:
+      case GamePackage.OBJET_EXPLORATEUR:
       {
-        Objet objet = (Objet)theEObject;
-        T result = caseObjet(objet);
+        ObjetExplorateur objetExplorateur = (ObjetExplorateur)theEObject;
+        T result = caseObjetExplorateur(objetExplorateur);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.OBJETS:
+      case GamePackage.OBJET_LIEU:
       {
-        Objets objets = (Objets)theEObject;
-        T result = caseObjets(objets);
+        ObjetLieu objetLieu = (ObjetLieu)theEObject;
+        T result = caseObjetLieu(objetLieu);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.OBJETS_EXPLORATEUR:
+      {
+        ObjetsExplorateur objetsExplorateur = (ObjetsExplorateur)theEObject;
+        T result = caseObjetsExplorateur(objetsExplorateur);
+        if (result == null) result = caseterritoireElement(objetsExplorateur);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.OBJETS_LIEU:
+      {
+        ObjetsLieu objetsLieu = (ObjetsLieu)theEObject;
+        T result = caseObjetsLieu(objetsLieu);
+        if (result == null) result = caseterritoireElement(objetsLieu);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -185,6 +180,7 @@ public class GameSwitch<T> extends Switch<T>
       {
         Connaissances connaissances = (Connaissances)theEObject;
         T result = caseConnaissances(connaissances);
+        if (result == null) result = caseterritoireElement(connaissances);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,6 +195,14 @@ public class GameSwitch<T> extends Switch<T>
       {
         Condition condition = (Condition)theEObject;
         T result = caseCondition(condition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.CHEMINS:
+      {
+        Chemins chemins = (Chemins)theEObject;
+        T result = caseChemins(chemins);
+        if (result == null) result = caseterritoireElement(chemins);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -230,33 +234,17 @@ public class GameSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>game Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>territoire Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>game Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>territoire Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casegameElement(gameElement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Territoire</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Territoire</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTerritoire(Territoire object)
+  public T caseterritoireElement(territoireElement object)
   {
     return null;
   }
@@ -305,38 +293,6 @@ public class GameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLieu(Lieu object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Lieu Debut</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Lieu Debut</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLieuDebut(LieuDebut object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Lieu Fin</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Lieu Fin</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLieuFin(LieuFin object)
   {
     return null;
   }
@@ -422,33 +378,65 @@ public class GameSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Objet</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Objet Explorateur</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Objet</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Objet Explorateur</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObjet(Objet object)
+  public T caseObjetExplorateur(ObjetExplorateur object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Objets</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Objet Lieu</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Objets</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Objet Lieu</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObjets(Objets object)
+  public T caseObjetLieu(ObjetLieu object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Objets Explorateur</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Objets Explorateur</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObjetsExplorateur(ObjetsExplorateur object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Objets Lieu</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Objets Lieu</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObjetsLieu(ObjetsLieu object)
   {
     return null;
   }
@@ -497,6 +485,22 @@ public class GameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCondition(Condition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Chemins</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Chemins</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChemins(Chemins object)
   {
     return null;
   }

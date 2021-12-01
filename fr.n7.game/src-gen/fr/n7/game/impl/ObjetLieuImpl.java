@@ -5,7 +5,7 @@ package fr.n7.game.impl;
 
 import fr.n7.game.Condition;
 import fr.n7.game.GamePackage;
-import fr.n7.game.Objet;
+import fr.n7.game.ObjetLieu;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,25 +18,25 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Objet</b></em>'.
+ * An implementation of the model object '<em><b>Objet Lieu</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getTaille <em>Taille</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getQuantite <em>Quantite</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getConditionTransmission <em>Condition Transmission</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getConditionConsommation <em>Condition Consommation</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getConditionDescription <em>Condition Description</em>}</li>
- *   <li>{@link fr.n7.game.impl.ObjetImpl#getTransformable <em>Transformable</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getTaille <em>Taille</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getQuantite <em>Quantite</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getConditionTransmission <em>Condition Transmission</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getConditionConsommation <em>Condition Consommation</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getConditionDescription <em>Condition Description</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ObjetLieuImpl#getTransformable <em>Transformable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
+public class ObjetLieuImpl extends MinimalEObjectImpl.Container implements ObjetLieu
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -163,7 +163,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ObjetImpl()
+  protected ObjetLieuImpl()
   {
     super();
   }
@@ -176,7 +176,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
   @Override
   protected EClass eStaticClass()
   {
-    return GamePackage.Literals.OBJET;
+    return GamePackage.Literals.OBJET_LIEU;
   }
 
   /**
@@ -201,7 +201,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__NAME, oldName, name));
   }
 
   /**
@@ -226,7 +226,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     int oldTaille = taille;
     taille = newTaille;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__TAILLE, oldTaille, taille));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__TAILLE, oldTaille, taille));
   }
 
   /**
@@ -251,7 +251,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     int oldQuantite = quantite;
     quantite = newQuantite;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__QUANTITE, oldQuantite, quantite));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__QUANTITE, oldQuantite, quantite));
   }
 
   /**
@@ -276,7 +276,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     conditionTransmission = newConditionTransmission;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__CONDITION_TRANSMISSION, oldConditionTransmission, newConditionTransmission);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION, oldConditionTransmission, newConditionTransmission);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -294,14 +294,14 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     {
       NotificationChain msgs = null;
       if (conditionTransmission != null)
-        msgs = ((InternalEObject)conditionTransmission).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__CONDITION_TRANSMISSION, null, msgs);
+        msgs = ((InternalEObject)conditionTransmission).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION, null, msgs);
       if (newConditionTransmission != null)
-        msgs = ((InternalEObject)newConditionTransmission).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__CONDITION_TRANSMISSION, null, msgs);
+        msgs = ((InternalEObject)newConditionTransmission).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION, null, msgs);
       msgs = basicSetConditionTransmission(newConditionTransmission, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__CONDITION_TRANSMISSION, newConditionTransmission, newConditionTransmission));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION, newConditionTransmission, newConditionTransmission));
   }
 
   /**
@@ -326,7 +326,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     conditionConsommation = newConditionConsommation;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__CONDITION_CONSOMMATION, oldConditionConsommation, newConditionConsommation);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION, oldConditionConsommation, newConditionConsommation);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -344,14 +344,14 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     {
       NotificationChain msgs = null;
       if (conditionConsommation != null)
-        msgs = ((InternalEObject)conditionConsommation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__CONDITION_CONSOMMATION, null, msgs);
+        msgs = ((InternalEObject)conditionConsommation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION, null, msgs);
       if (newConditionConsommation != null)
-        msgs = ((InternalEObject)newConditionConsommation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__CONDITION_CONSOMMATION, null, msgs);
+        msgs = ((InternalEObject)newConditionConsommation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION, null, msgs);
       msgs = basicSetConditionConsommation(newConditionConsommation, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__CONDITION_CONSOMMATION, newConditionConsommation, newConditionConsommation));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION, newConditionConsommation, newConditionConsommation));
   }
 
   /**
@@ -376,7 +376,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     String oldDescription = description;
     description = newDescription;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__DESCRIPTION, oldDescription, description));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__DESCRIPTION, oldDescription, description));
   }
 
   /**
@@ -401,7 +401,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     conditionDescription = newConditionDescription;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__CONDITION_DESCRIPTION, oldConditionDescription, newConditionDescription);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION, oldConditionDescription, newConditionDescription);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -419,14 +419,14 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     {
       NotificationChain msgs = null;
       if (conditionDescription != null)
-        msgs = ((InternalEObject)conditionDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__CONDITION_DESCRIPTION, null, msgs);
+        msgs = ((InternalEObject)conditionDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION, null, msgs);
       if (newConditionDescription != null)
-        msgs = ((InternalEObject)newConditionDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__CONDITION_DESCRIPTION, null, msgs);
+        msgs = ((InternalEObject)newConditionDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION, null, msgs);
       msgs = basicSetConditionDescription(newConditionDescription, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__CONDITION_DESCRIPTION, newConditionDescription, newConditionDescription));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION, newConditionDescription, newConditionDescription));
   }
 
   /**
@@ -451,7 +451,7 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     transformable = newTransformable;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__TRANSFORMABLE, oldTransformable, newTransformable);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__TRANSFORMABLE, oldTransformable, newTransformable);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -469,14 +469,14 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     {
       NotificationChain msgs = null;
       if (transformable != null)
-        msgs = ((InternalEObject)transformable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__TRANSFORMABLE, null, msgs);
+        msgs = ((InternalEObject)transformable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__TRANSFORMABLE, null, msgs);
       if (newTransformable != null)
-        msgs = ((InternalEObject)newTransformable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET__TRANSFORMABLE, null, msgs);
+        msgs = ((InternalEObject)newTransformable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.OBJET_LIEU__TRANSFORMABLE, null, msgs);
       msgs = basicSetTransformable(newTransformable, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET__TRANSFORMABLE, newTransformable, newTransformable));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJET_LIEU__TRANSFORMABLE, newTransformable, newTransformable));
   }
 
   /**
@@ -489,13 +489,13 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
   {
     switch (featureID)
     {
-      case GamePackage.OBJET__CONDITION_TRANSMISSION:
+      case GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION:
         return basicSetConditionTransmission(null, msgs);
-      case GamePackage.OBJET__CONDITION_CONSOMMATION:
+      case GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION:
         return basicSetConditionConsommation(null, msgs);
-      case GamePackage.OBJET__CONDITION_DESCRIPTION:
+      case GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION:
         return basicSetConditionDescription(null, msgs);
-      case GamePackage.OBJET__TRANSFORMABLE:
+      case GamePackage.OBJET_LIEU__TRANSFORMABLE:
         return basicSetTransformable(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -511,21 +511,21 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
   {
     switch (featureID)
     {
-      case GamePackage.OBJET__NAME:
+      case GamePackage.OBJET_LIEU__NAME:
         return getName();
-      case GamePackage.OBJET__TAILLE:
+      case GamePackage.OBJET_LIEU__TAILLE:
         return getTaille();
-      case GamePackage.OBJET__QUANTITE:
+      case GamePackage.OBJET_LIEU__QUANTITE:
         return getQuantite();
-      case GamePackage.OBJET__CONDITION_TRANSMISSION:
+      case GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION:
         return getConditionTransmission();
-      case GamePackage.OBJET__CONDITION_CONSOMMATION:
+      case GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION:
         return getConditionConsommation();
-      case GamePackage.OBJET__DESCRIPTION:
+      case GamePackage.OBJET_LIEU__DESCRIPTION:
         return getDescription();
-      case GamePackage.OBJET__CONDITION_DESCRIPTION:
+      case GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION:
         return getConditionDescription();
-      case GamePackage.OBJET__TRANSFORMABLE:
+      case GamePackage.OBJET_LIEU__TRANSFORMABLE:
         return getTransformable();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -541,28 +541,28 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
   {
     switch (featureID)
     {
-      case GamePackage.OBJET__NAME:
+      case GamePackage.OBJET_LIEU__NAME:
         setName((String)newValue);
         return;
-      case GamePackage.OBJET__TAILLE:
+      case GamePackage.OBJET_LIEU__TAILLE:
         setTaille((Integer)newValue);
         return;
-      case GamePackage.OBJET__QUANTITE:
+      case GamePackage.OBJET_LIEU__QUANTITE:
         setQuantite((Integer)newValue);
         return;
-      case GamePackage.OBJET__CONDITION_TRANSMISSION:
+      case GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION:
         setConditionTransmission((Condition)newValue);
         return;
-      case GamePackage.OBJET__CONDITION_CONSOMMATION:
+      case GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION:
         setConditionConsommation((Condition)newValue);
         return;
-      case GamePackage.OBJET__DESCRIPTION:
+      case GamePackage.OBJET_LIEU__DESCRIPTION:
         setDescription((String)newValue);
         return;
-      case GamePackage.OBJET__CONDITION_DESCRIPTION:
+      case GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION:
         setConditionDescription((Condition)newValue);
         return;
-      case GamePackage.OBJET__TRANSFORMABLE:
+      case GamePackage.OBJET_LIEU__TRANSFORMABLE:
         setTransformable((Condition)newValue);
         return;
     }
@@ -579,28 +579,28 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
   {
     switch (featureID)
     {
-      case GamePackage.OBJET__NAME:
+      case GamePackage.OBJET_LIEU__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GamePackage.OBJET__TAILLE:
+      case GamePackage.OBJET_LIEU__TAILLE:
         setTaille(TAILLE_EDEFAULT);
         return;
-      case GamePackage.OBJET__QUANTITE:
+      case GamePackage.OBJET_LIEU__QUANTITE:
         setQuantite(QUANTITE_EDEFAULT);
         return;
-      case GamePackage.OBJET__CONDITION_TRANSMISSION:
+      case GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION:
         setConditionTransmission((Condition)null);
         return;
-      case GamePackage.OBJET__CONDITION_CONSOMMATION:
+      case GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION:
         setConditionConsommation((Condition)null);
         return;
-      case GamePackage.OBJET__DESCRIPTION:
+      case GamePackage.OBJET_LIEU__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
-      case GamePackage.OBJET__CONDITION_DESCRIPTION:
+      case GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION:
         setConditionDescription((Condition)null);
         return;
-      case GamePackage.OBJET__TRANSFORMABLE:
+      case GamePackage.OBJET_LIEU__TRANSFORMABLE:
         setTransformable((Condition)null);
         return;
     }
@@ -617,21 +617,21 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
   {
     switch (featureID)
     {
-      case GamePackage.OBJET__NAME:
+      case GamePackage.OBJET_LIEU__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GamePackage.OBJET__TAILLE:
+      case GamePackage.OBJET_LIEU__TAILLE:
         return taille != TAILLE_EDEFAULT;
-      case GamePackage.OBJET__QUANTITE:
+      case GamePackage.OBJET_LIEU__QUANTITE:
         return quantite != QUANTITE_EDEFAULT;
-      case GamePackage.OBJET__CONDITION_TRANSMISSION:
+      case GamePackage.OBJET_LIEU__CONDITION_TRANSMISSION:
         return conditionTransmission != null;
-      case GamePackage.OBJET__CONDITION_CONSOMMATION:
+      case GamePackage.OBJET_LIEU__CONDITION_CONSOMMATION:
         return conditionConsommation != null;
-      case GamePackage.OBJET__DESCRIPTION:
+      case GamePackage.OBJET_LIEU__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-      case GamePackage.OBJET__CONDITION_DESCRIPTION:
+      case GamePackage.OBJET_LIEU__CONDITION_DESCRIPTION:
         return conditionDescription != null;
-      case GamePackage.OBJET__TRANSFORMABLE:
+      case GamePackage.OBJET_LIEU__TRANSFORMABLE:
         return transformable != null;
     }
     return super.eIsSet(featureID);
@@ -660,4 +660,4 @@ public class ObjetImpl extends MinimalEObjectImpl.Container implements Objet
     return result.toString();
   }
 
-} //ObjetImpl
+} //ObjetLieuImpl

@@ -4,24 +4,16 @@
 package fr.n7.game.impl;
 
 import fr.n7.game.GamePackage;
-import fr.n7.game.Objet;
+import fr.n7.game.ObjetExplorateur;
 import fr.n7.game.Sac;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,14 +52,14 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
   protected int taille = TAILLE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSacElements() <em>Sac Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getSacElements() <em>Sac Elements</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSacElements()
    * @generated
    * @ordered
    */
-  protected EList<Objet> sacElements;
+  protected ObjetExplorateur sacElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,11 +113,17 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
    * @generated
    */
   @Override
-  public EList<Objet> getSacElements()
+  public ObjetExplorateur getSacElements()
   {
-    if (sacElements == null)
+    if (sacElements != null && sacElements.eIsProxy())
     {
-      sacElements = new EObjectContainmentEList<Objet>(Objet.class, this, GamePackage.SAC__SAC_ELEMENTS);
+      InternalEObject oldSacElements = (InternalEObject)sacElements;
+      sacElements = (ObjetExplorateur)eResolveProxy(oldSacElements);
+      if (sacElements != oldSacElements)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.SAC__SAC_ELEMENTS, oldSacElements, sacElements));
+      }
     }
     return sacElements;
   }
@@ -135,15 +133,23 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public ObjetExplorateur basicGetSacElements()
   {
-    switch (featureID)
-    {
-      case GamePackage.SAC__SAC_ELEMENTS:
-        return ((InternalEList<?>)getSacElements()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return sacElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSacElements(ObjetExplorateur newSacElements)
+  {
+    ObjetExplorateur oldSacElements = sacElements;
+    sacElements = newSacElements;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.SAC__SAC_ELEMENTS, oldSacElements, sacElements));
   }
 
   /**
@@ -159,7 +165,8 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
       case GamePackage.SAC__TAILLE:
         return getTaille();
       case GamePackage.SAC__SAC_ELEMENTS:
-        return getSacElements();
+        if (resolve) return getSacElements();
+        return basicGetSacElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -169,7 +176,6 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -179,8 +185,7 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
         setTaille((Integer)newValue);
         return;
       case GamePackage.SAC__SAC_ELEMENTS:
-        getSacElements().clear();
-        getSacElements().addAll((Collection<? extends Objet>)newValue);
+        setSacElements((ObjetExplorateur)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -200,7 +205,7 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
         setTaille(TAILLE_EDEFAULT);
         return;
       case GamePackage.SAC__SAC_ELEMENTS:
-        getSacElements().clear();
+        setSacElements((ObjetExplorateur)null);
         return;
     }
     super.eUnset(featureID);
@@ -219,7 +224,7 @@ public class SacImpl extends MinimalEObjectImpl.Container implements Sac
       case GamePackage.SAC__TAILLE:
         return taille != TAILLE_EDEFAULT;
       case GamePackage.SAC__SAC_ELEMENTS:
-        return sacElements != null && !sacElements.isEmpty();
+        return sacElements != null;
     }
     return super.eIsSet(featureID);
   }

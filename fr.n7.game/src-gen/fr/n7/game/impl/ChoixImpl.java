@@ -8,21 +8,14 @@ import fr.n7.game.Choix;
 import fr.n7.game.Condition;
 import fr.n7.game.GamePackage;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,6 +25,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.impl.ChoixImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.impl.ChoixImpl#getTexte <em>Texte</em>}</li>
  *   <li>{@link fr.n7.game.impl.ChoixImpl#getListeActions <em>Liste Actions</em>}</li>
  *   <li>{@link fr.n7.game.impl.ChoixImpl#getChoixdebut <em>Choixdebut</em>}</li>
@@ -44,6 +38,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getTexte() <em>Texte</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -65,14 +79,14 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   protected String texte = TEXTE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getListeActions() <em>Liste Actions</em>}' containment reference list.
+   * The cached value of the '{@link #getListeActions() <em>Liste Actions</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getListeActions()
    * @generated
    * @ordered
    */
-  protected EList<Action> listeActions;
+  protected Action listeActions;
 
   /**
    * The default value of the '{@link #getChoixdebut() <em>Choixdebut</em>}' attribute.
@@ -161,6 +175,31 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
    * @generated
    */
   @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getTexte()
   {
     return texte;
@@ -186,13 +225,48 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
    * @generated
    */
   @Override
-  public EList<Action> getListeActions()
+  public Action getListeActions()
   {
-    if (listeActions == null)
-    {
-      listeActions = new EObjectContainmentEList<Action>(Action.class, this, GamePackage.CHOIX__LISTE_ACTIONS);
-    }
     return listeActions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetListeActions(Action newListeActions, NotificationChain msgs)
+  {
+    Action oldListeActions = listeActions;
+    listeActions = newListeActions;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__LISTE_ACTIONS, oldListeActions, newListeActions);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListeActions(Action newListeActions)
+  {
+    if (newListeActions != listeActions)
+    {
+      NotificationChain msgs = null;
+      if (listeActions != null)
+        msgs = ((InternalEObject)listeActions).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHOIX__LISTE_ACTIONS, null, msgs);
+      if (newListeActions != null)
+        msgs = ((InternalEObject)newListeActions).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHOIX__LISTE_ACTIONS, null, msgs);
+      msgs = basicSetListeActions(newListeActions, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHOIX__LISTE_ACTIONS, newListeActions, newListeActions));
   }
 
   /**
@@ -356,7 +430,7 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
     switch (featureID)
     {
       case GamePackage.CHOIX__LISTE_ACTIONS:
-        return ((InternalEList<?>)getListeActions()).basicRemove(otherEnd, msgs);
+        return basicSetListeActions(null, msgs);
       case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
         return basicSetConditonChoixDebut(null, msgs);
       case GamePackage.CHOIX__CONDITION_CHOIX_FIN:
@@ -375,6 +449,8 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   {
     switch (featureID)
     {
+      case GamePackage.CHOIX__NAME:
+        return getName();
       case GamePackage.CHOIX__TEXTE:
         return getTexte();
       case GamePackage.CHOIX__LISTE_ACTIONS:
@@ -396,18 +472,19 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case GamePackage.CHOIX__NAME:
+        setName((String)newValue);
+        return;
       case GamePackage.CHOIX__TEXTE:
         setTexte((String)newValue);
         return;
       case GamePackage.CHOIX__LISTE_ACTIONS:
-        getListeActions().clear();
-        getListeActions().addAll((Collection<? extends Action>)newValue);
+        setListeActions((Action)newValue);
         return;
       case GamePackage.CHOIX__CHOIXDEBUT:
         setChoixdebut((String)newValue);
@@ -435,11 +512,14 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   {
     switch (featureID)
     {
+      case GamePackage.CHOIX__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case GamePackage.CHOIX__TEXTE:
         setTexte(TEXTE_EDEFAULT);
         return;
       case GamePackage.CHOIX__LISTE_ACTIONS:
-        getListeActions().clear();
+        setListeActions((Action)null);
         return;
       case GamePackage.CHOIX__CHOIXDEBUT:
         setChoixdebut(CHOIXDEBUT_EDEFAULT);
@@ -467,10 +547,12 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
   {
     switch (featureID)
     {
+      case GamePackage.CHOIX__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.CHOIX__TEXTE:
         return TEXTE_EDEFAULT == null ? texte != null : !TEXTE_EDEFAULT.equals(texte);
       case GamePackage.CHOIX__LISTE_ACTIONS:
-        return listeActions != null && !listeActions.isEmpty();
+        return listeActions != null;
       case GamePackage.CHOIX__CHOIXDEBUT:
         return CHOIXDEBUT_EDEFAULT == null ? choixdebut != null : !CHOIXDEBUT_EDEFAULT.equals(choixdebut);
       case GamePackage.CHOIX__CONDITON_CHOIX_DEBUT:
@@ -494,7 +576,9 @@ public class ChoixImpl extends MinimalEObjectImpl.Container implements Choix
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (texte: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", texte: ");
     result.append(texte);
     result.append(", choixdebut: ");
     result.append(choixdebut);

@@ -3,8 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -49,15 +47,25 @@ public interface Sac extends EObject
   void setTaille(int value);
 
   /**
-   * Returns the value of the '<em><b>Sac Elements</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Objet}.
+   * Returns the value of the '<em><b>Sac Elements</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sac Elements</em>' containment reference list.
+   * @return the value of the '<em>Sac Elements</em>' reference.
+   * @see #setSacElements(ObjetExplorateur)
    * @see fr.n7.game.GamePackage#getSac_SacElements()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  EList<Objet> getSacElements();
+  ObjetExplorateur getSacElements();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Sac#getSacElements <em>Sac Elements</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sac Elements</em>' reference.
+   * @see #getSacElements()
+   * @generated
+   */
+  void setSacElements(ObjetExplorateur value);
 
 } // Sac

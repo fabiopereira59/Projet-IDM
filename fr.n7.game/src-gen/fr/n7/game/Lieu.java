@@ -3,9 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,10 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.Lieu#getType <em>Type</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getConditionDescription <em>Condition Description</em>}</li>
- *   <li>{@link fr.n7.game.Lieu#getLieuElements <em>Lieu Elements</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getPersonnes <em>Personnes</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getConnaissances <em>Connaissances</em>}</li>
+ *   <li>{@link fr.n7.game.Lieu#getObjets <em>Objets</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getDepotObjet <em>Depot Objet</em>}</li>
  *   <li>{@link fr.n7.game.Lieu#getListeChemins <em>Liste Chemins</em>}</li>
  * </ul>
@@ -28,8 +28,33 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Lieu extends EObject
+public interface Lieu extends territoireElement
 {
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * The literals are from the enumeration {@link fr.n7.game.TypeLieu}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see fr.n7.game.TypeLieu
+   * @see #setType(TypeLieu)
+   * @see fr.n7.game.GamePackage#getLieu_Type()
+   * @model
+   * @generated
+   */
+  TypeLieu getType();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see fr.n7.game.TypeLieu
+   * @see #getType()
+   * @generated
+   */
+  void setType(TypeLieu value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -97,16 +122,70 @@ public interface Lieu extends EObject
   void setConditionDescription(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Lieu Elements</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
+   * Returns the value of the '<em><b>Personnes</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Lieu Elements</em>' containment reference list.
-   * @see fr.n7.game.GamePackage#getLieu_LieuElements()
-   * @model containment="true"
+   * @return the value of the '<em>Personnes</em>' reference.
+   * @see #setPersonnes(Personne)
+   * @see fr.n7.game.GamePackage#getLieu_Personnes()
+   * @model
    * @generated
    */
-  EList<EObject> getLieuElements();
+  Personne getPersonnes();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getPersonnes <em>Personnes</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Personnes</em>' reference.
+   * @see #getPersonnes()
+   * @generated
+   */
+  void setPersonnes(Personne value);
+
+  /**
+   * Returns the value of the '<em><b>Connaissances</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Connaissances</em>' reference.
+   * @see #setConnaissances(Connaissance)
+   * @see fr.n7.game.GamePackage#getLieu_Connaissances()
+   * @model
+   * @generated
+   */
+  Connaissance getConnaissances();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getConnaissances <em>Connaissances</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Connaissances</em>' reference.
+   * @see #getConnaissances()
+   * @generated
+   */
+  void setConnaissances(Connaissance value);
+
+  /**
+   * Returns the value of the '<em><b>Objets</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Objets</em>' reference.
+   * @see #setObjets(ObjetLieu)
+   * @see fr.n7.game.GamePackage#getLieu_Objets()
+   * @model
+   * @generated
+   */
+  ObjetLieu getObjets();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getObjets <em>Objets</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Objets</em>' reference.
+   * @see #getObjets()
+   * @generated
+   */
+  void setObjets(ObjetLieu value);
 
   /**
    * Returns the value of the '<em><b>Depot Objet</b></em>' containment reference.
@@ -131,15 +210,25 @@ public interface Lieu extends EObject
   void setDepotObjet(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Liste Chemins</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Chemin}.
+   * Returns the value of the '<em><b>Liste Chemins</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Chemins</em>' containment reference list.
+   * @return the value of the '<em>Liste Chemins</em>' reference.
+   * @see #setListeChemins(Chemin)
    * @see fr.n7.game.GamePackage#getLieu_ListeChemins()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  EList<Chemin> getListeChemins();
+  Chemin getListeChemins();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Lieu#getListeChemins <em>Liste Chemins</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Liste Chemins</em>' reference.
+   * @see #getListeChemins()
+   * @generated
+   */
+  void setListeChemins(Chemin value);
 
 } // Lieu

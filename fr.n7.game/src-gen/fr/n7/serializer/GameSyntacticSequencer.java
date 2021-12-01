@@ -11,6 +11,8 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -20,20 +22,24 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GameGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Choix_ChoixdebutKeyword_4_0_q;
-	protected AbstractElementAlias match_Choix_ChoixfinKeyword_5_0_q;
-	protected AbstractElementAlias match_Objet_ConsommationKeyword_5_0_q;
-	protected AbstractElementAlias match_Objet_TransformableKeyword_7_0_q;
-	protected AbstractElementAlias match_Objet_TransmissionKeyword_4_0_q;
+	protected AbstractElementAlias match_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__;
+	protected AbstractElementAlias match_Choix_ChoixdebutKeyword_5_0_q;
+	protected AbstractElementAlias match_Choix_ChoixfinKeyword_6_0_q;
+	protected AbstractElementAlias match_ObjetExplorateur_TransformableKeyword_4_0_q;
+	protected AbstractElementAlias match_ObjetLieu_ConsommationKeyword_4_0_q;
+	protected AbstractElementAlias match_ObjetLieu_TransformableKeyword_6_0_q;
+	protected AbstractElementAlias match_ObjetLieu_TransmissionKeyword_3_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (GameGrammarAccess) access;
-		match_Choix_ChoixdebutKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixdebutKeyword_4_0());
-		match_Choix_ChoixfinKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixfinKeyword_5_0());
-		match_Objet_ConsommationKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getObjetAccess().getConsommationKeyword_5_0());
-		match_Objet_TransformableKeyword_7_0_q = new TokenAlias(false, true, grammarAccess.getObjetAccess().getTransformableKeyword_7_0());
-		match_Objet_TransmissionKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getObjetAccess().getTransmissionKeyword_4_0());
+		match_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getCheminsAccess().getCheminsKeyword_0()), new TokenAlias(false, false, grammarAccess.getCheminsAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getCheminsAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getConnaissancesKeyword_0()), new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getObjetsEKeyword_0()), new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getObjetsLKeyword_0()), new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getRightCurlyBracketKeyword_3())));
+		match_Choix_ChoixdebutKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixdebutKeyword_5_0());
+		match_Choix_ChoixfinKeyword_6_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixfinKeyword_6_0());
+		match_ObjetExplorateur_TransformableKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getObjetExplorateurAccess().getTransformableKeyword_4_0());
+		match_ObjetLieu_ConsommationKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getObjetLieuAccess().getConsommationKeyword_4_0());
+		match_ObjetLieu_TransformableKeyword_6_0_q = new TokenAlias(false, true, grammarAccess.getObjetLieuAccess().getTransformableKeyword_6_0());
+		match_ObjetLieu_TransmissionKeyword_3_0_q = new TokenAlias(false, true, grammarAccess.getObjetLieuAccess().getTransmissionKeyword_3_0());
 	}
 	
 	@Override
@@ -48,29 +54,44 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Choix_ChoixdebutKeyword_4_0_q.equals(syntax))
-				emit_Choix_ChoixdebutKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Choix_ChoixfinKeyword_5_0_q.equals(syntax))
-				emit_Choix_ChoixfinKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Objet_ConsommationKeyword_5_0_q.equals(syntax))
-				emit_Objet_ConsommationKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Objet_TransformableKeyword_7_0_q.equals(syntax))
-				emit_Objet_TransformableKeyword_7_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Objet_TransmissionKeyword_4_0_q.equals(syntax))
-				emit_Objet_TransmissionKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__.equals(syntax))
+				emit_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Choix_ChoixdebutKeyword_5_0_q.equals(syntax))
+				emit_Choix_ChoixdebutKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Choix_ChoixfinKeyword_6_0_q.equals(syntax))
+				emit_Choix_ChoixfinKeyword_6_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ObjetExplorateur_TransformableKeyword_4_0_q.equals(syntax))
+				emit_ObjetExplorateur_TransformableKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ObjetLieu_ConsommationKeyword_4_0_q.equals(syntax))
+				emit_ObjetLieu_ConsommationKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ObjetLieu_TransformableKeyword_6_0_q.equals(syntax))
+				emit_ObjetLieu_TransformableKeyword_6_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ObjetLieu_TransmissionKeyword_3_0_q.equals(syntax))
+				emit_ObjetLieu_TransmissionKeyword_3_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Ambiguous syntax:
+	 *     ('objetsE' '{' '}') | ('objetsL' '{' '}') | ('connaissances' '{' '}') | ('chemins' '{' '}')
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 */
+	protected void emit_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
 	 *     'choixdebut'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     listeActions+=Action (ambiguity) 'choixfin' choixfin=STRING
-	 *     listeActions+=Action (ambiguity) 'choixfin'? '}' (rule end)
+	 *     listeActions=Action (ambiguity) 'choixfin' choixfin=STRING
+	 *     listeActions=Action (ambiguity) 'choixfin'? '}' (rule end)
 	 */
-	protected void emit_Choix_ChoixdebutKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Choix_ChoixdebutKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -80,9 +101,22 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     conditonChoixDebut=Condition (ambiguity) '}' (rule end)
-	 *     listeActions+=Action 'choixdebut'? (ambiguity) '}' (rule end)
+	 *     listeActions=Action 'choixdebut'? (ambiguity) '}' (rule end)
 	 */
-	protected void emit_Choix_ChoixfinKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Choix_ChoixfinKeyword_6_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'transformable'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     conditionDescription=Condition (ambiguity) (rule end)
+	 *     description=STRING (ambiguity) (rule end)
+	 *     quantite=INT (ambiguity) (rule end)
+	 */
+	protected void emit_ObjetExplorateur_TransformableKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -98,7 +132,7 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     quantite=INT 'transmission'? (ambiguity) 'transformable' transformable=Condition
 	 *     quantite=INT 'transmission'? (ambiguity) 'transformable'? (rule end)
 	 */
-	protected void emit_Objet_ConsommationKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ObjetLieu_ConsommationKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -113,7 +147,7 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     description=STRING (ambiguity) (rule end)
 	 *     quantite=INT 'transmission'? 'consommation'? (ambiguity) (rule end)
 	 */
-	protected void emit_Objet_TransformableKeyword_7_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ObjetLieu_TransformableKeyword_6_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -127,7 +161,7 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     quantite=INT (ambiguity) 'consommation'? 'transformable' transformable=Condition
 	 *     quantite=INT (ambiguity) 'consommation'? 'transformable'? (rule end)
 	 */
-	protected void emit_Objet_TransmissionKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ObjetLieu_TransmissionKeyword_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

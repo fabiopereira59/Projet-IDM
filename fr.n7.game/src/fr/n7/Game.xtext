@@ -3,10 +3,10 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate game "http://www.n7.fr/Game"
 
 Game : 
-	'Game'
+	'territoire'
 	name=ID
-	'{'
-		gameElements+=gameElement
+	'{'	
+		territoireElements+=territoireElement+
 	'}';
 
 terminal BOOL returns ecore::EBoolean:
@@ -17,27 +17,16 @@ terminal COND returns ecore::EBoolean:
 	(ID(('&')ID)?)('|'ID(('&')(ID))?)+
 ;
 
-gameElement :
-	Territoire;
-
-Territoire :
-	'territoire'
-	name=ID
-	'{'
-		territoireElements+=Explorateur
-		territoireElements+=LieuDebut
-		territoireElements+=LieuFin+
-		territoireElements+=Lieu*
-	'}'
-;
+territoireElement :
+	Explorateur | Lieu | ObjetsExplorateur | ObjetsLieu | Connaissances | Personnes | Chemins;
 	
 Explorateur :
 	'explorateur'
 	name=ID
 	'{'
-		explorateurElements+=Sac
-		explorateurElements+=Connaissances?
-		explorateurElements+=Lieu?
+		sac = Sac
+		'connaissances' connaissances = [Connaissance]*
+		'position' position = [Lieu]
 	'}'
 ;
 
@@ -45,52 +34,33 @@ Sac :
 	'sac'
 	taille=INT
 	'{'
-		sacElements+=Objet*
+		sacElements = [ObjetExplorateur]*
 	'}'
+;
+
+enum TypeLieu :
+	LieuDebut = 'debut'
+	| LieuFin = 'fin'
+	| LieuIntermediaire = 'intermediaire'
 ;
 
 Lieu :
-	'lieu'
+	type=TypeLieu
 	name=ID
 	'{'
 		('description' description=STRING (conditionDescription=Condition)?)? //E39
-		lieuElements+=Personnes?
-		lieuElements+=Connaissances?
-		lieuElements+=Objets?
-		'depotO' (depotObjet=Condition)?
-		listeChemins+=Chemin+
-	'}'
-;
-
-LieuDebut : 
-	'lieudebut'
-	name=ID
-	'{'
-		('description' description=STRING (conditionDescription=Condition)?)? //E39
-		lieudebutElements+=Personnes?
-		lieudebutElements+=Connaissances?
-		lieudebutElements+=Objets?
-		'depotO' (depotObjet=Condition)?
-		listeChemins+=Chemin+
-	'}'
-;
-
-LieuFin : 
-	'lieufin'
-	name=ID
-	'{'
-		('description' description=STRING (conditionDescription=Condition)?)? //E39 //Vu que c'est un lieu de fin, est-ce qu'on arrete le jeu direct ?
-		lieufinElements+=Personnes?
-		lieufinElements+=Connaissances?
-		lieufinElements+=Objets?
-		'depotO'(depotObjet=Condition)?
+		personnes = [Personne]*
+		connaissances = [Connaissance]*
+		objets = [ObjetLieu]*
+		('depotO' (depotObjet=Condition))?
+		listeChemins = [Chemin]*
 	'}'
 ;
 
 Personnes :
 	'personnes'
 	'{'
-		listePersonne+=Personne*
+		listePersonnes = Personne+
 	'}'
 ;
 
@@ -100,7 +70,7 @@ Personne :
 	'{'
 		('visible' visible=BOOL)?
 		('obligatoire' obligatoire=BOOL)?
-		personneElements+=Interaction
+		personneElements=Interaction
 	'}'
 ;
 
@@ -109,7 +79,7 @@ Interaction :
 	name=ID
 	'{'
 		'texte' texte=STRING
-		interactionElements+=Choix* //E29
+		interactionElements=Choix* //E29
 	'}'
 ;
 
@@ -118,7 +88,7 @@ Choix :
 	name=ID
 	texte=STRING
 	'{'
-		listeActions+=Action+ //E31
+		listeActions=Action+ //E31
 		('choixdebut' (choixdebut=STRING conditonChoixDebut=Condition)?)? //E30
 		('choixfin' (choixfin=STRING conditionChoixFin=Condition)?)? //E34
 	'}'
@@ -128,18 +98,25 @@ Action :
 	'action'
 	'{'
 		(conditionAction=Condition)? //E32 et E35
-		listeChoix+=[Choix]* //E35
-		listeConnaissances+=Connaissance* //E36
-		listeObjets+=Objet* //E36
+		listeChoix=[Choix]* //E35
+		listeConnaissances=Connaissances? //E36
+		listeObjets=[ObjetLieu]* //E36
 		'attributionC' attributionConnaissance=Condition //E37
 		('attributionO' attributionObjet=Condition)? //E37
-		listeObjetsConsommes+=Objet* //E38
+		listeObjetsConsommes=ObjetExplorateur* //E38
 		('consommationO' consommationObjet=Condition)? //E38
 	'}'
 ;
 
-Objet :
-	'objet'
+ObjetExplorateur :
+	name=ID
+	taille=INT
+	quantite=INT
+	('description' description=STRING (conditionDescription=Condition)?)? //E39
+	('transformable' (transformable=Condition)?)? //E40
+;
+
+ObjetLieu :
 	name=ID
 	taille=INT
 	quantite=INT
@@ -149,12 +126,20 @@ Objet :
 	('transformable' (transformable=Condition)?)? //E40
 ;
 
-Objets : 
-	'objets'
+ObjetsExplorateur : 
+	'objetsE'
 	'{'
-		listeObjets+=Objet*
+		listeObjets=ObjetExplorateur*
 	'}'
 ;
+
+ObjetsLieu : 
+	'objetsL'
+	'{'
+		listeObjets=ObjetLieu*
+	'}'
+;
+
 
 Connaissances :
 	'connaissances'
@@ -164,7 +149,6 @@ Connaissances :
 ;
 
 Connaissance :
-	'connaissance'
 	name=ID
 	('description' description=STRING (conditionConnaissance=Condition)?)? //E39
 ;
@@ -177,14 +161,21 @@ Condition :
 	condition=COND
 ;
 
+Chemins :
+	'chemins' 
+	'{'
+		listeChemins = Chemin*
+	'}'
+;
+
 Chemin :
 	'chemin'
 	'description' description=STRING (conditionDescription=Condition)? //E39
-	'destination' destination=Lieu | LieuDebut | LieuFin
+	'destination' destination=Lieu
 	('obligatoire' obligatoire=Condition)?
 	('visible' visible=Condition)?
 	('ouvert' ouvert=Condition)?
-	listeConnaissances+=Connaissance*
-	listeObjets+=Objet*
-	listeObjetsConsommes+=Objet*
+	listeConnaissances=Connaissances?
+	listeObjets=ObjetsLieu?
+	listeObjetsConsommes=ObjetsExplorateur?
 ;

@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -76,9 +77,9 @@ ruleGame returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Game'
+		otherlv_0='territoire'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getGameAccess().getGameKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getGameAccess().getTerritoireKeyword_0());
 		}
 		(
 			(
@@ -105,22 +106,22 @@ ruleGame returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getGameAccess().getGameElementsGameElementParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getGameAccess().getTerritoireElementsTerritoireElementParserRuleCall_3_0());
 				}
-				lv_gameElements_3_0=rulegameElement
+				lv_territoireElements_3_0=ruleterritoireElement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getGameRule());
 					}
 					add(
 						$current,
-						"gameElements",
-						lv_gameElements_3_0,
-						"fr.n7.Game.gameElement");
+						"territoireElements",
+						lv_territoireElements_3_0,
+						"fr.n7.Game.territoireElement");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
+		)+
 		otherlv_4='}'
 		{
 			newLeafNode(otherlv_4, grammarAccess.getGameAccess().getRightCurlyBracketKeyword_4());
@@ -128,40 +129,15 @@ ruleGame returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRulegameElement
-entryRulegameElement returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getGameElementRule()); }
-	iv_rulegameElement=rulegameElement
-	{ $current=$iv_rulegameElement.current; }
+// Entry rule entryRuleterritoireElement
+entryRuleterritoireElement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTerritoireElementRule()); }
+	iv_ruleterritoireElement=ruleterritoireElement
+	{ $current=$iv_ruleterritoireElement.current; }
 	EOF;
 
-// Rule gameElement
-rulegameElement returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	{
-		newCompositeNode(grammarAccess.getGameElementAccess().getTerritoireParserRuleCall());
-	}
-	this_Territoire_0=ruleTerritoire
-	{
-		$current = $this_Territoire_0.current;
-		afterParserOrEnumRuleCall();
-	}
-;
-
-// Entry rule entryRuleTerritoire
-entryRuleTerritoire returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTerritoireRule()); }
-	iv_ruleTerritoire=ruleTerritoire
-	{ $current=$iv_ruleTerritoire.current; }
-	EOF;
-
-// Rule Territoire
-ruleTerritoire returns [EObject current=null]
+// Rule territoireElement
+ruleterritoireElement returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -169,111 +145,67 @@ ruleTerritoire returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='territoire'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getTerritoireAccess().getTerritoireKeyword_0());
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getExplorateurParserRuleCall_0());
 		}
-		(
-			(
-				lv_name_1_0=RULE_ID
-				{
-					newLeafNode(lv_name_1_0, grammarAccess.getTerritoireAccess().getNameIDTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTerritoireRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-		otherlv_2='{'
+		this_Explorateur_0=ruleExplorateur
 		{
-			newLeafNode(otherlv_2, grammarAccess.getTerritoireAccess().getLeftCurlyBracketKeyword_2());
+			$current = $this_Explorateur_0.current;
+			afterParserOrEnumRuleCall();
 		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTerritoireAccess().getTerritoireElementsExplorateurParserRuleCall_3_0());
-				}
-				lv_territoireElements_3_0=ruleExplorateur
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTerritoireRule());
-					}
-					add(
-						$current,
-						"territoireElements",
-						lv_territoireElements_3_0,
-						"fr.n7.Game.Explorateur");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTerritoireAccess().getTerritoireElementsLieuDebutParserRuleCall_4_0());
-				}
-				lv_territoireElements_4_0=ruleLieuDebut
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTerritoireRule());
-					}
-					add(
-						$current,
-						"territoireElements",
-						lv_territoireElements_4_0,
-						"fr.n7.Game.LieuDebut");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTerritoireAccess().getTerritoireElementsLieuFinParserRuleCall_5_0());
-				}
-				lv_territoireElements_5_0=ruleLieuFin
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTerritoireRule());
-					}
-					add(
-						$current,
-						"territoireElements",
-						lv_territoireElements_5_0,
-						"fr.n7.Game.LieuFin");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)+
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getTerritoireAccess().getTerritoireElementsLieuParserRuleCall_6_0());
-				}
-				lv_territoireElements_6_0=ruleLieu
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTerritoireRule());
-					}
-					add(
-						$current,
-						"territoireElements",
-						lv_territoireElements_6_0,
-						"fr.n7.Game.Lieu");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-		otherlv_7='}'
+		    |
 		{
-			newLeafNode(otherlv_7, grammarAccess.getTerritoireAccess().getRightCurlyBracketKeyword_7());
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getLieuParserRuleCall_1());
+		}
+		this_Lieu_1=ruleLieu
+		{
+			$current = $this_Lieu_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getObjetsExplorateurParserRuleCall_2());
+		}
+		this_ObjetsExplorateur_2=ruleObjetsExplorateur
+		{
+			$current = $this_ObjetsExplorateur_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getObjetsLieuParserRuleCall_3());
+		}
+		this_ObjetsLieu_3=ruleObjetsLieu
+		{
+			$current = $this_ObjetsLieu_3.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getConnaissancesParserRuleCall_4());
+		}
+		this_Connaissances_4=ruleConnaissances
+		{
+			$current = $this_Connaissances_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getPersonnesParserRuleCall_5());
+		}
+		this_Personnes_5=rulePersonnes
+		{
+			$current = $this_Personnes_5.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTerritoireElementAccess().getCheminsParserRuleCall_6());
+		}
+		this_Chemins_6=ruleChemins
+		{
+			$current = $this_Chemins_6.current;
+			afterParserOrEnumRuleCall();
 		}
 	)
 ;
@@ -323,63 +255,59 @@ ruleExplorateur returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getExplorateurAccess().getExplorateurElementsSacParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getExplorateurAccess().getSacSacParserRuleCall_3_0());
 				}
-				lv_explorateurElements_3_0=ruleSac
+				lv_sac_3_0=ruleSac
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getExplorateurRule());
 					}
-					add(
+					set(
 						$current,
-						"explorateurElements",
-						lv_explorateurElements_3_0,
+						"sac",
+						lv_sac_3_0,
 						"fr.n7.Game.Sac");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getExplorateurAccess().getExplorateurElementsConnaissancesParserRuleCall_4_0());
-				}
-				lv_explorateurElements_4_0=ruleConnaissances
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getExplorateurRule());
-					}
-					add(
-						$current,
-						"explorateurElements",
-						lv_explorateurElements_4_0,
-						"fr.n7.Game.Connaissances");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getExplorateurAccess().getExplorateurElementsLieuParserRuleCall_5_0());
-				}
-				lv_explorateurElements_5_0=ruleLieu
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getExplorateurRule());
-					}
-					add(
-						$current,
-						"explorateurElements",
-						lv_explorateurElements_5_0,
-						"fr.n7.Game.Lieu");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		otherlv_6='}'
+		otherlv_4='connaissances'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getExplorateurAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_4, grammarAccess.getExplorateurAccess().getConnaissancesKeyword_4());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExplorateurRule());
+					}
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getExplorateurAccess().getConnaissancesConnaissanceCrossReference_5_0());
+				}
+			)
+		)*
+		otherlv_6='position'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getExplorateurAccess().getPositionKeyword_6());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExplorateurRule());
+					}
+				}
+				otherlv_7=RULE_ID
+				{
+					newLeafNode(otherlv_7, grammarAccess.getExplorateurAccess().getPositionLieuCrossReference_7_0());
+				}
+			)
+		)
+		otherlv_8='}'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getExplorateurAccess().getRightCurlyBracketKeyword_8());
 		}
 	)
 ;
@@ -429,19 +357,13 @@ ruleSac returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSacAccess().getSacElementsObjetParserRuleCall_3_0());
-				}
-				lv_sacElements_3_0=ruleObjet
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSacRule());
+						$current = createModelElement(grammarAccess.getSacRule());
 					}
-					add(
-						$current,
-						"sacElements",
-						lv_sacElements_3_0,
-						"fr.n7.Game.Objet");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getSacAccess().getSacElementsObjetExplorateurCrossReference_3_0());
 				}
 			)
 		)*
@@ -468,10 +390,25 @@ ruleLieu returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='lieu'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getLieuAccess().getLieuKeyword_0());
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getLieuAccess().getTypeTypeLieuEnumRuleCall_0_0());
+				}
+				lv_type_0_0=ruleTypeLieu
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getLieuRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_0_0,
+						"fr.n7.Game.TypeLieu");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		(
 			(
 				lv_name_1_0=RULE_ID
@@ -540,468 +477,83 @@ ruleLieu returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getLieuAccess().getLieuElementsPersonnesParserRuleCall_4_0());
-				}
-				lv_lieuElements_6_0=rulePersonnes
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuRule());
+						$current = createModelElement(grammarAccess.getLieuRule());
 					}
-					add(
-						$current,
-						"lieuElements",
-						lv_lieuElements_6_0,
-						"fr.n7.Game.Personnes");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_6=RULE_ID
+				{
+					newLeafNode(otherlv_6, grammarAccess.getLieuAccess().getPersonnesPersonneCrossReference_4_0());
 				}
 			)
-		)?
+		)*
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getLieuAccess().getLieuElementsConnaissancesParserRuleCall_5_0());
-				}
-				lv_lieuElements_7_0=ruleConnaissances
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuRule());
+						$current = createModelElement(grammarAccess.getLieuRule());
 					}
-					add(
-						$current,
-						"lieuElements",
-						lv_lieuElements_7_0,
-						"fr.n7.Game.Connaissances");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_7=RULE_ID
+				{
+					newLeafNode(otherlv_7, grammarAccess.getLieuAccess().getConnaissancesConnaissanceCrossReference_5_0());
 				}
 			)
-		)?
+		)*
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getLieuAccess().getLieuElementsObjetsParserRuleCall_6_0());
-				}
-				lv_lieuElements_8_0=ruleObjets
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuRule());
+						$current = createModelElement(grammarAccess.getLieuRule());
 					}
-					add(
-						$current,
-						"lieuElements",
-						lv_lieuElements_8_0,
-						"fr.n7.Game.Objets");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_8=RULE_ID
+				{
+					newLeafNode(otherlv_8, grammarAccess.getLieuAccess().getObjetsObjetLieuCrossReference_6_0());
 				}
 			)
-		)?
-		otherlv_9='depotO'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getLieuAccess().getDepotOKeyword_7());
-		}
+		)*
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuAccess().getDepotObjetConditionParserRuleCall_8_0());
-				}
-				lv_depotObjet_10_0=ruleCondition
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuRule());
-					}
-					set(
-						$current,
-						"depotObjet",
-						lv_depotObjet_10_0,
-						"fr.n7.Game.Condition");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuAccess().getListeCheminsCheminParserRuleCall_9_0());
-				}
-				lv_listeChemins_11_0=ruleChemin
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuRule());
-					}
-					add(
-						$current,
-						"listeChemins",
-						lv_listeChemins_11_0,
-						"fr.n7.Game.Chemin");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)+
-		otherlv_12='}'
-		{
-			newLeafNode(otherlv_12, grammarAccess.getLieuAccess().getRightCurlyBracketKeyword_10());
-		}
-	)
-;
-
-// Entry rule entryRuleLieuDebut
-entryRuleLieuDebut returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getLieuDebutRule()); }
-	iv_ruleLieuDebut=ruleLieuDebut
-	{ $current=$iv_ruleLieuDebut.current; }
-	EOF;
-
-// Rule LieuDebut
-ruleLieuDebut returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='lieudebut'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getLieuDebutAccess().getLieudebutKeyword_0());
-		}
-		(
-			(
-				lv_name_1_0=RULE_ID
-				{
-					newLeafNode(lv_name_1_0, grammarAccess.getLieuDebutAccess().getNameIDTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getLieuDebutRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getLieuDebutAccess().getLeftCurlyBracketKeyword_2());
-		}
-		(
-			otherlv_3='description'
+			otherlv_9='depotO'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getLieuDebutAccess().getDescriptionKeyword_3_0());
+				newLeafNode(otherlv_9, grammarAccess.getLieuAccess().getDepotOKeyword_7_0());
 			}
 			(
 				(
-					lv_description_4_0=RULE_STRING
 					{
-						newLeafNode(lv_description_4_0, grammarAccess.getLieuDebutAccess().getDescriptionSTRINGTerminalRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getLieuAccess().getDepotObjetConditionParserRuleCall_7_1_0());
 					}
+					lv_depotObjet_10_0=ruleCondition
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLieuDebutRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"description",
-							lv_description_4_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getLieuDebutAccess().getConditionDescriptionConditionParserRuleCall_3_2_0());
-					}
-					lv_conditionDescription_5_0=ruleCondition
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLieuDebutRule());
+							$current = createModelElementForParent(grammarAccess.getLieuRule());
 						}
 						set(
 							$current,
-							"conditionDescription",
-							lv_conditionDescription_5_0,
+							"depotObjet",
+							lv_depotObjet_10_0,
 							"fr.n7.Game.Condition");
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)?
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuDebutAccess().getLieudebutElementsPersonnesParserRuleCall_4_0());
-				}
-				lv_lieudebutElements_6_0=rulePersonnes
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuDebutRule());
-					}
-					add(
-						$current,
-						"lieudebutElements",
-						lv_lieudebutElements_6_0,
-						"fr.n7.Game.Personnes");
-					afterParserOrEnumRuleCall();
-				}
 			)
 		)?
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getLieuDebutAccess().getLieudebutElementsConnaissancesParserRuleCall_5_0());
-				}
-				lv_lieudebutElements_7_0=ruleConnaissances
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuDebutRule());
+						$current = createModelElement(grammarAccess.getLieuRule());
 					}
-					add(
-						$current,
-						"lieudebutElements",
-						lv_lieudebutElements_7_0,
-						"fr.n7.Game.Connaissances");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_11=RULE_ID
+				{
+					newLeafNode(otherlv_11, grammarAccess.getLieuAccess().getListeCheminsCheminCrossReference_8_0());
 				}
 			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuDebutAccess().getLieudebutElementsObjetsParserRuleCall_6_0());
-				}
-				lv_lieudebutElements_8_0=ruleObjets
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuDebutRule());
-					}
-					add(
-						$current,
-						"lieudebutElements",
-						lv_lieudebutElements_8_0,
-						"fr.n7.Game.Objets");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		otherlv_9='depotO'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getLieuDebutAccess().getDepotOKeyword_7());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuDebutAccess().getDepotObjetConditionParserRuleCall_8_0());
-				}
-				lv_depotObjet_10_0=ruleCondition
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuDebutRule());
-					}
-					set(
-						$current,
-						"depotObjet",
-						lv_depotObjet_10_0,
-						"fr.n7.Game.Condition");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuDebutAccess().getListeCheminsCheminParserRuleCall_9_0());
-				}
-				lv_listeChemins_11_0=ruleChemin
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuDebutRule());
-					}
-					add(
-						$current,
-						"listeChemins",
-						lv_listeChemins_11_0,
-						"fr.n7.Game.Chemin");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)+
+		)*
 		otherlv_12='}'
 		{
-			newLeafNode(otherlv_12, grammarAccess.getLieuDebutAccess().getRightCurlyBracketKeyword_10());
-		}
-	)
-;
-
-// Entry rule entryRuleLieuFin
-entryRuleLieuFin returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getLieuFinRule()); }
-	iv_ruleLieuFin=ruleLieuFin
-	{ $current=$iv_ruleLieuFin.current; }
-	EOF;
-
-// Rule LieuFin
-ruleLieuFin returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='lieufin'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getLieuFinAccess().getLieufinKeyword_0());
-		}
-		(
-			(
-				lv_name_1_0=RULE_ID
-				{
-					newLeafNode(lv_name_1_0, grammarAccess.getLieuFinAccess().getNameIDTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getLieuFinRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getLieuFinAccess().getLeftCurlyBracketKeyword_2());
-		}
-		(
-			otherlv_3='description'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getLieuFinAccess().getDescriptionKeyword_3_0());
-			}
-			(
-				(
-					lv_description_4_0=RULE_STRING
-					{
-						newLeafNode(lv_description_4_0, grammarAccess.getLieuFinAccess().getDescriptionSTRINGTerminalRuleCall_3_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getLieuFinRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"description",
-							lv_description_4_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getLieuFinAccess().getConditionDescriptionConditionParserRuleCall_3_2_0());
-					}
-					lv_conditionDescription_5_0=ruleCondition
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getLieuFinRule());
-						}
-						set(
-							$current,
-							"conditionDescription",
-							lv_conditionDescription_5_0,
-							"fr.n7.Game.Condition");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)?
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuFinAccess().getLieufinElementsPersonnesParserRuleCall_4_0());
-				}
-				lv_lieufinElements_6_0=rulePersonnes
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuFinRule());
-					}
-					add(
-						$current,
-						"lieufinElements",
-						lv_lieufinElements_6_0,
-						"fr.n7.Game.Personnes");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuFinAccess().getLieufinElementsConnaissancesParserRuleCall_5_0());
-				}
-				lv_lieufinElements_7_0=ruleConnaissances
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuFinRule());
-					}
-					add(
-						$current,
-						"lieufinElements",
-						lv_lieufinElements_7_0,
-						"fr.n7.Game.Connaissances");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuFinAccess().getLieufinElementsObjetsParserRuleCall_6_0());
-				}
-				lv_lieufinElements_8_0=ruleObjets
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuFinRule());
-					}
-					add(
-						$current,
-						"lieufinElements",
-						lv_lieufinElements_8_0,
-						"fr.n7.Game.Objets");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		otherlv_9='depotO'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getLieuFinAccess().getDepotOKeyword_7());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLieuFinAccess().getDepotObjetConditionParserRuleCall_8_0());
-				}
-				lv_depotObjet_10_0=ruleCondition
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLieuFinRule());
-					}
-					set(
-						$current,
-						"depotObjet",
-						lv_depotObjet_10_0,
-						"fr.n7.Game.Condition");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		otherlv_11='}'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getLieuFinAccess().getRightCurlyBracketKeyword_9());
+			newLeafNode(otherlv_12, grammarAccess.getLieuAccess().getRightCurlyBracketKeyword_9());
 		}
 	)
 ;
@@ -1033,22 +585,22 @@ rulePersonnes returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPersonnesAccess().getListePersonnePersonneParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getPersonnesAccess().getListePersonnesPersonneParserRuleCall_2_0());
 				}
-				lv_listePersonne_2_0=rulePersonne
+				lv_listePersonnes_2_0=rulePersonne
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPersonnesRule());
 					}
-					add(
+					set(
 						$current,
-						"listePersonne",
-						lv_listePersonne_2_0,
+						"listePersonnes",
+						lv_listePersonnes_2_0,
 						"fr.n7.Game.Personne");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)*
+		)+
 		otherlv_3='}'
 		{
 			newLeafNode(otherlv_3, grammarAccess.getPersonnesAccess().getRightCurlyBracketKeyword_3());
@@ -1156,7 +708,7 @@ rulePersonne returns [EObject current=null]
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPersonneRule());
 					}
-					add(
+					set(
 						$current,
 						"personneElements",
 						lv_personneElements_7_0,
@@ -1246,7 +798,7 @@ ruleInteraction returns [EObject current=null]
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getInteractionRule());
 					}
-					add(
+					set(
 						$current,
 						"interactionElements",
 						lv_interactionElements_5_0,
@@ -1284,9 +836,27 @@ ruleChoix returns [EObject current=null]
 		}
 		(
 			(
-				lv_texte_1_0=RULE_STRING
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_texte_1_0, grammarAccess.getChoixAccess().getTexteSTRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getChoixAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getChoixRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				lv_texte_2_0=RULE_STRING
+				{
+					newLeafNode(lv_texte_2_0, grammarAccess.getChoixAccess().getTexteSTRINGTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1295,45 +865,45 @@ ruleChoix returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"texte",
-						lv_texte_1_0,
+						lv_texte_2_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_2='{'
+		otherlv_3='{'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getChoixAccess().getLeftCurlyBracketKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getChoixAccess().getLeftCurlyBracketKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getChoixAccess().getListeActionsActionParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getChoixAccess().getListeActionsActionParserRuleCall_4_0());
 				}
-				lv_listeActions_3_0=ruleAction
+				lv_listeActions_4_0=ruleAction
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getChoixRule());
 					}
-					add(
+					set(
 						$current,
 						"listeActions",
-						lv_listeActions_3_0,
+						lv_listeActions_4_0,
 						"fr.n7.Game.Action");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
 		(
-			otherlv_4='choixdebut'
+			otherlv_5='choixdebut'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getChoixAccess().getChoixdebutKeyword_4_0());
+				newLeafNode(otherlv_5, grammarAccess.getChoixAccess().getChoixdebutKeyword_5_0());
 			}
 			(
 				(
 					(
-						lv_choixdebut_5_0=RULE_STRING
+						lv_choixdebut_6_0=RULE_STRING
 						{
-							newLeafNode(lv_choixdebut_5_0, grammarAccess.getChoixAccess().getChoixdebutSTRINGTerminalRuleCall_4_1_0_0());
+							newLeafNode(lv_choixdebut_6_0, grammarAccess.getChoixAccess().getChoixdebutSTRINGTerminalRuleCall_5_1_0_0());
 						}
 						{
 							if ($current==null) {
@@ -1342,7 +912,7 @@ ruleChoix returns [EObject current=null]
 							setWithLastConsumed(
 								$current,
 								"choixdebut",
-								lv_choixdebut_5_0,
+								lv_choixdebut_6_0,
 								"org.eclipse.xtext.common.Terminals.STRING");
 						}
 					)
@@ -1350,9 +920,9 @@ ruleChoix returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getChoixAccess().getConditonChoixDebutConditionParserRuleCall_4_1_1_0());
+							newCompositeNode(grammarAccess.getChoixAccess().getConditonChoixDebutConditionParserRuleCall_5_1_1_0());
 						}
-						lv_conditonChoixDebut_6_0=ruleCondition
+						lv_conditonChoixDebut_7_0=ruleCondition
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getChoixRule());
@@ -1360,7 +930,7 @@ ruleChoix returns [EObject current=null]
 							set(
 								$current,
 								"conditonChoixDebut",
-								lv_conditonChoixDebut_6_0,
+								lv_conditonChoixDebut_7_0,
 								"fr.n7.Game.Condition");
 							afterParserOrEnumRuleCall();
 						}
@@ -1369,16 +939,16 @@ ruleChoix returns [EObject current=null]
 			)?
 		)?
 		(
-			otherlv_7='choixfin'
+			otherlv_8='choixfin'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getChoixAccess().getChoixfinKeyword_5_0());
+				newLeafNode(otherlv_8, grammarAccess.getChoixAccess().getChoixfinKeyword_6_0());
 			}
 			(
 				(
 					(
-						lv_choixfin_8_0=RULE_STRING
+						lv_choixfin_9_0=RULE_STRING
 						{
-							newLeafNode(lv_choixfin_8_0, grammarAccess.getChoixAccess().getChoixfinSTRINGTerminalRuleCall_5_1_0_0());
+							newLeafNode(lv_choixfin_9_0, grammarAccess.getChoixAccess().getChoixfinSTRINGTerminalRuleCall_6_1_0_0());
 						}
 						{
 							if ($current==null) {
@@ -1387,7 +957,7 @@ ruleChoix returns [EObject current=null]
 							setWithLastConsumed(
 								$current,
 								"choixfin",
-								lv_choixfin_8_0,
+								lv_choixfin_9_0,
 								"org.eclipse.xtext.common.Terminals.STRING");
 						}
 					)
@@ -1395,9 +965,9 @@ ruleChoix returns [EObject current=null]
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getChoixAccess().getConditionChoixFinConditionParserRuleCall_5_1_1_0());
+							newCompositeNode(grammarAccess.getChoixAccess().getConditionChoixFinConditionParserRuleCall_6_1_1_0());
 						}
-						lv_conditionChoixFin_9_0=ruleCondition
+						lv_conditionChoixFin_10_0=ruleCondition
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getChoixRule());
@@ -1405,7 +975,7 @@ ruleChoix returns [EObject current=null]
 							set(
 								$current,
 								"conditionChoixFin",
-								lv_conditionChoixFin_9_0,
+								lv_conditionChoixFin_10_0,
 								"fr.n7.Game.Condition");
 							afterParserOrEnumRuleCall();
 						}
@@ -1413,9 +983,9 @@ ruleChoix returns [EObject current=null]
 				)
 			)?
 		)?
-		otherlv_10='}'
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getChoixAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_11, grammarAccess.getChoixAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -1466,57 +1036,45 @@ ruleAction returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getActionAccess().getListeChoixChoixParserRuleCall_3_0());
-				}
-				lv_listeChoix_3_0=ruleChoix
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getActionRule());
+						$current = createModelElement(grammarAccess.getActionRule());
 					}
-					add(
-						$current,
-						"listeChoix",
-						lv_listeChoix_3_0,
-						"fr.n7.Game.Choix");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getActionAccess().getListeChoixChoixCrossReference_3_0());
 				}
 			)
 		)*
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getActionAccess().getListeConnaissancesConnaissanceParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getActionAccess().getListeConnaissancesConnaissancesParserRuleCall_4_0());
 				}
-				lv_listeConnaissances_4_0=ruleConnaissance
+				lv_listeConnaissances_4_0=ruleConnaissances
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getActionRule());
 					}
-					add(
+					set(
 						$current,
 						"listeConnaissances",
 						lv_listeConnaissances_4_0,
-						"fr.n7.Game.Connaissance");
+						"fr.n7.Game.Connaissances");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)*
+		)?
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getActionAccess().getListeObjetsObjetParserRuleCall_5_0());
-				}
-				lv_listeObjets_5_0=ruleObjet
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getActionRule());
+						$current = createModelElement(grammarAccess.getActionRule());
 					}
-					add(
-						$current,
-						"listeObjets",
-						lv_listeObjets_5_0,
-						"fr.n7.Game.Objet");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getActionAccess().getListeObjetsObjetLieuCrossReference_5_0());
 				}
 			)
 		)*
@@ -1571,18 +1129,18 @@ ruleAction returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getActionAccess().getListeObjetsConsommesObjetParserRuleCall_9_0());
+					newCompositeNode(grammarAccess.getActionAccess().getListeObjetsConsommesObjetExplorateurParserRuleCall_9_0());
 				}
-				lv_listeObjetsConsommes_10_0=ruleObjet
+				lv_listeObjetsConsommes_10_0=ruleObjetExplorateur
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getActionRule());
 					}
-					add(
+					set(
 						$current,
 						"listeObjetsConsommes",
 						lv_listeObjetsConsommes_10_0,
-						"fr.n7.Game.Objet");
+						"fr.n7.Game.ObjetExplorateur");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1619,15 +1177,15 @@ ruleAction returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleObjet
-entryRuleObjet returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getObjetRule()); }
-	iv_ruleObjet=ruleObjet
-	{ $current=$iv_ruleObjet.current; }
+// Entry rule entryRuleObjetExplorateur
+entryRuleObjetExplorateur returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getObjetExplorateurRule()); }
+	iv_ruleObjetExplorateur=ruleObjetExplorateur
+	{ $current=$iv_ruleObjetExplorateur.current; }
 	EOF;
 
-// Rule Objet
-ruleObjet returns [EObject current=null]
+// Rule ObjetExplorateur
+ruleObjetExplorateur returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1635,133 +1193,79 @@ ruleObjet returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='objet'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getObjetAccess().getObjetKeyword_0());
-		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_0_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getObjetAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_0_0, grammarAccess.getObjetExplorateurAccess().getNameIDTerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getObjetRule());
+						$current = createModelElement(grammarAccess.getObjetExplorateurRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_0_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
 		(
 			(
-				lv_taille_2_0=RULE_INT
+				lv_taille_1_0=RULE_INT
 				{
-					newLeafNode(lv_taille_2_0, grammarAccess.getObjetAccess().getTailleINTTerminalRuleCall_2_0());
+					newLeafNode(lv_taille_1_0, grammarAccess.getObjetExplorateurAccess().getTailleINTTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getObjetRule());
+						$current = createModelElement(grammarAccess.getObjetExplorateurRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"taille",
-						lv_taille_2_0,
+						lv_taille_1_0,
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
 		)
 		(
 			(
-				lv_quantite_3_0=RULE_INT
+				lv_quantite_2_0=RULE_INT
 				{
-					newLeafNode(lv_quantite_3_0, grammarAccess.getObjetAccess().getQuantiteINTTerminalRuleCall_3_0());
+					newLeafNode(lv_quantite_2_0, grammarAccess.getObjetExplorateurAccess().getQuantiteINTTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getObjetRule());
+						$current = createModelElement(grammarAccess.getObjetExplorateurRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"quantite",
-						lv_quantite_3_0,
+						lv_quantite_2_0,
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
 		)
 		(
-			otherlv_4='transmission'
+			otherlv_3='description'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getObjetAccess().getTransmissionKeyword_4_0());
+				newLeafNode(otherlv_3, grammarAccess.getObjetExplorateurAccess().getDescriptionKeyword_3_0());
 			}
 			(
 				(
+					lv_description_4_0=RULE_STRING
 					{
-						newCompositeNode(grammarAccess.getObjetAccess().getConditionTransmissionConditionParserRuleCall_4_1_0());
-					}
-					lv_conditionTransmission_5_0=ruleCondition
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getObjetRule());
-						}
-						set(
-							$current,
-							"conditionTransmission",
-							lv_conditionTransmission_5_0,
-							"fr.n7.Game.Condition");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)?
-		)?
-		(
-			otherlv_6='consommation'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getObjetAccess().getConsommationKeyword_5_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getObjetAccess().getConditionConsommationConditionParserRuleCall_5_1_0());
-					}
-					lv_conditionConsommation_7_0=ruleCondition
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getObjetRule());
-						}
-						set(
-							$current,
-							"conditionConsommation",
-							lv_conditionConsommation_7_0,
-							"fr.n7.Game.Condition");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)?
-		)?
-		(
-			otherlv_8='description'
-			{
-				newLeafNode(otherlv_8, grammarAccess.getObjetAccess().getDescriptionKeyword_6_0());
-			}
-			(
-				(
-					lv_description_9_0=RULE_STRING
-					{
-						newLeafNode(lv_description_9_0, grammarAccess.getObjetAccess().getDescriptionSTRINGTerminalRuleCall_6_1_0());
+						newLeafNode(lv_description_4_0, grammarAccess.getObjetExplorateurAccess().getDescriptionSTRINGTerminalRuleCall_3_1_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getObjetRule());
+							$current = createModelElement(grammarAccess.getObjetExplorateurRule());
 						}
 						setWithLastConsumed(
 							$current,
 							"description",
-							lv_description_9_0,
+							lv_description_4_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)
@@ -1769,17 +1273,17 @@ ruleObjet returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getObjetAccess().getConditionDescriptionConditionParserRuleCall_6_2_0());
+						newCompositeNode(grammarAccess.getObjetExplorateurAccess().getConditionDescriptionConditionParserRuleCall_3_2_0());
 					}
-					lv_conditionDescription_10_0=ruleCondition
+					lv_conditionDescription_5_0=ruleCondition
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getObjetRule());
+							$current = createModelElementForParent(grammarAccess.getObjetExplorateurRule());
 						}
 						set(
 							$current,
 							"conditionDescription",
-							lv_conditionDescription_10_0,
+							lv_conditionDescription_5_0,
 							"fr.n7.Game.Condition");
 						afterParserOrEnumRuleCall();
 					}
@@ -1787,24 +1291,24 @@ ruleObjet returns [EObject current=null]
 			)?
 		)?
 		(
-			otherlv_11='transformable'
+			otherlv_6='transformable'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getObjetAccess().getTransformableKeyword_7_0());
+				newLeafNode(otherlv_6, grammarAccess.getObjetExplorateurAccess().getTransformableKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getObjetAccess().getTransformableConditionParserRuleCall_7_1_0());
+						newCompositeNode(grammarAccess.getObjetExplorateurAccess().getTransformableConditionParserRuleCall_4_1_0());
 					}
-					lv_transformable_12_0=ruleCondition
+					lv_transformable_7_0=ruleCondition
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getObjetRule());
+							$current = createModelElementForParent(grammarAccess.getObjetExplorateurRule());
 						}
 						set(
 							$current,
 							"transformable",
-							lv_transformable_12_0,
+							lv_transformable_7_0,
 							"fr.n7.Game.Condition");
 						afterParserOrEnumRuleCall();
 					}
@@ -1814,15 +1318,15 @@ ruleObjet returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleObjets
-entryRuleObjets returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getObjetsRule()); }
-	iv_ruleObjets=ruleObjets
-	{ $current=$iv_ruleObjets.current; }
+// Entry rule entryRuleObjetLieu
+entryRuleObjetLieu returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getObjetLieuRule()); }
+	iv_ruleObjetLieu=ruleObjetLieu
+	{ $current=$iv_ruleObjetLieu.current; }
 	EOF;
 
-// Rule Objets
-ruleObjets returns [EObject current=null]
+// Rule ObjetLieu
+ruleObjetLieu returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1830,36 +1334,277 @@ ruleObjets returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='objets'
+		(
+			(
+				lv_name_0_0=RULE_ID
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getObjetLieuAccess().getNameIDTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getObjetLieuRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				lv_taille_1_0=RULE_INT
+				{
+					newLeafNode(lv_taille_1_0, grammarAccess.getObjetLieuAccess().getTailleINTTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getObjetLieuRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"taille",
+						lv_taille_1_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		(
+			(
+				lv_quantite_2_0=RULE_INT
+				{
+					newLeafNode(lv_quantite_2_0, grammarAccess.getObjetLieuAccess().getQuantiteINTTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getObjetLieuRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"quantite",
+						lv_quantite_2_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		(
+			otherlv_3='transmission'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getObjetLieuAccess().getTransmissionKeyword_3_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getObjetLieuAccess().getConditionTransmissionConditionParserRuleCall_3_1_0());
+					}
+					lv_conditionTransmission_4_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getObjetLieuRule());
+						}
+						set(
+							$current,
+							"conditionTransmission",
+							lv_conditionTransmission_4_0,
+							"fr.n7.Game.Condition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)?
+		)?
+		(
+			otherlv_5='consommation'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getObjetLieuAccess().getConsommationKeyword_4_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getObjetLieuAccess().getConditionConsommationConditionParserRuleCall_4_1_0());
+					}
+					lv_conditionConsommation_6_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getObjetLieuRule());
+						}
+						set(
+							$current,
+							"conditionConsommation",
+							lv_conditionConsommation_6_0,
+							"fr.n7.Game.Condition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)?
+		)?
+		(
+			otherlv_7='description'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getObjetLieuAccess().getDescriptionKeyword_5_0());
+			}
+			(
+				(
+					lv_description_8_0=RULE_STRING
+					{
+						newLeafNode(lv_description_8_0, grammarAccess.getObjetLieuAccess().getDescriptionSTRINGTerminalRuleCall_5_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getObjetLieuRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"description",
+							lv_description_8_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getObjetLieuAccess().getConditionDescriptionConditionParserRuleCall_5_2_0());
+					}
+					lv_conditionDescription_9_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getObjetLieuRule());
+						}
+						set(
+							$current,
+							"conditionDescription",
+							lv_conditionDescription_9_0,
+							"fr.n7.Game.Condition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)?
+		)?
+		(
+			otherlv_10='transformable'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getObjetLieuAccess().getTransformableKeyword_6_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getObjetLieuAccess().getTransformableConditionParserRuleCall_6_1_0());
+					}
+					lv_transformable_11_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getObjetLieuRule());
+						}
+						set(
+							$current,
+							"transformable",
+							lv_transformable_11_0,
+							"fr.n7.Game.Condition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)?
+		)?
+	)
+;
+
+// Entry rule entryRuleObjetsExplorateur
+entryRuleObjetsExplorateur returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getObjetsExplorateurRule()); }
+	iv_ruleObjetsExplorateur=ruleObjetsExplorateur
+	{ $current=$iv_ruleObjetsExplorateur.current; }
+	EOF;
+
+// Rule ObjetsExplorateur
+ruleObjetsExplorateur returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='objetsE'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getObjetsAccess().getObjetsKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getObjetsExplorateurAccess().getObjetsEKeyword_0());
 		}
 		otherlv_1='{'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getObjetsAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getObjetsExplorateurAccess().getLeftCurlyBracketKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getObjetsAccess().getListeObjetsObjetParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getObjetsExplorateurAccess().getListeObjetsObjetExplorateurParserRuleCall_2_0());
 				}
-				lv_listeObjets_2_0=ruleObjet
+				lv_listeObjets_2_0=ruleObjetExplorateur
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getObjetsRule());
+						$current = createModelElementForParent(grammarAccess.getObjetsExplorateurRule());
 					}
-					add(
+					set(
 						$current,
 						"listeObjets",
 						lv_listeObjets_2_0,
-						"fr.n7.Game.Objet");
+						"fr.n7.Game.ObjetExplorateur");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
 		otherlv_3='}'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getObjetsAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getObjetsExplorateurAccess().getRightCurlyBracketKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleObjetsLieu
+entryRuleObjetsLieu returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getObjetsLieuRule()); }
+	iv_ruleObjetsLieu=ruleObjetsLieu
+	{ $current=$iv_ruleObjetsLieu.current; }
+	EOF;
+
+// Rule ObjetsLieu
+ruleObjetsLieu returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='objetsL'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getObjetsLieuAccess().getObjetsLKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getObjetsLieuAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getObjetsLieuAccess().getListeObjetsObjetLieuParserRuleCall_2_0());
+				}
+				lv_listeObjets_2_0=ruleObjetLieu
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getObjetsLieuRule());
+					}
+					set(
+						$current,
+						"listeObjets",
+						lv_listeObjets_2_0,
+						"fr.n7.Game.ObjetLieu");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getObjetsLieuAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -1930,15 +1675,11 @@ ruleConnaissance returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='connaissance'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getConnaissanceAccess().getConnaissanceKeyword_0());
-		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_0_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getConnaissanceAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_0_0, grammarAccess.getConnaissanceAccess().getNameIDTerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
@@ -1947,21 +1688,21 @@ ruleConnaissance returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_0_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
 		(
-			otherlv_2='description'
+			otherlv_1='description'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getConnaissanceAccess().getDescriptionKeyword_2_0());
+				newLeafNode(otherlv_1, grammarAccess.getConnaissanceAccess().getDescriptionKeyword_1_0());
 			}
 			(
 				(
-					lv_description_3_0=RULE_STRING
+					lv_description_2_0=RULE_STRING
 					{
-						newLeafNode(lv_description_3_0, grammarAccess.getConnaissanceAccess().getDescriptionSTRINGTerminalRuleCall_2_1_0());
+						newLeafNode(lv_description_2_0, grammarAccess.getConnaissanceAccess().getDescriptionSTRINGTerminalRuleCall_1_1_0());
 					}
 					{
 						if ($current==null) {
@@ -1970,7 +1711,7 @@ ruleConnaissance returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"description",
-							lv_description_3_0,
+							lv_description_2_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)
@@ -1978,9 +1719,9 @@ ruleConnaissance returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getConnaissanceAccess().getConditionConnaissanceConditionParserRuleCall_2_2_0());
+						newCompositeNode(grammarAccess.getConnaissanceAccess().getConditionConnaissanceConditionParserRuleCall_1_2_0());
 					}
-					lv_conditionConnaissance_4_0=ruleCondition
+					lv_conditionConnaissance_3_0=ruleCondition
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getConnaissanceRule());
@@ -1988,7 +1729,7 @@ ruleConnaissance returns [EObject current=null]
 						set(
 							$current,
 							"conditionConnaissance",
-							lv_conditionConnaissance_4_0,
+							lv_conditionConnaissance_3_0,
 							"fr.n7.Game.Condition");
 						afterParserOrEnumRuleCall();
 					}
@@ -2057,6 +1798,56 @@ ruleCondition returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleChemins
+entryRuleChemins returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCheminsRule()); }
+	iv_ruleChemins=ruleChemins
+	{ $current=$iv_ruleChemins.current; }
+	EOF;
+
+// Rule Chemins
+ruleChemins returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='chemins'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getCheminsAccess().getCheminsKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCheminsAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCheminsAccess().getListeCheminsCheminParserRuleCall_2_0());
+				}
+				lv_listeChemins_2_0=ruleChemin
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCheminsRule());
+					}
+					set(
+						$current,
+						"listeChemins",
+						lv_listeChemins_2_0,
+						"fr.n7.Game.Chemin");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getCheminsAccess().getRightCurlyBracketKeyword_3());
+		}
+	)
+;
+
 // Entry rule entryRuleChemin
 entryRuleChemin returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getCheminRule()); }
@@ -2073,208 +1864,240 @@ ruleChemin returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='chemin'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getCheminAccess().getCheminKeyword_0());
+		}
+		otherlv_1='description'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCheminAccess().getDescriptionKeyword_1());
+		}
 		(
-			otherlv_0='chemin'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getCheminAccess().getCheminKeyword_0_0());
-			}
-			otherlv_1='description'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getCheminAccess().getDescriptionKeyword_0_1());
-			}
 			(
-				(
-					lv_description_2_0=RULE_STRING
-					{
-						newLeafNode(lv_description_2_0, grammarAccess.getCheminAccess().getDescriptionSTRINGTerminalRuleCall_0_2_0());
+				lv_description_2_0=RULE_STRING
+				{
+					newLeafNode(lv_description_2_0, grammarAccess.getCheminAccess().getDescriptionSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCheminRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getCheminRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"description",
-							lv_description_2_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
+					setWithLastConsumed(
+						$current,
+						"description",
+						lv_description_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
 			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCheminAccess().getConditionDescriptionConditionParserRuleCall_3_0());
+				}
+				lv_conditionDescription_3_0=ruleCondition
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCheminRule());
+					}
+					set(
+						$current,
+						"conditionDescription",
+						lv_conditionDescription_3_0,
+						"fr.n7.Game.Condition");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_4='destination'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getCheminAccess().getDestinationKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCheminAccess().getDestinationLieuParserRuleCall_5_0());
+				}
+				lv_destination_5_0=ruleLieu
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCheminRule());
+					}
+					set(
+						$current,
+						"destination",
+						lv_destination_5_0,
+						"fr.n7.Game.Lieu");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_6='obligatoire'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getCheminAccess().getObligatoireKeyword_6_0());
+			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCheminAccess().getConditionDescriptionConditionParserRuleCall_0_3_0());
+						newCompositeNode(grammarAccess.getCheminAccess().getObligatoireConditionParserRuleCall_6_1_0());
 					}
-					lv_conditionDescription_3_0=ruleCondition
+					lv_obligatoire_7_0=ruleCondition
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCheminRule());
 						}
 						set(
 							$current,
-							"conditionDescription",
-							lv_conditionDescription_3_0,
+							"obligatoire",
+							lv_obligatoire_7_0,
 							"fr.n7.Game.Condition");
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)?
-			otherlv_4='destination'
+			)
+		)?
+		(
+			otherlv_8='visible'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getCheminAccess().getDestinationKeyword_0_4());
+				newLeafNode(otherlv_8, grammarAccess.getCheminAccess().getVisibleKeyword_7_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCheminAccess().getDestinationLieuParserRuleCall_0_5_0());
+						newCompositeNode(grammarAccess.getCheminAccess().getVisibleConditionParserRuleCall_7_1_0());
 					}
-					lv_destination_5_0=ruleLieu
+					lv_visible_9_0=ruleCondition
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCheminRule());
 						}
 						set(
 							$current,
-							"destination",
-							lv_destination_5_0,
-							"fr.n7.Game.Lieu");
+							"visible",
+							lv_visible_9_0,
+							"fr.n7.Game.Condition");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
+		)?
+		(
+			otherlv_10='ouvert'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getCheminAccess().getOuvertKeyword_8_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getCheminAccess().getOuvertConditionParserRuleCall_8_1_0());
+					}
+					lv_ouvert_11_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getCheminRule());
+						}
+						set(
+							$current,
+							"ouvert",
+							lv_ouvert_11_0,
+							"fr.n7.Game.Condition");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCheminAccess().getListeConnaissancesConnaissancesParserRuleCall_9_0());
+				}
+				lv_listeConnaissances_12_0=ruleConnaissances
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCheminRule());
+					}
+					set(
+						$current,
+						"listeConnaissances",
+						lv_listeConnaissances_12_0,
+						"fr.n7.Game.Connaissances");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCheminAccess().getListeObjetsObjetsLieuParserRuleCall_10_0());
+				}
+				lv_listeObjets_13_0=ruleObjetsLieu
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCheminRule());
+					}
+					set(
+						$current,
+						"listeObjets",
+						lv_listeObjets_13_0,
+						"fr.n7.Game.ObjetsLieu");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCheminAccess().getListeObjetsConsommesObjetsExplorateurParserRuleCall_11_0());
+				}
+				lv_listeObjetsConsommes_14_0=ruleObjetsExplorateur
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCheminRule());
+					}
+					set(
+						$current,
+						"listeObjetsConsommes",
+						lv_listeObjetsConsommes_14_0,
+						"fr.n7.Game.ObjetsExplorateur");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+	)
+;
+
+// Rule TypeLieu
+ruleTypeLieu returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='debut'
+			{
+				$current = grammarAccess.getTypeLieuAccess().getLieuDebutEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getTypeLieuAccess().getLieuDebutEnumLiteralDeclaration_0());
+			}
 		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getCheminAccess().getLieuDebutParserRuleCall_1());
-		}
-		this_LieuDebut_6=ruleLieuDebut
-		{
-			$current = $this_LieuDebut_6.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			enumLiteral_1='fin'
+			{
+				$current = grammarAccess.getTypeLieuAccess().getLieuFinEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getTypeLieuAccess().getLieuFinEnumLiteralDeclaration_1());
+			}
+		)
 		    |
 		(
+			enumLiteral_2='intermediaire'
 			{
-				newCompositeNode(grammarAccess.getCheminAccess().getLieuFinParserRuleCall_2_0());
+				$current = grammarAccess.getTypeLieuAccess().getLieuIntermediaireEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getTypeLieuAccess().getLieuIntermediaireEnumLiteralDeclaration_2());
 			}
-			this_LieuFin_7=ruleLieuFin
-			{
-				$current = $this_LieuFin_7.current;
-				afterParserOrEnumRuleCall();
-			}
-			(
-				otherlv_8='obligatoire'
-				{
-					newLeafNode(otherlv_8, grammarAccess.getCheminAccess().getObligatoireKeyword_2_1_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getCheminAccess().getObligatoireConditionParserRuleCall_2_1_1_0());
-						}
-						lv_obligatoire_9_0=ruleCondition
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getCheminRule());
-							}
-							set(
-								$current,
-								"obligatoire",
-								lv_obligatoire_9_0,
-								"fr.n7.Game.Condition");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)?
-			(
-				otherlv_10='visible'
-				{
-					newLeafNode(otherlv_10, grammarAccess.getCheminAccess().getVisibleKeyword_2_2_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getCheminAccess().getVisibleConditionParserRuleCall_2_2_1_0());
-						}
-						lv_visible_11_0=ruleCondition
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getCheminRule());
-							}
-							set(
-								$current,
-								"visible",
-								lv_visible_11_0,
-								"fr.n7.Game.Condition");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)?
-			(
-				otherlv_12='ouvert'
-				{
-					newLeafNode(otherlv_12, grammarAccess.getCheminAccess().getOuvertKeyword_2_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getCheminAccess().getOuvertConditionParserRuleCall_2_3_1_0());
-						}
-						lv_ouvert_13_0=ruleCondition
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getCheminRule());
-							}
-							set(
-								$current,
-								"ouvert",
-								lv_ouvert_13_0,
-								"fr.n7.Game.Condition");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)?
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getCheminAccess().getListeConnaissancesConnaissanceParserRuleCall_2_4_0());
-					}
-					lv_listeConnaissances_14_0=ruleConnaissance
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getCheminRule());
-						}
-						add(
-							$current,
-							"listeConnaissances",
-							lv_listeConnaissances_14_0,
-							"fr.n7.Game.Connaissance");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)*
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getCheminAccess().getListeObjetsObjetParserRuleCall_2_5_0());
-					}
-					lv_listeObjets_15_0=ruleObjet
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getCheminRule());
-						}
-						add(
-							$current,
-							"listeObjets",
-							lv_listeObjets_15_0,
-							"fr.n7.Game.Objet");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)*
 		)
 	)
 ;

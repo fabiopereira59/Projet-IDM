@@ -7,28 +7,28 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Objet</b></em>'.
+ * A representation of the model object '<em><b>Objet Lieu</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.Objet#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getTaille <em>Taille</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getQuantite <em>Quantite</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getConditionTransmission <em>Condition Transmission</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getConditionConsommation <em>Condition Consommation</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getConditionDescription <em>Condition Description</em>}</li>
- *   <li>{@link fr.n7.game.Objet#getTransformable <em>Transformable</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getName <em>Name</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getTaille <em>Taille</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getQuantite <em>Quantite</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getConditionTransmission <em>Condition Transmission</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getConditionConsommation <em>Condition Consommation</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getConditionDescription <em>Condition Description</em>}</li>
+ *   <li>{@link fr.n7.game.ObjetLieu#getTransformable <em>Transformable</em>}</li>
  * </ul>
  *
- * @see fr.n7.game.GamePackage#getObjet()
+ * @see fr.n7.game.GamePackage#getObjetLieu()
  * @model
  * @generated
  */
-public interface Objet extends EObject
+public interface ObjetLieu extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -36,14 +36,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see fr.n7.game.GamePackage#getObjet_Name()
+   * @see fr.n7.game.GamePackage#getObjetLieu_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -58,14 +58,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Taille</em>' attribute.
    * @see #setTaille(int)
-   * @see fr.n7.game.GamePackage#getObjet_Taille()
+   * @see fr.n7.game.GamePackage#getObjetLieu_Taille()
    * @model
    * @generated
    */
   int getTaille();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getTaille <em>Taille</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getTaille <em>Taille</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Taille</em>' attribute.
@@ -80,14 +80,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Quantite</em>' attribute.
    * @see #setQuantite(int)
-   * @see fr.n7.game.GamePackage#getObjet_Quantite()
+   * @see fr.n7.game.GamePackage#getObjetLieu_Quantite()
    * @model
    * @generated
    */
   int getQuantite();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getQuantite <em>Quantite</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getQuantite <em>Quantite</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Quantite</em>' attribute.
@@ -102,14 +102,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition Transmission</em>' containment reference.
    * @see #setConditionTransmission(Condition)
-   * @see fr.n7.game.GamePackage#getObjet_ConditionTransmission()
+   * @see fr.n7.game.GamePackage#getObjetLieu_ConditionTransmission()
    * @model containment="true"
    * @generated
    */
   Condition getConditionTransmission();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getConditionTransmission <em>Condition Transmission</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getConditionTransmission <em>Condition Transmission</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Condition Transmission</em>' containment reference.
@@ -124,14 +124,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition Consommation</em>' containment reference.
    * @see #setConditionConsommation(Condition)
-   * @see fr.n7.game.GamePackage#getObjet_ConditionConsommation()
+   * @see fr.n7.game.GamePackage#getObjetLieu_ConditionConsommation()
    * @model containment="true"
    * @generated
    */
   Condition getConditionConsommation();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getConditionConsommation <em>Condition Consommation</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getConditionConsommation <em>Condition Consommation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Condition Consommation</em>' containment reference.
@@ -146,14 +146,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Description</em>' attribute.
    * @see #setDescription(String)
-   * @see fr.n7.game.GamePackage#getObjet_Description()
+   * @see fr.n7.game.GamePackage#getObjetLieu_Description()
    * @model
    * @generated
    */
   String getDescription();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getDescription <em>Description</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getDescription <em>Description</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Description</em>' attribute.
@@ -168,14 +168,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition Description</em>' containment reference.
    * @see #setConditionDescription(Condition)
-   * @see fr.n7.game.GamePackage#getObjet_ConditionDescription()
+   * @see fr.n7.game.GamePackage#getObjetLieu_ConditionDescription()
    * @model containment="true"
    * @generated
    */
   Condition getConditionDescription();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getConditionDescription <em>Condition Description</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getConditionDescription <em>Condition Description</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Condition Description</em>' containment reference.
@@ -190,14 +190,14 @@ public interface Objet extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Transformable</em>' containment reference.
    * @see #setTransformable(Condition)
-   * @see fr.n7.game.GamePackage#getObjet_Transformable()
+   * @see fr.n7.game.GamePackage#getObjetLieu_Transformable()
    * @model containment="true"
    * @generated
    */
   Condition getTransformable();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Objet#getTransformable <em>Transformable</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.ObjetLieu#getTransformable <em>Transformable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Transformable</em>' containment reference.
@@ -206,4 +206,4 @@ public interface Objet extends EObject
    */
   void setTransformable(Condition value);
 
-} // Objet
+} // ObjetLieu

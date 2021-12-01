@@ -6,6 +6,7 @@ package fr.n7.game.impl;
 import fr.n7.game.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -66,26 +67,60 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
     switch (eClass.getClassifierID())
     {
       case GamePackage.GAME: return createGame();
-      case GamePackage.GAME_ELEMENT: return creategameElement();
-      case GamePackage.TERRITOIRE: return createTerritoire();
+      case GamePackage.TERRITOIRE_ELEMENT: return createterritoireElement();
       case GamePackage.EXPLORATEUR: return createExplorateur();
       case GamePackage.SAC: return createSac();
       case GamePackage.LIEU: return createLieu();
-      case GamePackage.LIEU_DEBUT: return createLieuDebut();
-      case GamePackage.LIEU_FIN: return createLieuFin();
       case GamePackage.PERSONNES: return createPersonnes();
       case GamePackage.PERSONNE: return createPersonne();
       case GamePackage.INTERACTION: return createInteraction();
       case GamePackage.CHOIX: return createChoix();
       case GamePackage.ACTION: return createAction();
-      case GamePackage.OBJET: return createObjet();
-      case GamePackage.OBJETS: return createObjets();
+      case GamePackage.OBJET_EXPLORATEUR: return createObjetExplorateur();
+      case GamePackage.OBJET_LIEU: return createObjetLieu();
+      case GamePackage.OBJETS_EXPLORATEUR: return createObjetsExplorateur();
+      case GamePackage.OBJETS_LIEU: return createObjetsLieu();
       case GamePackage.CONNAISSANCES: return createConnaissances();
       case GamePackage.CONNAISSANCE: return createConnaissance();
       case GamePackage.CONDITION: return createCondition();
+      case GamePackage.CHEMINS: return createChemins();
       case GamePackage.CHEMIN: return createChemin();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case GamePackage.TYPE_LIEU:
+        return createTypeLieuFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case GamePackage.TYPE_LIEU:
+        return convertTypeLieuToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -107,22 +142,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public gameElement creategameElement()
+  public territoireElement createterritoireElement()
   {
-    gameElementImpl gameElement = new gameElementImpl();
-    return gameElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Territoire createTerritoire()
-  {
-    TerritoireImpl territoire = new TerritoireImpl();
-    return territoire;
+    territoireElementImpl territoireElement = new territoireElementImpl();
+    return territoireElement;
   }
 
   /**
@@ -159,30 +182,6 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     LieuImpl lieu = new LieuImpl();
     return lieu;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public LieuDebut createLieuDebut()
-  {
-    LieuDebutImpl lieuDebut = new LieuDebutImpl();
-    return lieuDebut;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public LieuFin createLieuFin()
-  {
-    LieuFinImpl lieuFin = new LieuFinImpl();
-    return lieuFin;
   }
 
   /**
@@ -251,10 +250,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public Objet createObjet()
+  public ObjetExplorateur createObjetExplorateur()
   {
-    ObjetImpl objet = new ObjetImpl();
-    return objet;
+    ObjetExplorateurImpl objetExplorateur = new ObjetExplorateurImpl();
+    return objetExplorateur;
   }
 
   /**
@@ -263,10 +262,34 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
-  public Objets createObjets()
+  public ObjetLieu createObjetLieu()
   {
-    ObjetsImpl objets = new ObjetsImpl();
-    return objets;
+    ObjetLieuImpl objetLieu = new ObjetLieuImpl();
+    return objetLieu;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ObjetsExplorateur createObjetsExplorateur()
+  {
+    ObjetsExplorateurImpl objetsExplorateur = new ObjetsExplorateurImpl();
+    return objetsExplorateur;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ObjetsLieu createObjetsLieu()
+  {
+    ObjetsLieuImpl objetsLieu = new ObjetsLieuImpl();
+    return objetsLieu;
   }
 
   /**
@@ -311,10 +334,44 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * @generated
    */
   @Override
+  public Chemins createChemins()
+  {
+    CheminsImpl chemins = new CheminsImpl();
+    return chemins;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Chemin createChemin()
   {
     CheminImpl chemin = new CheminImpl();
     return chemin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TypeLieu createTypeLieuFromString(EDataType eDataType, String initialValue)
+  {
+    TypeLieu result = TypeLieu.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertTypeLieuToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

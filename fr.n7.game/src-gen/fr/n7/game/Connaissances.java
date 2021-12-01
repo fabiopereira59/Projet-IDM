@@ -5,8 +5,6 @@ package fr.n7.game;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Connaissances</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Connaissances extends EObject
+public interface Connaissances extends territoireElement
 {
   /**
    * Returns the value of the '<em><b>Liste Connaissances</b></em>' containment reference list.

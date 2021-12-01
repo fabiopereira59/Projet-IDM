@@ -81,14 +81,9 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createGameAdapter();
       }
       @Override
-      public Adapter casegameElement(gameElement object)
+      public Adapter caseterritoireElement(territoireElement object)
       {
-        return creategameElementAdapter();
-      }
-      @Override
-      public Adapter caseTerritoire(Territoire object)
-      {
-        return createTerritoireAdapter();
+        return createterritoireElementAdapter();
       }
       @Override
       public Adapter caseExplorateur(Explorateur object)
@@ -104,16 +99,6 @@ public class GameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLieu(Lieu object)
       {
         return createLieuAdapter();
-      }
-      @Override
-      public Adapter caseLieuDebut(LieuDebut object)
-      {
-        return createLieuDebutAdapter();
-      }
-      @Override
-      public Adapter caseLieuFin(LieuFin object)
-      {
-        return createLieuFinAdapter();
       }
       @Override
       public Adapter casePersonnes(Personnes object)
@@ -141,14 +126,24 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createActionAdapter();
       }
       @Override
-      public Adapter caseObjet(Objet object)
+      public Adapter caseObjetExplorateur(ObjetExplorateur object)
       {
-        return createObjetAdapter();
+        return createObjetExplorateurAdapter();
       }
       @Override
-      public Adapter caseObjets(Objets object)
+      public Adapter caseObjetLieu(ObjetLieu object)
       {
-        return createObjetsAdapter();
+        return createObjetLieuAdapter();
+      }
+      @Override
+      public Adapter caseObjetsExplorateur(ObjetsExplorateur object)
+      {
+        return createObjetsExplorateurAdapter();
+      }
+      @Override
+      public Adapter caseObjetsLieu(ObjetsLieu object)
+      {
+        return createObjetsLieuAdapter();
       }
       @Override
       public Adapter caseConnaissances(Connaissances object)
@@ -164,6 +159,11 @@ public class GameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCondition(Condition object)
       {
         return createConditionAdapter();
+      }
+      @Override
+      public Adapter caseChemins(Chemins object)
+      {
+        return createCheminsAdapter();
       }
       @Override
       public Adapter caseChemin(Chemin object)
@@ -208,31 +208,16 @@ public class GameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.gameElement <em>game Element</em>}'.
+   * Creates a new adapter for an object of class '{@link fr.n7.game.territoireElement <em>territoire Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see fr.n7.game.gameElement
+   * @see fr.n7.game.territoireElement
    * @generated
    */
-  public Adapter creategameElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.Territoire <em>Territoire</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.n7.game.Territoire
-   * @generated
-   */
-  public Adapter createTerritoireAdapter()
+  public Adapter createterritoireElementAdapter()
   {
     return null;
   }
@@ -278,36 +263,6 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLieuAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.LieuDebut <em>Lieu Debut</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.n7.game.LieuDebut
-   * @generated
-   */
-  public Adapter createLieuDebutAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.LieuFin <em>Lieu Fin</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.n7.game.LieuFin
-   * @generated
-   */
-  public Adapter createLieuFinAdapter()
   {
     return null;
   }
@@ -388,31 +343,61 @@ public class GameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.Objet <em>Objet</em>}'.
+   * Creates a new adapter for an object of class '{@link fr.n7.game.ObjetExplorateur <em>Objet Explorateur</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see fr.n7.game.Objet
+   * @see fr.n7.game.ObjetExplorateur
    * @generated
    */
-  public Adapter createObjetAdapter()
+  public Adapter createObjetExplorateurAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.n7.game.Objets <em>Objets</em>}'.
+   * Creates a new adapter for an object of class '{@link fr.n7.game.ObjetLieu <em>Objet Lieu</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see fr.n7.game.Objets
+   * @see fr.n7.game.ObjetLieu
    * @generated
    */
-  public Adapter createObjetsAdapter()
+  public Adapter createObjetLieuAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.n7.game.ObjetsExplorateur <em>Objets Explorateur</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.n7.game.ObjetsExplorateur
+   * @generated
+   */
+  public Adapter createObjetsExplorateurAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.n7.game.ObjetsLieu <em>Objets Lieu</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.n7.game.ObjetsLieu
+   * @generated
+   */
+  public Adapter createObjetsLieuAdapter()
   {
     return null;
   }
@@ -458,6 +443,21 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.n7.game.Chemins <em>Chemins</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.n7.game.Chemins
+   * @generated
+   */
+  public Adapter createCheminsAdapter()
   {
     return null;
   }

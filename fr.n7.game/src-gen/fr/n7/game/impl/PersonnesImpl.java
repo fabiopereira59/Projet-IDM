@@ -7,19 +7,13 @@ import fr.n7.game.GamePackage;
 import fr.n7.game.Personne;
 import fr.n7.game.Personnes;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,22 +23,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.impl.PersonnesImpl#getListePersonne <em>Liste Personne</em>}</li>
+ *   <li>{@link fr.n7.game.impl.PersonnesImpl#getListePersonnes <em>Liste Personnes</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PersonnesImpl extends MinimalEObjectImpl.Container implements Personnes
+public class PersonnesImpl extends territoireElementImpl implements Personnes
 {
   /**
-   * The cached value of the '{@link #getListePersonne() <em>Liste Personne</em>}' containment reference list.
+   * The cached value of the '{@link #getListePersonnes() <em>Liste Personnes</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getListePersonne()
+   * @see #getListePersonnes()
    * @generated
    * @ordered
    */
-  protected EList<Personne> listePersonne;
+  protected Personne listePersonnes;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +67,48 @@ public class PersonnesImpl extends MinimalEObjectImpl.Container implements Perso
    * @generated
    */
   @Override
-  public EList<Personne> getListePersonne()
+  public Personne getListePersonnes()
   {
-    if (listePersonne == null)
+    return listePersonnes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetListePersonnes(Personne newListePersonnes, NotificationChain msgs)
+  {
+    Personne oldListePersonnes = listePersonnes;
+    listePersonnes = newListePersonnes;
+    if (eNotificationRequired())
     {
-      listePersonne = new EObjectContainmentEList<Personne>(Personne.class, this, GamePackage.PERSONNES__LISTE_PERSONNE);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.PERSONNES__LISTE_PERSONNES, oldListePersonnes, newListePersonnes);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return listePersonne;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListePersonnes(Personne newListePersonnes)
+  {
+    if (newListePersonnes != listePersonnes)
+    {
+      NotificationChain msgs = null;
+      if (listePersonnes != null)
+        msgs = ((InternalEObject)listePersonnes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.PERSONNES__LISTE_PERSONNES, null, msgs);
+      if (newListePersonnes != null)
+        msgs = ((InternalEObject)newListePersonnes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.PERSONNES__LISTE_PERSONNES, null, msgs);
+      msgs = basicSetListePersonnes(newListePersonnes, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.PERSONNES__LISTE_PERSONNES, newListePersonnes, newListePersonnes));
   }
 
   /**
@@ -92,8 +121,8 @@ public class PersonnesImpl extends MinimalEObjectImpl.Container implements Perso
   {
     switch (featureID)
     {
-      case GamePackage.PERSONNES__LISTE_PERSONNE:
-        return ((InternalEList<?>)getListePersonne()).basicRemove(otherEnd, msgs);
+      case GamePackage.PERSONNES__LISTE_PERSONNES:
+        return basicSetListePersonnes(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +137,8 @@ public class PersonnesImpl extends MinimalEObjectImpl.Container implements Perso
   {
     switch (featureID)
     {
-      case GamePackage.PERSONNES__LISTE_PERSONNE:
-        return getListePersonne();
+      case GamePackage.PERSONNES__LISTE_PERSONNES:
+        return getListePersonnes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,15 +148,13 @@ public class PersonnesImpl extends MinimalEObjectImpl.Container implements Perso
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case GamePackage.PERSONNES__LISTE_PERSONNE:
-        getListePersonne().clear();
-        getListePersonne().addAll((Collection<? extends Personne>)newValue);
+      case GamePackage.PERSONNES__LISTE_PERSONNES:
+        setListePersonnes((Personne)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +170,8 @@ public class PersonnesImpl extends MinimalEObjectImpl.Container implements Perso
   {
     switch (featureID)
     {
-      case GamePackage.PERSONNES__LISTE_PERSONNE:
-        getListePersonne().clear();
+      case GamePackage.PERSONNES__LISTE_PERSONNES:
+        setListePersonnes((Personne)null);
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +187,8 @@ public class PersonnesImpl extends MinimalEObjectImpl.Container implements Perso
   {
     switch (featureID)
     {
-      case GamePackage.PERSONNES__LISTE_PERSONNE:
-        return listePersonne != null && !listePersonne.isEmpty();
+      case GamePackage.PERSONNES__LISTE_PERSONNES:
+        return listePersonnes != null;
     }
     return super.eIsSet(featureID);
   }

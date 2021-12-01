@@ -3,9 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,25 +13,35 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.n7.game.Personnes#getListePersonne <em>Liste Personne</em>}</li>
+ *   <li>{@link fr.n7.game.Personnes#getListePersonnes <em>Liste Personnes</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getPersonnes()
  * @model
  * @generated
  */
-public interface Personnes extends EObject
+public interface Personnes extends territoireElement
 {
   /**
-   * Returns the value of the '<em><b>Liste Personne</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Personne}.
+   * Returns the value of the '<em><b>Liste Personnes</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Personne</em>' containment reference list.
-   * @see fr.n7.game.GamePackage#getPersonnes_ListePersonne()
+   * @return the value of the '<em>Liste Personnes</em>' containment reference.
+   * @see #setListePersonnes(Personne)
+   * @see fr.n7.game.GamePackage#getPersonnes_ListePersonnes()
    * @model containment="true"
    * @generated
    */
-  EList<Personne> getListePersonne();
+  Personne getListePersonnes();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Personnes#getListePersonnes <em>Liste Personnes</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Liste Personnes</em>' containment reference.
+   * @see #getListePersonnes()
+   * @generated
+   */
+  void setListePersonnes(Personne value);
 
 } // Personnes

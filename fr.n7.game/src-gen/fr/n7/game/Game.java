@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Game#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.Game#getGameElements <em>Game Elements</em>}</li>
+ *   <li>{@link fr.n7.game.Game#getTerritoireElements <em>Territoire Elements</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getGame()
@@ -49,15 +49,15 @@ public interface Game extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Game Elements</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.gameElement}.
+   * Returns the value of the '<em><b>Territoire Elements</b></em>' containment reference list.
+   * The list contents are of type {@link fr.n7.game.territoireElement}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Game Elements</em>' containment reference list.
-   * @see fr.n7.game.GamePackage#getGame_GameElements()
+   * @return the value of the '<em>Territoire Elements</em>' containment reference list.
+   * @see fr.n7.game.GamePackage#getGame_TerritoireElements()
    * @model containment="true"
    * @generated
    */
-  EList<gameElement> getGameElements();
+  EList<territoireElement> getTerritoireElements();
 
 } // Game

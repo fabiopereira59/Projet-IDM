@@ -3,8 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -55,40 +53,70 @@ public interface Action extends EObject
   void setConditionAction(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Liste Choix</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Choix}.
+   * Returns the value of the '<em><b>Liste Choix</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Choix</em>' containment reference list.
+   * @return the value of the '<em>Liste Choix</em>' reference.
+   * @see #setListeChoix(Choix)
    * @see fr.n7.game.GamePackage#getAction_ListeChoix()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  EList<Choix> getListeChoix();
+  Choix getListeChoix();
 
   /**
-   * Returns the value of the '<em><b>Liste Connaissances</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Connaissance}.
+   * Sets the value of the '{@link fr.n7.game.Action#getListeChoix <em>Liste Choix</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Connaissances</em>' containment reference list.
+   * @param value the new value of the '<em>Liste Choix</em>' reference.
+   * @see #getListeChoix()
+   * @generated
+   */
+  void setListeChoix(Choix value);
+
+  /**
+   * Returns the value of the '<em><b>Liste Connaissances</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Liste Connaissances</em>' containment reference.
+   * @see #setListeConnaissances(Connaissances)
    * @see fr.n7.game.GamePackage#getAction_ListeConnaissances()
    * @model containment="true"
    * @generated
    */
-  EList<Connaissance> getListeConnaissances();
+  Connaissances getListeConnaissances();
 
   /**
-   * Returns the value of the '<em><b>Liste Objets</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Objet}.
+   * Sets the value of the '{@link fr.n7.game.Action#getListeConnaissances <em>Liste Connaissances</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Objets</em>' containment reference list.
-   * @see fr.n7.game.GamePackage#getAction_ListeObjets()
-   * @model containment="true"
+   * @param value the new value of the '<em>Liste Connaissances</em>' containment reference.
+   * @see #getListeConnaissances()
    * @generated
    */
-  EList<Objet> getListeObjets();
+  void setListeConnaissances(Connaissances value);
+
+  /**
+   * Returns the value of the '<em><b>Liste Objets</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Liste Objets</em>' reference.
+   * @see #setListeObjets(ObjetLieu)
+   * @see fr.n7.game.GamePackage#getAction_ListeObjets()
+   * @model
+   * @generated
+   */
+  ObjetLieu getListeObjets();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Action#getListeObjets <em>Liste Objets</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Liste Objets</em>' reference.
+   * @see #getListeObjets()
+   * @generated
+   */
+  void setListeObjets(ObjetLieu value);
 
   /**
    * Returns the value of the '<em><b>Attribution Connaissance</b></em>' containment reference.
@@ -135,16 +163,26 @@ public interface Action extends EObject
   void setAttributionObjet(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Liste Objets Consommes</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Objet}.
+   * Returns the value of the '<em><b>Liste Objets Consommes</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Objets Consommes</em>' containment reference list.
+   * @return the value of the '<em>Liste Objets Consommes</em>' containment reference.
+   * @see #setListeObjetsConsommes(ObjetExplorateur)
    * @see fr.n7.game.GamePackage#getAction_ListeObjetsConsommes()
    * @model containment="true"
    * @generated
    */
-  EList<Objet> getListeObjetsConsommes();
+  ObjetExplorateur getListeObjetsConsommes();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Action#getListeObjetsConsommes <em>Liste Objets Consommes</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Liste Objets Consommes</em>' containment reference.
+   * @see #getListeObjetsConsommes()
+   * @generated
+   */
+  void setListeObjetsConsommes(ObjetExplorateur value);
 
   /**
    * Returns the value of the '<em><b>Consommation Objet</b></em>' containment reference.

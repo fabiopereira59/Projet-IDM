@@ -3,9 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,14 +14,16 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Explorateur#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.Explorateur#getExplorateurElements <em>Explorateur Elements</em>}</li>
+ *   <li>{@link fr.n7.game.Explorateur#getSac <em>Sac</em>}</li>
+ *   <li>{@link fr.n7.game.Explorateur#getConnaissances <em>Connaissances</em>}</li>
+ *   <li>{@link fr.n7.game.Explorateur#getPosition <em>Position</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getExplorateur()
  * @model
  * @generated
  */
-public interface Explorateur extends EObject
+public interface Explorateur extends territoireElement
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -49,15 +48,69 @@ public interface Explorateur extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Explorateur Elements</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
+   * Returns the value of the '<em><b>Sac</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Explorateur Elements</em>' containment reference list.
-   * @see fr.n7.game.GamePackage#getExplorateur_ExplorateurElements()
+   * @return the value of the '<em>Sac</em>' containment reference.
+   * @see #setSac(Sac)
+   * @see fr.n7.game.GamePackage#getExplorateur_Sac()
    * @model containment="true"
    * @generated
    */
-  EList<EObject> getExplorateurElements();
+  Sac getSac();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Explorateur#getSac <em>Sac</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sac</em>' containment reference.
+   * @see #getSac()
+   * @generated
+   */
+  void setSac(Sac value);
+
+  /**
+   * Returns the value of the '<em><b>Connaissances</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Connaissances</em>' reference.
+   * @see #setConnaissances(Connaissance)
+   * @see fr.n7.game.GamePackage#getExplorateur_Connaissances()
+   * @model
+   * @generated
+   */
+  Connaissance getConnaissances();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Explorateur#getConnaissances <em>Connaissances</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Connaissances</em>' reference.
+   * @see #getConnaissances()
+   * @generated
+   */
+  void setConnaissances(Connaissance value);
+
+  /**
+   * Returns the value of the '<em><b>Position</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Position</em>' reference.
+   * @see #setPosition(Lieu)
+   * @see fr.n7.game.GamePackage#getExplorateur_Position()
+   * @model
+   * @generated
+   */
+  Lieu getPosition();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Explorateur#getPosition <em>Position</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Position</em>' reference.
+   * @see #getPosition()
+   * @generated
+   */
+  void setPosition(Lieu value);
 
 } // Explorateur

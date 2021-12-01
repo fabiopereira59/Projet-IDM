@@ -5,25 +5,20 @@ package fr.n7.game.impl;
 
 import fr.n7.game.Chemin;
 import fr.n7.game.Condition;
+import fr.n7.game.Connaissance;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Lieu;
-
-import java.util.Collection;
+import fr.n7.game.ObjetLieu;
+import fr.n7.game.Personne;
+import fr.n7.game.TypeLieu;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,18 +28,41 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getType <em>Type</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getConditionDescription <em>Condition Description</em>}</li>
- *   <li>{@link fr.n7.game.impl.LieuImpl#getLieuElements <em>Lieu Elements</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getPersonnes <em>Personnes</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getConnaissances <em>Connaissances</em>}</li>
+ *   <li>{@link fr.n7.game.impl.LieuImpl#getObjets <em>Objets</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getDepotObjet <em>Depot Objet</em>}</li>
  *   <li>{@link fr.n7.game.impl.LieuImpl#getListeChemins <em>Liste Chemins</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
+public class LieuImpl extends territoireElementImpl implements Lieu
 {
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final TypeLieu TYPE_EDEFAULT = TypeLieu.LIEU_DEBUT;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected TypeLieu type = TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -96,14 +114,34 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   protected Condition conditionDescription;
 
   /**
-   * The cached value of the '{@link #getLieuElements() <em>Lieu Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getPersonnes() <em>Personnes</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLieuElements()
+   * @see #getPersonnes()
    * @generated
    * @ordered
    */
-  protected EList<EObject> lieuElements;
+  protected Personne personnes;
+
+  /**
+   * The cached value of the '{@link #getConnaissances() <em>Connaissances</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConnaissances()
+   * @generated
+   * @ordered
+   */
+  protected Connaissance connaissances;
+
+  /**
+   * The cached value of the '{@link #getObjets() <em>Objets</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getObjets()
+   * @generated
+   * @ordered
+   */
+  protected ObjetLieu objets;
 
   /**
    * The cached value of the '{@link #getDepotObjet() <em>Depot Objet</em>}' containment reference.
@@ -116,14 +154,14 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   protected Condition depotObjet;
 
   /**
-   * The cached value of the '{@link #getListeChemins() <em>Liste Chemins</em>}' containment reference list.
+   * The cached value of the '{@link #getListeChemins() <em>Liste Chemins</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getListeChemins()
    * @generated
    * @ordered
    */
-  protected EList<Chemin> listeChemins;
+  protected Chemin listeChemins;
 
   /**
    * <!-- begin-user-doc -->
@@ -144,6 +182,31 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   protected EClass eStaticClass()
   {
     return GamePackage.Literals.LIEU;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeLieu getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setType(TypeLieu newType)
+  {
+    TypeLieu oldType = type;
+    type = newType == null ? TYPE_EDEFAULT : newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__TYPE, oldType, type));
   }
 
   /**
@@ -252,13 +315,133 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
    * @generated
    */
   @Override
-  public EList<EObject> getLieuElements()
+  public Personne getPersonnes()
   {
-    if (lieuElements == null)
+    if (personnes != null && personnes.eIsProxy())
     {
-      lieuElements = new EObjectContainmentEList<EObject>(EObject.class, this, GamePackage.LIEU__LIEU_ELEMENTS);
+      InternalEObject oldPersonnes = (InternalEObject)personnes;
+      personnes = (Personne)eResolveProxy(oldPersonnes);
+      if (personnes != oldPersonnes)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.LIEU__PERSONNES, oldPersonnes, personnes));
+      }
     }
-    return lieuElements;
+    return personnes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Personne basicGetPersonnes()
+  {
+    return personnes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPersonnes(Personne newPersonnes)
+  {
+    Personne oldPersonnes = personnes;
+    personnes = newPersonnes;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__PERSONNES, oldPersonnes, personnes));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Connaissance getConnaissances()
+  {
+    if (connaissances != null && connaissances.eIsProxy())
+    {
+      InternalEObject oldConnaissances = (InternalEObject)connaissances;
+      connaissances = (Connaissance)eResolveProxy(oldConnaissances);
+      if (connaissances != oldConnaissances)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.LIEU__CONNAISSANCES, oldConnaissances, connaissances));
+      }
+    }
+    return connaissances;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Connaissance basicGetConnaissances()
+  {
+    return connaissances;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConnaissances(Connaissance newConnaissances)
+  {
+    Connaissance oldConnaissances = connaissances;
+    connaissances = newConnaissances;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__CONNAISSANCES, oldConnaissances, connaissances));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ObjetLieu getObjets()
+  {
+    if (objets != null && objets.eIsProxy())
+    {
+      InternalEObject oldObjets = (InternalEObject)objets;
+      objets = (ObjetLieu)eResolveProxy(oldObjets);
+      if (objets != oldObjets)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.LIEU__OBJETS, oldObjets, objets));
+      }
+    }
+    return objets;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ObjetLieu basicGetObjets()
+  {
+    return objets;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setObjets(ObjetLieu newObjets)
+  {
+    ObjetLieu oldObjets = objets;
+    objets = newObjets;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__OBJETS, oldObjets, objets));
   }
 
   /**
@@ -317,13 +500,43 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
    * @generated
    */
   @Override
-  public EList<Chemin> getListeChemins()
+  public Chemin getListeChemins()
   {
-    if (listeChemins == null)
+    if (listeChemins != null && listeChemins.eIsProxy())
     {
-      listeChemins = new EObjectContainmentEList<Chemin>(Chemin.class, this, GamePackage.LIEU__LISTE_CHEMINS);
+      InternalEObject oldListeChemins = (InternalEObject)listeChemins;
+      listeChemins = (Chemin)eResolveProxy(oldListeChemins);
+      if (listeChemins != oldListeChemins)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.LIEU__LISTE_CHEMINS, oldListeChemins, listeChemins));
+      }
     }
     return listeChemins;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Chemin basicGetListeChemins()
+  {
+    return listeChemins;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListeChemins(Chemin newListeChemins)
+  {
+    Chemin oldListeChemins = listeChemins;
+    listeChemins = newListeChemins;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LIEU__LISTE_CHEMINS, oldListeChemins, listeChemins));
   }
 
   /**
@@ -338,12 +551,8 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
     {
       case GamePackage.LIEU__CONDITION_DESCRIPTION:
         return basicSetConditionDescription(null, msgs);
-      case GamePackage.LIEU__LIEU_ELEMENTS:
-        return ((InternalEList<?>)getLieuElements()).basicRemove(otherEnd, msgs);
       case GamePackage.LIEU__DEPOT_OBJET:
         return basicSetDepotObjet(null, msgs);
-      case GamePackage.LIEU__LISTE_CHEMINS:
-        return ((InternalEList<?>)getListeChemins()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -358,18 +567,28 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__TYPE:
+        return getType();
       case GamePackage.LIEU__NAME:
         return getName();
       case GamePackage.LIEU__DESCRIPTION:
         return getDescription();
       case GamePackage.LIEU__CONDITION_DESCRIPTION:
         return getConditionDescription();
-      case GamePackage.LIEU__LIEU_ELEMENTS:
-        return getLieuElements();
+      case GamePackage.LIEU__PERSONNES:
+        if (resolve) return getPersonnes();
+        return basicGetPersonnes();
+      case GamePackage.LIEU__CONNAISSANCES:
+        if (resolve) return getConnaissances();
+        return basicGetConnaissances();
+      case GamePackage.LIEU__OBJETS:
+        if (resolve) return getObjets();
+        return basicGetObjets();
       case GamePackage.LIEU__DEPOT_OBJET:
         return getDepotObjet();
       case GamePackage.LIEU__LISTE_CHEMINS:
-        return getListeChemins();
+        if (resolve) return getListeChemins();
+        return basicGetListeChemins();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -379,12 +598,14 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__TYPE:
+        setType((TypeLieu)newValue);
+        return;
       case GamePackage.LIEU__NAME:
         setName((String)newValue);
         return;
@@ -394,16 +615,20 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
       case GamePackage.LIEU__CONDITION_DESCRIPTION:
         setConditionDescription((Condition)newValue);
         return;
-      case GamePackage.LIEU__LIEU_ELEMENTS:
-        getLieuElements().clear();
-        getLieuElements().addAll((Collection<? extends EObject>)newValue);
+      case GamePackage.LIEU__PERSONNES:
+        setPersonnes((Personne)newValue);
+        return;
+      case GamePackage.LIEU__CONNAISSANCES:
+        setConnaissances((Connaissance)newValue);
+        return;
+      case GamePackage.LIEU__OBJETS:
+        setObjets((ObjetLieu)newValue);
         return;
       case GamePackage.LIEU__DEPOT_OBJET:
         setDepotObjet((Condition)newValue);
         return;
       case GamePackage.LIEU__LISTE_CHEMINS:
-        getListeChemins().clear();
-        getListeChemins().addAll((Collection<? extends Chemin>)newValue);
+        setListeChemins((Chemin)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -419,6 +644,9 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
       case GamePackage.LIEU__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -428,14 +656,20 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
       case GamePackage.LIEU__CONDITION_DESCRIPTION:
         setConditionDescription((Condition)null);
         return;
-      case GamePackage.LIEU__LIEU_ELEMENTS:
-        getLieuElements().clear();
+      case GamePackage.LIEU__PERSONNES:
+        setPersonnes((Personne)null);
+        return;
+      case GamePackage.LIEU__CONNAISSANCES:
+        setConnaissances((Connaissance)null);
+        return;
+      case GamePackage.LIEU__OBJETS:
+        setObjets((ObjetLieu)null);
         return;
       case GamePackage.LIEU__DEPOT_OBJET:
         setDepotObjet((Condition)null);
         return;
       case GamePackage.LIEU__LISTE_CHEMINS:
-        getListeChemins().clear();
+        setListeChemins((Chemin)null);
         return;
     }
     super.eUnset(featureID);
@@ -451,18 +685,24 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
   {
     switch (featureID)
     {
+      case GamePackage.LIEU__TYPE:
+        return type != TYPE_EDEFAULT;
       case GamePackage.LIEU__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.LIEU__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case GamePackage.LIEU__CONDITION_DESCRIPTION:
         return conditionDescription != null;
-      case GamePackage.LIEU__LIEU_ELEMENTS:
-        return lieuElements != null && !lieuElements.isEmpty();
+      case GamePackage.LIEU__PERSONNES:
+        return personnes != null;
+      case GamePackage.LIEU__CONNAISSANCES:
+        return connaissances != null;
+      case GamePackage.LIEU__OBJETS:
+        return objets != null;
       case GamePackage.LIEU__DEPOT_OBJET:
         return depotObjet != null;
       case GamePackage.LIEU__LISTE_CHEMINS:
-        return listeChemins != null && !listeChemins.isEmpty();
+        return listeChemins != null;
     }
     return super.eIsSet(featureID);
   }
@@ -478,7 +718,9 @@ public class LieuImpl extends MinimalEObjectImpl.Container implements Lieu
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
+    result.append(" (type: ");
+    result.append(type);
+    result.append(", name: ");
     result.append(name);
     result.append(", description: ");
     result.append(description);

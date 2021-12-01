@@ -3,8 +3,6 @@
  */
 package fr.n7.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -95,15 +93,25 @@ public interface Personne extends EObject
   void setObligatoire(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Personne Elements</b></em>' containment reference list.
-   * The list contents are of type {@link fr.n7.game.Interaction}.
+   * Returns the value of the '<em><b>Personne Elements</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Personne Elements</em>' containment reference list.
+   * @return the value of the '<em>Personne Elements</em>' containment reference.
+   * @see #setPersonneElements(Interaction)
    * @see fr.n7.game.GamePackage#getPersonne_PersonneElements()
    * @model containment="true"
    * @generated
    */
-  EList<Interaction> getPersonneElements();
+  Interaction getPersonneElements();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Personne#getPersonneElements <em>Personne Elements</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Personne Elements</em>' containment reference.
+   * @see #getPersonneElements()
+   * @generated
+   */
+  void setPersonneElements(Interaction value);
 
 } // Personne

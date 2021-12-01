@@ -5,6 +5,7 @@ package fr.n7.serializer;
 
 import com.google.inject.Inject;
 import fr.n7.game.Chemin;
+import fr.n7.game.Chemins;
 import fr.n7.game.Choix;
 import fr.n7.game.Condition;
 import fr.n7.game.Connaissance;
@@ -14,14 +15,13 @@ import fr.n7.game.Game;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Interaction;
 import fr.n7.game.Lieu;
-import fr.n7.game.LieuDebut;
-import fr.n7.game.LieuFin;
-import fr.n7.game.Objet;
-import fr.n7.game.Objets;
+import fr.n7.game.ObjetExplorateur;
+import fr.n7.game.ObjetLieu;
+import fr.n7.game.ObjetsExplorateur;
+import fr.n7.game.ObjetsLieu;
 import fr.n7.game.Personne;
 import fr.n7.game.Personnes;
 import fr.n7.game.Sac;
-import fr.n7.game.Territoire;
 import fr.n7.services.GameGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -54,6 +54,9 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case GamePackage.CHEMIN:
 				sequence_Chemin(context, (Chemin) semanticObject); 
 				return; 
+			case GamePackage.CHEMINS:
+				sequence_Chemins(context, (Chemins) semanticObject); 
+				return; 
 			case GamePackage.CHOIX:
 				sequence_Choix(context, (Choix) semanticObject); 
 				return; 
@@ -78,24 +81,17 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case GamePackage.LIEU:
 				sequence_Lieu(context, (Lieu) semanticObject); 
 				return; 
-			case GamePackage.LIEU_DEBUT:
-				sequence_LieuDebut(context, (LieuDebut) semanticObject); 
+			case GamePackage.OBJET_EXPLORATEUR:
+				sequence_ObjetExplorateur(context, (ObjetExplorateur) semanticObject); 
 				return; 
-			case GamePackage.LIEU_FIN:
-				if (rule == grammarAccess.getCheminRule()) {
-					sequence_Chemin_LieuFin(context, (LieuFin) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getLieuFinRule()) {
-					sequence_LieuFin(context, (LieuFin) semanticObject); 
-					return; 
-				}
-				else break;
-			case GamePackage.OBJET:
-				sequence_Objet(context, (Objet) semanticObject); 
+			case GamePackage.OBJET_LIEU:
+				sequence_ObjetLieu(context, (ObjetLieu) semanticObject); 
 				return; 
-			case GamePackage.OBJETS:
-				sequence_Objets(context, (Objets) semanticObject); 
+			case GamePackage.OBJETS_EXPLORATEUR:
+				sequence_ObjetsExplorateur(context, (ObjetsExplorateur) semanticObject); 
+				return; 
+			case GamePackage.OBJETS_LIEU:
+				sequence_ObjetsLieu(context, (ObjetsLieu) semanticObject); 
 				return; 
 			case GamePackage.PERSONNE:
 				sequence_Personne(context, (Personne) semanticObject); 
@@ -105,9 +101,6 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case GamePackage.SAC:
 				sequence_Sac(context, (Sac) semanticObject); 
-				return; 
-			case GamePackage.TERRITOIRE:
-				sequence_Territoire(context, (Territoire) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -121,12 +114,12 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         conditionAction=Condition? 
-	 *         listeChoix+=Choix* 
-	 *         listeConnaissances+=Connaissance* 
-	 *         listeObjets+=Objet* 
+	 *         listeChoix=[Choix|ID]* 
+	 *         listeConnaissances=Connaissances? 
+	 *         listeObjets=[ObjetLieu|ID]* 
 	 *         attributionConnaissance=Condition 
 	 *         attributionObjet=Condition? 
-	 *         listeObjetsConsommes+=Objet* 
+	 *         listeObjetsConsommes=ObjetExplorateur* 
 	 *         consommationObjet=Condition?
 	 *     )
 	 */
@@ -140,7 +133,17 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Chemin returns Chemin
 	 *
 	 * Constraint:
-	 *     (description=STRING conditionDescription=Condition? destination=Lieu)
+	 *     (
+	 *         description=STRING 
+	 *         conditionDescription=Condition? 
+	 *         destination=Lieu 
+	 *         obligatoire=Condition? 
+	 *         visible=Condition? 
+	 *         ouvert=Condition? 
+	 *         listeConnaissances=Connaissances? 
+	 *         listeObjets=ObjetsLieu? 
+	 *         listeObjetsConsommes=ObjetsExplorateur?
+	 *     )
 	 */
 	protected void sequence_Chemin(ISerializationContext context, Chemin semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -149,24 +152,13 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Chemin returns LieuFin
+	 *     territoireElement returns Chemins
+	 *     Chemins returns Chemins
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (description=STRING conditionDescription=Condition?)? 
-	 *         lieufinElements+=Personnes? 
-	 *         lieufinElements+=Connaissances? 
-	 *         lieufinElements+=Objets? 
-	 *         depotObjet=Condition? 
-	 *         obligatoire=Condition? 
-	 *         visible=Condition? 
-	 *         ouvert=Condition? 
-	 *         listeConnaissances+=Connaissance* 
-	 *         listeObjets+=Objet*
-	 *     )
+	 *     listeChemins=Chemin+
 	 */
-	protected void sequence_Chemin_LieuFin(ISerializationContext context, LieuFin semanticObject) {
+	protected void sequence_Chemins(ISerializationContext context, Chemins semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -176,7 +168,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Choix returns Choix
 	 *
 	 * Constraint:
-	 *     (texte=STRING listeActions+=Action+ (choixdebut=STRING conditonChoixDebut=Condition)? (choixfin=STRING conditionChoixFin=Condition)?)
+	 *     (name=ID texte=STRING listeActions=Action+ (choixdebut=STRING conditonChoixDebut=Condition)? (choixfin=STRING conditionChoixFin=Condition)?)
 	 */
 	protected void sequence_Choix(ISerializationContext context, Choix semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -218,6 +210,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     territoireElement returns Connaissances
 	 *     Connaissances returns Connaissances
 	 *
 	 * Constraint:
@@ -230,10 +223,11 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     territoireElement returns Explorateur
 	 *     Explorateur returns Explorateur
 	 *
 	 * Constraint:
-	 *     (name=ID explorateurElements+=Sac explorateurElements+=Connaissances? explorateurElements+=Lieu?)
+	 *     (name=ID sac=Sac connaissances=[Connaissance|ID]* position=[Lieu|ID])
 	 */
 	protected void sequence_Explorateur(ISerializationContext context, Explorateur semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -245,7 +239,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Game returns Game
 	 *
 	 * Constraint:
-	 *     (name=ID gameElements+=gameElement)
+	 *     (name=ID territoireElements+=territoireElement+)
 	 */
 	protected void sequence_Game(ISerializationContext context, Game semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -257,7 +251,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Interaction returns Interaction
 	 *
 	 * Constraint:
-	 *     (name=ID texte=STRING interactionElements+=Choix*)
+	 *     (name=ID texte=STRING interactionElements=Choix*)
 	 */
 	protected void sequence_Interaction(ISerializationContext context, Interaction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -266,57 +260,19 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     LieuDebut returns LieuDebut
-	 *     Chemin returns LieuDebut
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (description=STRING conditionDescription=Condition?)? 
-	 *         lieudebutElements+=Personnes? 
-	 *         lieudebutElements+=Connaissances? 
-	 *         lieudebutElements+=Objets? 
-	 *         depotObjet=Condition? 
-	 *         listeChemins+=Chemin+
-	 *     )
-	 */
-	protected void sequence_LieuDebut(ISerializationContext context, LieuDebut semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     LieuFin returns LieuFin
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (description=STRING conditionDescription=Condition?)? 
-	 *         lieufinElements+=Personnes? 
-	 *         lieufinElements+=Connaissances? 
-	 *         lieufinElements+=Objets? 
-	 *         depotObjet=Condition?
-	 *     )
-	 */
-	protected void sequence_LieuFin(ISerializationContext context, LieuFin semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
+	 *     territoireElement returns Lieu
 	 *     Lieu returns Lieu
 	 *
 	 * Constraint:
 	 *     (
+	 *         type=TypeLieu 
 	 *         name=ID 
 	 *         (description=STRING conditionDescription=Condition?)? 
-	 *         lieuElements+=Personnes? 
-	 *         lieuElements+=Connaissances? 
-	 *         lieuElements+=Objets? 
+	 *         personnes=[Personne|ID]* 
+	 *         connaissances=[Connaissance|ID]* 
+	 *         objets=[ObjetLieu|ID]* 
 	 *         depotObjet=Condition? 
-	 *         listeChemins+=Chemin+
+	 *         listeChemins=[Chemin|ID]*
 	 *     )
 	 */
 	protected void sequence_Lieu(ISerializationContext context, Lieu semanticObject) {
@@ -326,7 +282,19 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Objet returns Objet
+	 *     ObjetExplorateur returns ObjetExplorateur
+	 *
+	 * Constraint:
+	 *     (name=ID taille=INT quantite=INT (description=STRING conditionDescription=Condition?)? transformable=Condition?)
+	 */
+	protected void sequence_ObjetExplorateur(ISerializationContext context, ObjetExplorateur semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ObjetLieu returns ObjetLieu
 	 *
 	 * Constraint:
 	 *     (
@@ -339,19 +307,33 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         transformable=Condition?
 	 *     )
 	 */
-	protected void sequence_Objet(ISerializationContext context, Objet semanticObject) {
+	protected void sequence_ObjetLieu(ISerializationContext context, ObjetLieu semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Objets returns Objets
+	 *     territoireElement returns ObjetsExplorateur
+	 *     ObjetsExplorateur returns ObjetsExplorateur
 	 *
 	 * Constraint:
-	 *     listeObjets+=Objet+
+	 *     listeObjets=ObjetExplorateur+
 	 */
-	protected void sequence_Objets(ISerializationContext context, Objets semanticObject) {
+	protected void sequence_ObjetsExplorateur(ISerializationContext context, ObjetsExplorateur semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     territoireElement returns ObjetsLieu
+	 *     ObjetsLieu returns ObjetsLieu
+	 *
+	 * Constraint:
+	 *     listeObjets=ObjetLieu+
+	 */
+	protected void sequence_ObjetsLieu(ISerializationContext context, ObjetsLieu semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -361,7 +343,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Personne returns Personne
 	 *
 	 * Constraint:
-	 *     (name=ID visible=BOOL? obligatoire=BOOL? personneElements+=Interaction)
+	 *     (name=ID visible=BOOL? obligatoire=BOOL? personneElements=Interaction)
 	 */
 	protected void sequence_Personne(ISerializationContext context, Personne semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -370,10 +352,11 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     territoireElement returns Personnes
 	 *     Personnes returns Personnes
 	 *
 	 * Constraint:
-	 *     listePersonne+=Personne+
+	 *     listePersonnes=Personne+
 	 */
 	protected void sequence_Personnes(ISerializationContext context, Personnes semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -385,22 +368,9 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Sac returns Sac
 	 *
 	 * Constraint:
-	 *     (taille=INT sacElements+=Objet*)
+	 *     (taille=INT sacElements=[ObjetExplorateur|ID]*)
 	 */
 	protected void sequence_Sac(ISerializationContext context, Sac semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     gameElement returns Territoire
-	 *     Territoire returns Territoire
-	 *
-	 * Constraint:
-	 *     (name=ID territoireElements+=Explorateur territoireElements+=LieuDebut territoireElements+=LieuFin+ territoireElements+=Lieu*)
-	 */
-	protected void sequence_Territoire(ISerializationContext context, Territoire semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -5,7 +5,7 @@ package fr.n7.game.impl;
 
 import fr.n7.game.Game;
 import fr.n7.game.GamePackage;
-import fr.n7.game.gameElement;
+import fr.n7.game.territoireElement;
 
 import java.util.Collection;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.GameImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.impl.GameImpl#getGameElements <em>Game Elements</em>}</li>
+ *   <li>{@link fr.n7.game.impl.GameImpl#getTerritoireElements <em>Territoire Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,14 +60,14 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getGameElements() <em>Game Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getTerritoireElements() <em>Territoire Elements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGameElements()
+   * @see #getTerritoireElements()
    * @generated
    * @ordered
    */
-  protected EList<gameElement> gameElements;
+  protected EList<territoireElement> territoireElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,13 +121,13 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
    * @generated
    */
   @Override
-  public EList<gameElement> getGameElements()
+  public EList<territoireElement> getTerritoireElements()
   {
-    if (gameElements == null)
+    if (territoireElements == null)
     {
-      gameElements = new EObjectContainmentEList<gameElement>(gameElement.class, this, GamePackage.GAME__GAME_ELEMENTS);
+      territoireElements = new EObjectContainmentEList<territoireElement>(territoireElement.class, this, GamePackage.GAME__TERRITOIRE_ELEMENTS);
     }
-    return gameElements;
+    return territoireElements;
   }
 
   /**
@@ -140,8 +140,8 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case GamePackage.GAME__GAME_ELEMENTS:
-        return ((InternalEList<?>)getGameElements()).basicRemove(otherEnd, msgs);
+      case GamePackage.GAME__TERRITOIRE_ELEMENTS:
+        return ((InternalEList<?>)getTerritoireElements()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -158,8 +158,8 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
     {
       case GamePackage.GAME__NAME:
         return getName();
-      case GamePackage.GAME__GAME_ELEMENTS:
-        return getGameElements();
+      case GamePackage.GAME__TERRITOIRE_ELEMENTS:
+        return getTerritoireElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -178,9 +178,9 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
       case GamePackage.GAME__NAME:
         setName((String)newValue);
         return;
-      case GamePackage.GAME__GAME_ELEMENTS:
-        getGameElements().clear();
-        getGameElements().addAll((Collection<? extends gameElement>)newValue);
+      case GamePackage.GAME__TERRITOIRE_ELEMENTS:
+        getTerritoireElements().clear();
+        getTerritoireElements().addAll((Collection<? extends territoireElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,8 +199,8 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
       case GamePackage.GAME__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GamePackage.GAME__GAME_ELEMENTS:
-        getGameElements().clear();
+      case GamePackage.GAME__TERRITOIRE_ELEMENTS:
+        getTerritoireElements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -218,8 +218,8 @@ public class GameImpl extends MinimalEObjectImpl.Container implements Game
     {
       case GamePackage.GAME__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GamePackage.GAME__GAME_ELEMENTS:
-        return gameElements != null && !gameElements.isEmpty();
+      case GamePackage.GAME__TERRITOIRE_ELEMENTS:
+        return territoireElements != null && !territoireElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }
