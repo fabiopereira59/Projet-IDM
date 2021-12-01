@@ -6555,7 +6555,7 @@ finally {
 
 RULE_BOOL : ('true'|'false');
 
-RULE_COND : RULE_STRING '|' RULE_STRING;
+RULE_COND : RULE_STRING;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

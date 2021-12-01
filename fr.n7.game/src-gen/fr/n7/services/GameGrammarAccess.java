@@ -1603,7 +1603,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//terminal COND returns ecore::EBoolean:
-	//	STRING '|' STRING;
+	//	STRING;
 	public TerminalRule getCONDRule() {
 		return tCOND;
 	}
