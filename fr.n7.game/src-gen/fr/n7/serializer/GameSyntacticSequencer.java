@@ -22,7 +22,10 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GameGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__;
+	protected AbstractElementAlias match_Action_DonneCKeyword_5_0_q;
+	protected AbstractElementAlias match_Action_DonneOKeyword_6_0_q;
+	protected AbstractElementAlias match_Action___ConsommeOKeyword_9_0_QuantiteOKeyword_9_2__q;
+	protected AbstractElementAlias match_Chemins_Conditions_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConditionsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__;
 	protected AbstractElementAlias match_Choix_ChoixdebutKeyword_5_0_q;
 	protected AbstractElementAlias match_Choix_ChoixfinKeyword_6_0_q;
 	protected AbstractElementAlias match_ObjetExplorateur_TransformableKeyword_4_0_q;
@@ -33,7 +36,10 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (GameGrammarAccess) access;
-		match_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getCheminsAccess().getCheminsKeyword_0()), new TokenAlias(false, false, grammarAccess.getCheminsAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getCheminsAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getConnaissancesKeyword_0()), new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getObjetsEKeyword_0()), new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getObjetsLKeyword_0()), new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getRightCurlyBracketKeyword_3())));
+		match_Action_DonneCKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getActionAccess().getDonneCKeyword_5_0());
+		match_Action_DonneOKeyword_6_0_q = new TokenAlias(false, true, grammarAccess.getActionAccess().getDonneOKeyword_6_0());
+		match_Action___ConsommeOKeyword_9_0_QuantiteOKeyword_9_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getActionAccess().getConsommeOKeyword_9_0()), new TokenAlias(false, false, grammarAccess.getActionAccess().getQuantiteOKeyword_9_2()));
+		match_Chemins_Conditions_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConditionsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getCheminsAccess().getCheminsKeyword_0()), new TokenAlias(false, false, grammarAccess.getCheminsAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getCheminsAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getConditionsAccess().getConditionsKeyword_0()), new TokenAlias(false, false, grammarAccess.getConditionsAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getConditionsAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getConnaissancesKeyword_0()), new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getConnaissancesAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getObjetsEKeyword_0()), new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getObjetsExplorateurAccess().getRightCurlyBracketKeyword_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getObjetsLKeyword_0()), new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getLeftCurlyBracketKeyword_1()), new TokenAlias(false, false, grammarAccess.getObjetsLieuAccess().getRightCurlyBracketKeyword_3())));
 		match_Choix_ChoixdebutKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixdebutKeyword_5_0());
 		match_Choix_ChoixfinKeyword_6_0_q = new TokenAlias(false, true, grammarAccess.getChoixAccess().getChoixfinKeyword_6_0());
 		match_ObjetExplorateur_TransformableKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getObjetExplorateurAccess().getTransformableKeyword_4_0());
@@ -54,8 +60,14 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__.equals(syntax))
-				emit_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Action_DonneCKeyword_5_0_q.equals(syntax))
+				emit_Action_DonneCKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Action_DonneOKeyword_6_0_q.equals(syntax))
+				emit_Action_DonneOKeyword_6_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Action___ConsommeOKeyword_9_0_QuantiteOKeyword_9_2__q.equals(syntax))
+				emit_Action___ConsommeOKeyword_9_0_QuantiteOKeyword_9_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Chemins_Conditions_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConditionsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__.equals(syntax))
+				emit_Chemins_Conditions_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConditionsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Choix_ChoixdebutKeyword_5_0_q.equals(syntax))
 				emit_Choix_ChoixdebutKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Choix_ChoixfinKeyword_6_0_q.equals(syntax))
@@ -74,12 +86,101 @@ public class GameSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Ambiguous syntax:
-	 *     ('objetsE' '{' '}') | ('objetsL' '{' '}') | ('connaissances' '{' '}') | ('chemins' '{' '}')
+	 *     'donneC'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     conditionAction=Condition (ambiguity) 'donneO' listeObjets=[ObjetLieu|ID]
+	 *     conditionAction=Condition (ambiguity) 'donneO'? 'attributionC' attributionConnaissance=Condition
+	 *     conditionAction=Condition (ambiguity) 'donneO'? 'attributionO' attributionObjet=Condition
+	 *     conditionAction=Condition (ambiguity) 'donneO'? 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     conditionAction=Condition (ambiguity) 'donneO'? 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     conditionAction=Condition (ambiguity) 'donneO'? ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     conditionAction=Condition (ambiguity) 'donneO'? ('consommeO' 'quantiteO')? '}' (rule end)
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO' listeObjets=[ObjetLieu|ID]
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO'? 'attributionC' attributionConnaissance=Condition
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO'? 'attributionO' attributionObjet=Condition
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO'? 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO'? 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO'? ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     listeChoix=[Choix|ID] (ambiguity) 'donneO'? ('consommeO' 'quantiteO')? '}' (rule end)
+	 *     texte=STRING (ambiguity) 'donneO' listeObjets=[ObjetLieu|ID]
+	 *     texte=STRING (ambiguity) 'donneO'? 'attributionC' attributionConnaissance=Condition
+	 *     texte=STRING (ambiguity) 'donneO'? 'attributionO' attributionObjet=Condition
+	 *     texte=STRING (ambiguity) 'donneO'? 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     texte=STRING (ambiguity) 'donneO'? 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     texte=STRING (ambiguity) 'donneO'? ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     texte=STRING (ambiguity) 'donneO'? ('consommeO' 'quantiteO')? '}' (rule end)
+	 */
+	protected void emit_Action_DonneCKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'donneO'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     conditionAction=Condition 'donneC'? (ambiguity) 'attributionC' attributionConnaissance=Condition
+	 *     conditionAction=Condition 'donneC'? (ambiguity) 'attributionO' attributionObjet=Condition
+	 *     conditionAction=Condition 'donneC'? (ambiguity) 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     conditionAction=Condition 'donneC'? (ambiguity) 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     conditionAction=Condition 'donneC'? (ambiguity) ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     conditionAction=Condition 'donneC'? (ambiguity) ('consommeO' 'quantiteO')? '}' (rule end)
+	 *     listeChoix=[Choix|ID] 'donneC'? (ambiguity) 'attributionC' attributionConnaissance=Condition
+	 *     listeChoix=[Choix|ID] 'donneC'? (ambiguity) 'attributionO' attributionObjet=Condition
+	 *     listeChoix=[Choix|ID] 'donneC'? (ambiguity) 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     listeChoix=[Choix|ID] 'donneC'? (ambiguity) 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     listeChoix=[Choix|ID] 'donneC'? (ambiguity) ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     listeChoix=[Choix|ID] 'donneC'? (ambiguity) ('consommeO' 'quantiteO')? '}' (rule end)
+	 *     listeConnaissances=[Connaissance|ID] (ambiguity) 'attributionC' attributionConnaissance=Condition
+	 *     listeConnaissances=[Connaissance|ID] (ambiguity) 'attributionO' attributionObjet=Condition
+	 *     listeConnaissances=[Connaissance|ID] (ambiguity) 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     listeConnaissances=[Connaissance|ID] (ambiguity) 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     listeConnaissances=[Connaissance|ID] (ambiguity) ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     listeConnaissances=[Connaissance|ID] (ambiguity) ('consommeO' 'quantiteO')? '}' (rule end)
+	 *     texte=STRING 'donneC'? (ambiguity) 'attributionC' attributionConnaissance=Condition
+	 *     texte=STRING 'donneC'? (ambiguity) 'attributionO' attributionObjet=Condition
+	 *     texte=STRING 'donneC'? (ambiguity) 'consommeO' 'quantiteO' listeQuantite=INT
+	 *     texte=STRING 'donneC'? (ambiguity) 'consommeO' listeObjetsConsommes=[ObjetExplorateur|ID]
+	 *     texte=STRING 'donneC'? (ambiguity) ('consommeO' 'quantiteO')? 'consommationC' consommationObjet=Condition
+	 *     texte=STRING 'donneC'? (ambiguity) ('consommeO' 'quantiteO')? '}' (rule end)
+	 */
+	protected void emit_Action_DonneOKeyword_6_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('consommeO' 'quantiteO')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     attributionConnaissance=Condition (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     attributionConnaissance=Condition (ambiguity) '}' (rule end)
+	 *     attributionObjet=Condition (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     attributionObjet=Condition (ambiguity) '}' (rule end)
+	 *     conditionAction=Condition 'donneC'? 'donneO'? (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     conditionAction=Condition 'donneC'? 'donneO'? (ambiguity) '}' (rule end)
+	 *     listeChoix=[Choix|ID] 'donneC'? 'donneO'? (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     listeChoix=[Choix|ID] 'donneC'? 'donneO'? (ambiguity) '}' (rule end)
+	 *     listeConnaissances=[Connaissance|ID] 'donneO'? (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     listeConnaissances=[Connaissance|ID] 'donneO'? (ambiguity) '}' (rule end)
+	 *     listeObjets=[ObjetLieu|ID] (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     listeObjets=[ObjetLieu|ID] (ambiguity) '}' (rule end)
+	 *     texte=STRING 'donneC'? 'donneO'? (ambiguity) 'consommationC' consommationObjet=Condition
+	 *     texte=STRING 'donneC'? 'donneO'? (ambiguity) '}' (rule end)
+	 */
+	protected void emit_Action___ConsommeOKeyword_9_0_QuantiteOKeyword_9_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('objetsE' '{' '}') | ('objetsL' '{' '}') | ('connaissances' '{' '}') | ('conditions' '{' '}') | ('chemins' '{' '}')
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) (rule start)
 	 */
-	protected void emit_Chemins_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Chemins_Conditions_Connaissances_ObjetsExplorateur_ObjetsLieu___CheminsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConditionsKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ConnaissancesKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsEKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3___or___ObjetsLKeyword_0_LeftCurlyBracketKeyword_1_RightCurlyBracketKeyword_3__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

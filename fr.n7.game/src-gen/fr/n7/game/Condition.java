@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Condition#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.Condition#isCondition <em>Condition</em>}</li>
+ *   <li>{@link fr.n7.game.Condition#getCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @see fr.n7.game.GamePackage#getCondition()
@@ -51,21 +51,21 @@ public interface Condition extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condition</em>' attribute.
-   * @see #setCondition(boolean)
+   * @see #setCondition(String)
    * @see fr.n7.game.GamePackage#getCondition_Condition()
    * @model
    * @generated
    */
-  boolean isCondition();
+  String getCondition();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Condition#isCondition <em>Condition</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.Condition#getCondition <em>Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Condition</em>' attribute.
-   * @see #isCondition()
+   * @see #getCondition()
    * @generated
    */
-  void setCondition(boolean value);
+  void setCondition(String value);
 
 } // Condition

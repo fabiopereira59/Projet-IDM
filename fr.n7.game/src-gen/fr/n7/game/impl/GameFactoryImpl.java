@@ -82,6 +82,7 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
       case GamePackage.OBJETS_LIEU: return createObjetsLieu();
       case GamePackage.CONNAISSANCES: return createConnaissances();
       case GamePackage.CONNAISSANCE: return createConnaissance();
+      case GamePackage.CONDITIONS: return createConditions();
       case GamePackage.CONDITION: return createCondition();
       case GamePackage.CHEMINS: return createChemins();
       case GamePackage.CHEMIN: return createChemin();
@@ -314,6 +315,18 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     ConnaissanceImpl connaissance = new ConnaissanceImpl();
     return connaissance;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Conditions createConditions()
+  {
+    ConditionsImpl conditions = new ConditionsImpl();
+    return conditions;
   }
 
   /**

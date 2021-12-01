@@ -168,6 +168,15 @@ public interface GameFactory extends EFactory
   Connaissance createConnaissance();
 
   /**
+   * Returns a new object of class '<em>Conditions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditions</em>'.
+   * @generated
+   */
+  Conditions createConditions();
+
+  /**
    * Returns a new object of class '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

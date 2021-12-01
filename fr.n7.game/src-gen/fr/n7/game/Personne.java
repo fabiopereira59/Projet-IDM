@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.Personne#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.Personne#isVisible <em>Visible</em>}</li>
- *   <li>{@link fr.n7.game.Personne#isObligatoire <em>Obligatoire</em>}</li>
+ *   <li>{@link fr.n7.game.Personne#getVisible <em>Visible</em>}</li>
+ *   <li>{@link fr.n7.game.Personne#getObligatoire <em>Obligatoire</em>}</li>
  *   <li>{@link fr.n7.game.Personne#getPersonneElements <em>Personne Elements</em>}</li>
  * </ul>
  *
@@ -49,48 +49,48 @@ public interface Personne extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Visible</b></em>' attribute.
+   * Returns the value of the '<em><b>Visible</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Visible</em>' attribute.
-   * @see #setVisible(boolean)
+   * @return the value of the '<em>Visible</em>' reference.
+   * @see #setVisible(Condition)
    * @see fr.n7.game.GamePackage#getPersonne_Visible()
    * @model
    * @generated
    */
-  boolean isVisible();
+  Condition getVisible();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Personne#isVisible <em>Visible</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.Personne#getVisible <em>Visible</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Visible</em>' attribute.
-   * @see #isVisible()
+   * @param value the new value of the '<em>Visible</em>' reference.
+   * @see #getVisible()
    * @generated
    */
-  void setVisible(boolean value);
+  void setVisible(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Obligatoire</b></em>' attribute.
+   * Returns the value of the '<em><b>Obligatoire</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Obligatoire</em>' attribute.
-   * @see #setObligatoire(boolean)
+   * @return the value of the '<em>Obligatoire</em>' reference.
+   * @see #setObligatoire(Condition)
    * @see fr.n7.game.GamePackage#getPersonne_Obligatoire()
    * @model
    * @generated
    */
-  boolean isObligatoire();
+  Condition getObligatoire();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Personne#isObligatoire <em>Obligatoire</em>}' attribute.
+   * Sets the value of the '{@link fr.n7.game.Personne#getObligatoire <em>Obligatoire</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Obligatoire</em>' attribute.
-   * @see #isObligatoire()
+   * @param value the new value of the '<em>Obligatoire</em>' reference.
+   * @see #getObligatoire()
    * @generated
    */
-  void setObligatoire(boolean value);
+  void setObligatoire(Condition value);
 
   /**
    * Returns the value of the '<em><b>Personne Elements</b></em>' containment reference.

@@ -41,8 +41,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Personne">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obligatoire" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visible" eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obligatoire" eType="#//Condition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personneElements" eType="#//Interaction"
         containment="true"/>
   </eClassifiers>
@@ -65,18 +65,18 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="texte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionAction" eType="#//Condition"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeChoix" eType="#//Choix"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listeConnaissances" eType="#//Connaissances"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeConnaissances" eType="#//Connaissance"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjets" eType="#//ObjetLieu"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributionConnaissance"
         eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributionObjet" eType="#//Condition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjetsConsommes" eType="#//ObjetExplorateur"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjetsConsommes" eType="#//ObjetExplorateur"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="listeQuantite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="consommationObjet" eType="#//Condition"
         containment="true"/>
   </eClassifiers>
@@ -122,31 +122,30 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionConnaissance"
         eType="#//Condition" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Conditions" eSuperTypes="#//territoireElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeConditions" upperBound="-1"
+        eType="#//Condition" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Chemins" eSuperTypes="#//territoireElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeChemins" eType="#//Chemin"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Chemin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionDescription" eType="#//Condition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" eType="#//Lieu"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="obligatoire" eType="#//Condition"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="visible" eType="#//Condition"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ouvert" eType="#//Condition"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listeConnaissances" eType="#//Connaissances"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjets" eType="#//ObjetsLieu"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjetsConsommes" eType="#//ObjetsExplorateur"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Lieu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" eType="#//Lieu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obligatoire" eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visible" eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ouvert" eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeConnaissances" eType="#//Connaissance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjets" eType="#//ObjetsLieu"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeObjetsConsommes" eType="#//ObjetsExplorateur"/>
   </eClassifiers>
 </ecore:EPackage>

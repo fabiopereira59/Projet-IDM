@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.Action#getTexte <em>Texte</em>}</li>
  *   <li>{@link fr.n7.game.Action#getConditionAction <em>Condition Action</em>}</li>
  *   <li>{@link fr.n7.game.Action#getListeChoix <em>Liste Choix</em>}</li>
  *   <li>{@link fr.n7.game.Action#getListeConnaissances <em>Liste Connaissances</em>}</li>
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.n7.game.Action#getAttributionConnaissance <em>Attribution Connaissance</em>}</li>
  *   <li>{@link fr.n7.game.Action#getAttributionObjet <em>Attribution Objet</em>}</li>
  *   <li>{@link fr.n7.game.Action#getListeObjetsConsommes <em>Liste Objets Consommes</em>}</li>
+ *   <li>{@link fr.n7.game.Action#getListeQuantite <em>Liste Quantite</em>}</li>
  *   <li>{@link fr.n7.game.Action#getConsommationObjet <em>Consommation Objet</em>}</li>
  * </ul>
  *
@@ -30,6 +32,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Action extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Texte</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Texte</em>' attribute.
+   * @see #setTexte(String)
+   * @see fr.n7.game.GamePackage#getAction_Texte()
+   * @model
+   * @generated
+   */
+  String getTexte();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Action#getTexte <em>Texte</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Texte</em>' attribute.
+   * @see #getTexte()
+   * @generated
+   */
+  void setTexte(String value);
+
   /**
    * Returns the value of the '<em><b>Condition Action</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -75,26 +99,26 @@ public interface Action extends EObject
   void setListeChoix(Choix value);
 
   /**
-   * Returns the value of the '<em><b>Liste Connaissances</b></em>' containment reference.
+   * Returns the value of the '<em><b>Liste Connaissances</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Connaissances</em>' containment reference.
-   * @see #setListeConnaissances(Connaissances)
+   * @return the value of the '<em>Liste Connaissances</em>' reference.
+   * @see #setListeConnaissances(Connaissance)
    * @see fr.n7.game.GamePackage#getAction_ListeConnaissances()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Connaissances getListeConnaissances();
+  Connaissance getListeConnaissances();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Action#getListeConnaissances <em>Liste Connaissances</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Action#getListeConnaissances <em>Liste Connaissances</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Liste Connaissances</em>' containment reference.
+   * @param value the new value of the '<em>Liste Connaissances</em>' reference.
    * @see #getListeConnaissances()
    * @generated
    */
-  void setListeConnaissances(Connaissances value);
+  void setListeConnaissances(Connaissance value);
 
   /**
    * Returns the value of the '<em><b>Liste Objets</b></em>' reference.
@@ -163,26 +187,48 @@ public interface Action extends EObject
   void setAttributionObjet(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Liste Objets Consommes</b></em>' containment reference.
+   * Returns the value of the '<em><b>Liste Objets Consommes</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Objets Consommes</em>' containment reference.
+   * @return the value of the '<em>Liste Objets Consommes</em>' reference.
    * @see #setListeObjetsConsommes(ObjetExplorateur)
    * @see fr.n7.game.GamePackage#getAction_ListeObjetsConsommes()
-   * @model containment="true"
+   * @model
    * @generated
    */
   ObjetExplorateur getListeObjetsConsommes();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Action#getListeObjetsConsommes <em>Liste Objets Consommes</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Action#getListeObjetsConsommes <em>Liste Objets Consommes</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Liste Objets Consommes</em>' containment reference.
+   * @param value the new value of the '<em>Liste Objets Consommes</em>' reference.
    * @see #getListeObjetsConsommes()
    * @generated
    */
   void setListeObjetsConsommes(ObjetExplorateur value);
+
+  /**
+   * Returns the value of the '<em><b>Liste Quantite</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Liste Quantite</em>' attribute.
+   * @see #setListeQuantite(int)
+   * @see fr.n7.game.GamePackage#getAction_ListeQuantite()
+   * @model
+   * @generated
+   */
+  int getListeQuantite();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Action#getListeQuantite <em>Liste Quantite</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Liste Quantite</em>' attribute.
+   * @see #getListeQuantite()
+   * @generated
+   */
+  void setListeQuantite(int value);
 
   /**
    * Returns the value of the '<em><b>Consommation Objet</b></em>' containment reference.

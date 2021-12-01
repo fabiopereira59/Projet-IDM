@@ -14,8 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.Chemin#getName <em>Name</em>}</li>
  *   <li>{@link fr.n7.game.Chemin#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.n7.game.Chemin#getConditionDescription <em>Condition Description</em>}</li>
+ *   <li>{@link fr.n7.game.Chemin#getSource <em>Source</em>}</li>
  *   <li>{@link fr.n7.game.Chemin#getDestination <em>Destination</em>}</li>
  *   <li>{@link fr.n7.game.Chemin#getObligatoire <em>Obligatoire</em>}</li>
  *   <li>{@link fr.n7.game.Chemin#getVisible <em>Visible</em>}</li>
@@ -31,6 +33,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Chemin extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.n7.game.GamePackage#getChemin_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Chemin#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Description</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -76,154 +100,176 @@ public interface Chemin extends EObject
   void setConditionDescription(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Destination</b></em>' containment reference.
+   * Returns the value of the '<em><b>Source</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Destination</em>' containment reference.
+   * @return the value of the '<em>Source</em>' reference.
+   * @see #setSource(Lieu)
+   * @see fr.n7.game.GamePackage#getChemin_Source()
+   * @model
+   * @generated
+   */
+  Lieu getSource();
+
+  /**
+   * Sets the value of the '{@link fr.n7.game.Chemin#getSource <em>Source</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Source</em>' reference.
+   * @see #getSource()
+   * @generated
+   */
+  void setSource(Lieu value);
+
+  /**
+   * Returns the value of the '<em><b>Destination</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Destination</em>' reference.
    * @see #setDestination(Lieu)
    * @see fr.n7.game.GamePackage#getChemin_Destination()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Lieu getDestination();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getDestination <em>Destination</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getDestination <em>Destination</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Destination</em>' containment reference.
+   * @param value the new value of the '<em>Destination</em>' reference.
    * @see #getDestination()
    * @generated
    */
   void setDestination(Lieu value);
 
   /**
-   * Returns the value of the '<em><b>Obligatoire</b></em>' containment reference.
+   * Returns the value of the '<em><b>Obligatoire</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Obligatoire</em>' containment reference.
+   * @return the value of the '<em>Obligatoire</em>' reference.
    * @see #setObligatoire(Condition)
    * @see fr.n7.game.GamePackage#getChemin_Obligatoire()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Condition getObligatoire();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getObligatoire <em>Obligatoire</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getObligatoire <em>Obligatoire</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Obligatoire</em>' containment reference.
+   * @param value the new value of the '<em>Obligatoire</em>' reference.
    * @see #getObligatoire()
    * @generated
    */
   void setObligatoire(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Visible</b></em>' containment reference.
+   * Returns the value of the '<em><b>Visible</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Visible</em>' containment reference.
+   * @return the value of the '<em>Visible</em>' reference.
    * @see #setVisible(Condition)
    * @see fr.n7.game.GamePackage#getChemin_Visible()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Condition getVisible();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getVisible <em>Visible</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getVisible <em>Visible</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Visible</em>' containment reference.
+   * @param value the new value of the '<em>Visible</em>' reference.
    * @see #getVisible()
    * @generated
    */
   void setVisible(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Ouvert</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ouvert</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ouvert</em>' containment reference.
+   * @return the value of the '<em>Ouvert</em>' reference.
    * @see #setOuvert(Condition)
    * @see fr.n7.game.GamePackage#getChemin_Ouvert()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Condition getOuvert();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getOuvert <em>Ouvert</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getOuvert <em>Ouvert</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ouvert</em>' containment reference.
+   * @param value the new value of the '<em>Ouvert</em>' reference.
    * @see #getOuvert()
    * @generated
    */
   void setOuvert(Condition value);
 
   /**
-   * Returns the value of the '<em><b>Liste Connaissances</b></em>' containment reference.
+   * Returns the value of the '<em><b>Liste Connaissances</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Connaissances</em>' containment reference.
-   * @see #setListeConnaissances(Connaissances)
+   * @return the value of the '<em>Liste Connaissances</em>' reference.
+   * @see #setListeConnaissances(Connaissance)
    * @see fr.n7.game.GamePackage#getChemin_ListeConnaissances()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Connaissances getListeConnaissances();
+  Connaissance getListeConnaissances();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getListeConnaissances <em>Liste Connaissances</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getListeConnaissances <em>Liste Connaissances</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Liste Connaissances</em>' containment reference.
+   * @param value the new value of the '<em>Liste Connaissances</em>' reference.
    * @see #getListeConnaissances()
    * @generated
    */
-  void setListeConnaissances(Connaissances value);
+  void setListeConnaissances(Connaissance value);
 
   /**
-   * Returns the value of the '<em><b>Liste Objets</b></em>' containment reference.
+   * Returns the value of the '<em><b>Liste Objets</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Objets</em>' containment reference.
+   * @return the value of the '<em>Liste Objets</em>' reference.
    * @see #setListeObjets(ObjetsLieu)
    * @see fr.n7.game.GamePackage#getChemin_ListeObjets()
-   * @model containment="true"
+   * @model
    * @generated
    */
   ObjetsLieu getListeObjets();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getListeObjets <em>Liste Objets</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getListeObjets <em>Liste Objets</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Liste Objets</em>' containment reference.
+   * @param value the new value of the '<em>Liste Objets</em>' reference.
    * @see #getListeObjets()
    * @generated
    */
   void setListeObjets(ObjetsLieu value);
 
   /**
-   * Returns the value of the '<em><b>Liste Objets Consommes</b></em>' containment reference.
+   * Returns the value of the '<em><b>Liste Objets Consommes</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Liste Objets Consommes</em>' containment reference.
+   * @return the value of the '<em>Liste Objets Consommes</em>' reference.
    * @see #setListeObjetsConsommes(ObjetsExplorateur)
    * @see fr.n7.game.GamePackage#getChemin_ListeObjetsConsommes()
-   * @model containment="true"
+   * @model
    * @generated
    */
   ObjetsExplorateur getListeObjetsConsommes();
 
   /**
-   * Sets the value of the '{@link fr.n7.game.Chemin#getListeObjetsConsommes <em>Liste Objets Consommes</em>}' containment reference.
+   * Sets the value of the '{@link fr.n7.game.Chemin#getListeObjetsConsommes <em>Liste Objets Consommes</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Liste Objets Consommes</em>' containment reference.
+   * @param value the new value of the '<em>Liste Objets Consommes</em>' reference.
    * @see #getListeObjetsConsommes()
    * @generated
    */

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.ConditionImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.impl.ConditionImpl#isCondition <em>Condition</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ConditionImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,24 +50,24 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isCondition() <em>Condition</em>}' attribute.
+   * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isCondition()
+   * @see #getCondition()
    * @generated
    * @ordered
    */
-  protected static final boolean CONDITION_EDEFAULT = false;
+  protected static final String CONDITION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #isCondition() <em>Condition</em>}' attribute.
+   * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isCondition()
+   * @see #getCondition()
    * @generated
    * @ordered
    */
-  protected boolean condition = CONDITION_EDEFAULT;
+  protected String condition = CONDITION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @generated
    */
   @Override
-  public boolean isCondition()
+  public String getCondition()
   {
     return condition;
   }
@@ -132,9 +132,9 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * @generated
    */
   @Override
-  public void setCondition(boolean newCondition)
+  public void setCondition(String newCondition)
   {
-    boolean oldCondition = condition;
+    String oldCondition = condition;
     condition = newCondition;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CONDITION__CONDITION, oldCondition, condition));
@@ -153,7 +153,7 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
       case GamePackage.CONDITION__NAME:
         return getName();
       case GamePackage.CONDITION__CONDITION:
-        return isCondition();
+        return getCondition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,7 +172,7 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
         setName((String)newValue);
         return;
       case GamePackage.CONDITION__CONDITION:
-        setCondition((Boolean)newValue);
+        setCondition((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -211,7 +211,7 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
       case GamePackage.CONDITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.CONDITION__CONDITION:
-        return condition != CONDITION_EDEFAULT;
+        return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
     }
     return super.eIsSet(featureID);
   }

@@ -14,11 +14,12 @@ terminal BOOL returns ecore::EBoolean:
 ;
 
 terminal COND returns ecore::EBoolean:
-	(ID(('&')ID)?)('|'ID(('&')(ID))?)+
+	//(ID(('&')ID)?)('|'ID(('&')(ID))?)+
+	STRING '|' STRING
 ;
 
 territoireElement :
-	Explorateur | Lieu | ObjetsExplorateur | ObjetsLieu | Connaissances | Personnes | Chemins;
+	Explorateur | Lieu | ObjetsExplorateur | ObjetsLieu | Connaissances | Personnes | Chemins | Conditions;
 	
 Explorateur :
 	'explorateur'
@@ -65,11 +66,10 @@ Personnes :
 ;
 
 Personne :
-	'personne'
 	name=ID
 	'{'
-		('visible' visible=BOOL)?
-		('obligatoire' obligatoire=BOOL)?
+		('visible' visible=[Condition])?
+		('obligatoire' obligatoire=[Condition])?
 		personneElements=Interaction
 	'}'
 ;
@@ -86,8 +86,8 @@ Interaction :
 Choix :
 	'choix'
 	name=ID
-	texte=STRING
 	'{'
+		texte=STRING
 		listeActions=Action+ //E31
 		('choixdebut' (choixdebut=STRING conditonChoixDebut=Condition)?)? //E30
 		('choixfin' (choixfin=STRING conditionChoixFin=Condition)?)? //E34
@@ -97,14 +97,15 @@ Choix :
 Action :
 	'action'
 	'{'
+		texte=STRING
 		(conditionAction=Condition)? //E32 et E35
 		listeChoix=[Choix]* //E35
-		listeConnaissances=Connaissances? //E36
-		listeObjets=[ObjetLieu]* //E36
-		'attributionC' attributionConnaissance=Condition //E37
+		('donneC' listeConnaissances=[Connaissance]*)? //E36
+		('donneO' listeObjets=[ObjetLieu]*)? //E36
+		('attributionC' attributionConnaissance=Condition)? //E37
 		('attributionO' attributionObjet=Condition)? //E37
-		listeObjetsConsommes=ObjetExplorateur* //E38
-		('consommationO' consommationObjet=Condition)? //E38
+		('consommeO' listeObjetsConsommes=[ObjetExplorateur]* 'quantiteO' listeQuantite=INT*)?//E38
+		('consommationC' consommationObjet=Condition)? //E38
 	'}'
 ;
 
@@ -153,12 +154,14 @@ Connaissance :
 	('description' description=STRING (conditionConnaissance=Condition)?)? //E39
 ;
 
+Conditions :
+	'conditions'
+	'{'
+		listeConditions+=Condition*
+	'}'
+;
 Condition :
-	'condition'
-	name=ID
-	//'transmission' (conditiontransmission=COND)? //E22
-	//'consommation' (conditionconsommation=COND)? //E22
-	condition=COND
+	name=ID condition=STRING
 ;
 
 Chemins :
@@ -169,13 +172,16 @@ Chemins :
 ;
 
 Chemin :
-	'chemin'
-	'description' description=STRING (conditionDescription=Condition)? //E39
-	'destination' destination=Lieu
-	('obligatoire' obligatoire=Condition)?
-	('visible' visible=Condition)?
-	('ouvert' ouvert=Condition)?
-	listeConnaissances=Connaissances?
-	listeObjets=ObjetsLieu?
-	listeObjetsConsommes=ObjetsExplorateur?
+	name=ID
+	'{'
+		'description' description=STRING (conditionDescription=Condition)? //E39
+		'source' source=[Lieu]
+		'destination' destination=[Lieu]
+		('obligatoire' obligatoire=[Condition])?
+		('visible' visible=[Condition])?
+		('ouvert' ouvert=[Condition])?
+		listeConnaissances=[Connaissance]*
+		listeObjets=[ObjetsLieu]*
+		listeObjetsConsommes=[ObjetsExplorateur]*
+	'}'
 ;

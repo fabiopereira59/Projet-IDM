@@ -8,6 +8,7 @@ import fr.n7.game.Chemin;
 import fr.n7.game.Chemins;
 import fr.n7.game.Choix;
 import fr.n7.game.Condition;
+import fr.n7.game.Conditions;
 import fr.n7.game.Connaissance;
 import fr.n7.game.Connaissances;
 import fr.n7.game.Explorateur;
@@ -63,6 +64,9 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case GamePackage.CONDITION:
 				sequence_Condition(context, (Condition) semanticObject); 
 				return; 
+			case GamePackage.CONDITIONS:
+				sequence_Conditions(context, (Conditions) semanticObject); 
+				return; 
 			case GamePackage.CONNAISSANCE:
 				sequence_Connaissance(context, (Connaissance) semanticObject); 
 				return; 
@@ -113,13 +117,15 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
+	 *         texte=STRING 
 	 *         conditionAction=Condition? 
 	 *         listeChoix=[Choix|ID]* 
-	 *         listeConnaissances=Connaissances? 
+	 *         listeConnaissances=[Connaissance|ID]* 
 	 *         listeObjets=[ObjetLieu|ID]* 
-	 *         attributionConnaissance=Condition 
+	 *         attributionConnaissance=Condition? 
 	 *         attributionObjet=Condition? 
-	 *         listeObjetsConsommes=ObjetExplorateur* 
+	 *         listeObjetsConsommes=[ObjetExplorateur|ID]* 
+	 *         listeQuantite=INT* 
 	 *         consommationObjet=Condition?
 	 *     )
 	 */
@@ -134,15 +140,17 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
+	 *         name=ID 
 	 *         description=STRING 
 	 *         conditionDescription=Condition? 
-	 *         destination=Lieu 
-	 *         obligatoire=Condition? 
-	 *         visible=Condition? 
-	 *         ouvert=Condition? 
-	 *         listeConnaissances=Connaissances? 
-	 *         listeObjets=ObjetsLieu? 
-	 *         listeObjetsConsommes=ObjetsExplorateur?
+	 *         source=[Lieu|ID] 
+	 *         destination=[Lieu|ID] 
+	 *         obligatoire=[Condition|ID]? 
+	 *         visible=[Condition|ID]? 
+	 *         ouvert=[Condition|ID]? 
+	 *         listeConnaissances=[Connaissance|ID]* 
+	 *         listeObjets=[ObjetsLieu|ID]* 
+	 *         listeObjetsConsommes=[ObjetsExplorateur|ID]*
 	 *     )
 	 */
 	protected void sequence_Chemin(ISerializationContext context, Chemin semanticObject) {
@@ -180,7 +188,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Condition returns Condition
 	 *
 	 * Constraint:
-	 *     (name=ID condition=COND)
+	 *     (name=ID condition=STRING)
 	 */
 	protected void sequence_Condition(ISerializationContext context, Condition semanticObject) {
 		if (errorAcceptor != null) {
@@ -190,9 +198,22 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.CONDITION__CONDITION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConditionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getConditionAccess().getConditionCONDTerminalRuleCall_2_0(), semanticObject.isCondition());
+		feeder.accept(grammarAccess.getConditionAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getConditionAccess().getConditionSTRINGTerminalRuleCall_1_0(), semanticObject.getCondition());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     territoireElement returns Conditions
+	 *     Conditions returns Conditions
+	 *
+	 * Constraint:
+	 *     listeConditions+=Condition+
+	 */
+	protected void sequence_Conditions(ISerializationContext context, Conditions semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -343,7 +364,7 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Personne returns Personne
 	 *
 	 * Constraint:
-	 *     (name=ID visible=BOOL? obligatoire=BOOL? personneElements=Interaction)
+	 *     (name=ID visible=[Condition|ID]? obligatoire=[Condition|ID]? personneElements=Interaction)
 	 */
 	protected void sequence_Personne(ISerializationContext context, Personne semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

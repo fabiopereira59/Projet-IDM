@@ -6,7 +6,7 @@ package fr.n7.game.impl;
 import fr.n7.game.Action;
 import fr.n7.game.Choix;
 import fr.n7.game.Condition;
-import fr.n7.game.Connaissances;
+import fr.n7.game.Connaissance;
 import fr.n7.game.GamePackage;
 import fr.n7.game.ObjetExplorateur;
 import fr.n7.game.ObjetLieu;
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fr.n7.game.impl.ActionImpl#getTexte <em>Texte</em>}</li>
  *   <li>{@link fr.n7.game.impl.ActionImpl#getConditionAction <em>Condition Action</em>}</li>
  *   <li>{@link fr.n7.game.impl.ActionImpl#getListeChoix <em>Liste Choix</em>}</li>
  *   <li>{@link fr.n7.game.impl.ActionImpl#getListeConnaissances <em>Liste Connaissances</em>}</li>
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link fr.n7.game.impl.ActionImpl#getAttributionConnaissance <em>Attribution Connaissance</em>}</li>
  *   <li>{@link fr.n7.game.impl.ActionImpl#getAttributionObjet <em>Attribution Objet</em>}</li>
  *   <li>{@link fr.n7.game.impl.ActionImpl#getListeObjetsConsommes <em>Liste Objets Consommes</em>}</li>
+ *   <li>{@link fr.n7.game.impl.ActionImpl#getListeQuantite <em>Liste Quantite</em>}</li>
  *   <li>{@link fr.n7.game.impl.ActionImpl#getConsommationObjet <em>Consommation Objet</em>}</li>
  * </ul>
  *
@@ -42,6 +44,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ActionImpl extends MinimalEObjectImpl.Container implements Action
 {
+  /**
+   * The default value of the '{@link #getTexte() <em>Texte</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTexte()
+   * @generated
+   * @ordered
+   */
+  protected static final String TEXTE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTexte() <em>Texte</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTexte()
+   * @generated
+   * @ordered
+   */
+  protected String texte = TEXTE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getConditionAction() <em>Condition Action</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -63,14 +85,14 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected Choix listeChoix;
 
   /**
-   * The cached value of the '{@link #getListeConnaissances() <em>Liste Connaissances</em>}' containment reference.
+   * The cached value of the '{@link #getListeConnaissances() <em>Liste Connaissances</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getListeConnaissances()
    * @generated
    * @ordered
    */
-  protected Connaissances listeConnaissances;
+  protected Connaissance listeConnaissances;
 
   /**
    * The cached value of the '{@link #getListeObjets() <em>Liste Objets</em>}' reference.
@@ -103,7 +125,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected Condition attributionObjet;
 
   /**
-   * The cached value of the '{@link #getListeObjetsConsommes() <em>Liste Objets Consommes</em>}' containment reference.
+   * The cached value of the '{@link #getListeObjetsConsommes() <em>Liste Objets Consommes</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getListeObjetsConsommes()
@@ -111,6 +133,26 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * @ordered
    */
   protected ObjetExplorateur listeObjetsConsommes;
+
+  /**
+   * The default value of the '{@link #getListeQuantite() <em>Liste Quantite</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeQuantite()
+   * @generated
+   * @ordered
+   */
+  protected static final int LISTE_QUANTITE_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getListeQuantite() <em>Liste Quantite</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getListeQuantite()
+   * @generated
+   * @ordered
+   */
+  protected int listeQuantite = LISTE_QUANTITE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getConsommationObjet() <em>Consommation Objet</em>}' containment reference.
@@ -141,6 +183,31 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected EClass eStaticClass()
   {
     return GamePackage.Literals.ACTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getTexte()
+  {
+    return texte;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTexte(String newTexte)
+  {
+    String oldTexte = texte;
+    texte = newTexte;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__TEXTE, oldTexte, texte));
   }
 
   /**
@@ -244,7 +311,27 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * @generated
    */
   @Override
-  public Connaissances getListeConnaissances()
+  public Connaissance getListeConnaissances()
+  {
+    if (listeConnaissances != null && listeConnaissances.eIsProxy())
+    {
+      InternalEObject oldListeConnaissances = (InternalEObject)listeConnaissances;
+      listeConnaissances = (Connaissance)eResolveProxy(oldListeConnaissances);
+      if (listeConnaissances != oldListeConnaissances)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.ACTION__LISTE_CONNAISSANCES, oldListeConnaissances, listeConnaissances));
+      }
+    }
+    return listeConnaissances;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Connaissance basicGetListeConnaissances()
   {
     return listeConnaissances;
   }
@@ -254,38 +341,13 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetListeConnaissances(Connaissances newListeConnaissances, NotificationChain msgs)
+  @Override
+  public void setListeConnaissances(Connaissance newListeConnaissances)
   {
-    Connaissances oldListeConnaissances = listeConnaissances;
+    Connaissance oldListeConnaissances = listeConnaissances;
     listeConnaissances = newListeConnaissances;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_CONNAISSANCES, oldListeConnaissances, newListeConnaissances);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setListeConnaissances(Connaissances newListeConnaissances)
-  {
-    if (newListeConnaissances != listeConnaissances)
-    {
-      NotificationChain msgs = null;
-      if (listeConnaissances != null)
-        msgs = ((InternalEObject)listeConnaissances).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__LISTE_CONNAISSANCES, null, msgs);
-      if (newListeConnaissances != null)
-        msgs = ((InternalEObject)newListeConnaissances).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__LISTE_CONNAISSANCES, null, msgs);
-      msgs = basicSetListeConnaissances(newListeConnaissances, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_CONNAISSANCES, newListeConnaissances, newListeConnaissances));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_CONNAISSANCES, oldListeConnaissances, listeConnaissances));
   }
 
   /**
@@ -441,6 +503,16 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   @Override
   public ObjetExplorateur getListeObjetsConsommes()
   {
+    if (listeObjetsConsommes != null && listeObjetsConsommes.eIsProxy())
+    {
+      InternalEObject oldListeObjetsConsommes = (InternalEObject)listeObjetsConsommes;
+      listeObjetsConsommes = (ObjetExplorateur)eResolveProxy(oldListeObjetsConsommes);
+      if (listeObjetsConsommes != oldListeObjetsConsommes)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.ACTION__LISTE_OBJETS_CONSOMMES, oldListeObjetsConsommes, listeObjetsConsommes));
+      }
+    }
     return listeObjetsConsommes;
   }
 
@@ -449,16 +521,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetListeObjetsConsommes(ObjetExplorateur newListeObjetsConsommes, NotificationChain msgs)
+  public ObjetExplorateur basicGetListeObjetsConsommes()
   {
-    ObjetExplorateur oldListeObjetsConsommes = listeObjetsConsommes;
-    listeObjetsConsommes = newListeObjetsConsommes;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_OBJETS_CONSOMMES, oldListeObjetsConsommes, newListeObjetsConsommes);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return listeObjetsConsommes;
   }
 
   /**
@@ -469,18 +534,35 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   @Override
   public void setListeObjetsConsommes(ObjetExplorateur newListeObjetsConsommes)
   {
-    if (newListeObjetsConsommes != listeObjetsConsommes)
-    {
-      NotificationChain msgs = null;
-      if (listeObjetsConsommes != null)
-        msgs = ((InternalEObject)listeObjetsConsommes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__LISTE_OBJETS_CONSOMMES, null, msgs);
-      if (newListeObjetsConsommes != null)
-        msgs = ((InternalEObject)newListeObjetsConsommes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__LISTE_OBJETS_CONSOMMES, null, msgs);
-      msgs = basicSetListeObjetsConsommes(newListeObjetsConsommes, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_OBJETS_CONSOMMES, newListeObjetsConsommes, newListeObjetsConsommes));
+    ObjetExplorateur oldListeObjetsConsommes = listeObjetsConsommes;
+    listeObjetsConsommes = newListeObjetsConsommes;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_OBJETS_CONSOMMES, oldListeObjetsConsommes, listeObjetsConsommes));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int getListeQuantite()
+  {
+    return listeQuantite;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setListeQuantite(int newListeQuantite)
+  {
+    int oldListeQuantite = listeQuantite;
+    listeQuantite = newListeQuantite;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__LISTE_QUANTITE, oldListeQuantite, listeQuantite));
   }
 
   /**
@@ -545,14 +627,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
     {
       case GamePackage.ACTION__CONDITION_ACTION:
         return basicSetConditionAction(null, msgs);
-      case GamePackage.ACTION__LISTE_CONNAISSANCES:
-        return basicSetListeConnaissances(null, msgs);
       case GamePackage.ACTION__ATTRIBUTION_CONNAISSANCE:
         return basicSetAttributionConnaissance(null, msgs);
       case GamePackage.ACTION__ATTRIBUTION_OBJET:
         return basicSetAttributionObjet(null, msgs);
-      case GamePackage.ACTION__LISTE_OBJETS_CONSOMMES:
-        return basicSetListeObjetsConsommes(null, msgs);
       case GamePackage.ACTION__CONSOMMATION_OBJET:
         return basicSetConsommationObjet(null, msgs);
     }
@@ -569,13 +647,16 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
+      case GamePackage.ACTION__TEXTE:
+        return getTexte();
       case GamePackage.ACTION__CONDITION_ACTION:
         return getConditionAction();
       case GamePackage.ACTION__LISTE_CHOIX:
         if (resolve) return getListeChoix();
         return basicGetListeChoix();
       case GamePackage.ACTION__LISTE_CONNAISSANCES:
-        return getListeConnaissances();
+        if (resolve) return getListeConnaissances();
+        return basicGetListeConnaissances();
       case GamePackage.ACTION__LISTE_OBJETS:
         if (resolve) return getListeObjets();
         return basicGetListeObjets();
@@ -584,7 +665,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case GamePackage.ACTION__ATTRIBUTION_OBJET:
         return getAttributionObjet();
       case GamePackage.ACTION__LISTE_OBJETS_CONSOMMES:
-        return getListeObjetsConsommes();
+        if (resolve) return getListeObjetsConsommes();
+        return basicGetListeObjetsConsommes();
+      case GamePackage.ACTION__LISTE_QUANTITE:
+        return getListeQuantite();
       case GamePackage.ACTION__CONSOMMATION_OBJET:
         return getConsommationObjet();
     }
@@ -601,6 +685,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
+      case GamePackage.ACTION__TEXTE:
+        setTexte((String)newValue);
+        return;
       case GamePackage.ACTION__CONDITION_ACTION:
         setConditionAction((Condition)newValue);
         return;
@@ -608,7 +695,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         setListeChoix((Choix)newValue);
         return;
       case GamePackage.ACTION__LISTE_CONNAISSANCES:
-        setListeConnaissances((Connaissances)newValue);
+        setListeConnaissances((Connaissance)newValue);
         return;
       case GamePackage.ACTION__LISTE_OBJETS:
         setListeObjets((ObjetLieu)newValue);
@@ -621,6 +708,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return;
       case GamePackage.ACTION__LISTE_OBJETS_CONSOMMES:
         setListeObjetsConsommes((ObjetExplorateur)newValue);
+        return;
+      case GamePackage.ACTION__LISTE_QUANTITE:
+        setListeQuantite((Integer)newValue);
         return;
       case GamePackage.ACTION__CONSOMMATION_OBJET:
         setConsommationObjet((Condition)newValue);
@@ -639,6 +729,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
+      case GamePackage.ACTION__TEXTE:
+        setTexte(TEXTE_EDEFAULT);
+        return;
       case GamePackage.ACTION__CONDITION_ACTION:
         setConditionAction((Condition)null);
         return;
@@ -646,7 +739,7 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         setListeChoix((Choix)null);
         return;
       case GamePackage.ACTION__LISTE_CONNAISSANCES:
-        setListeConnaissances((Connaissances)null);
+        setListeConnaissances((Connaissance)null);
         return;
       case GamePackage.ACTION__LISTE_OBJETS:
         setListeObjets((ObjetLieu)null);
@@ -659,6 +752,9 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return;
       case GamePackage.ACTION__LISTE_OBJETS_CONSOMMES:
         setListeObjetsConsommes((ObjetExplorateur)null);
+        return;
+      case GamePackage.ACTION__LISTE_QUANTITE:
+        setListeQuantite(LISTE_QUANTITE_EDEFAULT);
         return;
       case GamePackage.ACTION__CONSOMMATION_OBJET:
         setConsommationObjet((Condition)null);
@@ -677,6 +773,8 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   {
     switch (featureID)
     {
+      case GamePackage.ACTION__TEXTE:
+        return TEXTE_EDEFAULT == null ? texte != null : !TEXTE_EDEFAULT.equals(texte);
       case GamePackage.ACTION__CONDITION_ACTION:
         return conditionAction != null;
       case GamePackage.ACTION__LISTE_CHOIX:
@@ -691,10 +789,31 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return attributionObjet != null;
       case GamePackage.ACTION__LISTE_OBJETS_CONSOMMES:
         return listeObjetsConsommes != null;
+      case GamePackage.ACTION__LISTE_QUANTITE:
+        return listeQuantite != LISTE_QUANTITE_EDEFAULT;
       case GamePackage.ACTION__CONSOMMATION_OBJET:
         return consommationObjet != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (texte: ");
+    result.append(texte);
+    result.append(", listeQuantite: ");
+    result.append(listeQuantite);
+    result.append(')');
+    return result.toString();
   }
 
 } //ActionImpl

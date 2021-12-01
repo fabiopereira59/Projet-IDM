@@ -3,6 +3,7 @@
  */
 package fr.n7.game.impl;
 
+import fr.n7.game.Condition;
 import fr.n7.game.GamePackage;
 import fr.n7.game.Interaction;
 import fr.n7.game.Personne;
@@ -25,8 +26,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.n7.game.impl.PersonneImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.n7.game.impl.PersonneImpl#isVisible <em>Visible</em>}</li>
- *   <li>{@link fr.n7.game.impl.PersonneImpl#isObligatoire <em>Obligatoire</em>}</li>
+ *   <li>{@link fr.n7.game.impl.PersonneImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link fr.n7.game.impl.PersonneImpl#getObligatoire <em>Obligatoire</em>}</li>
  *   <li>{@link fr.n7.game.impl.PersonneImpl#getPersonneElements <em>Personne Elements</em>}</li>
  * </ul>
  *
@@ -55,44 +56,24 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute.
+   * The cached value of the '{@link #getVisible() <em>Visible</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isVisible()
+   * @see #getVisible()
    * @generated
    * @ordered
    */
-  protected static final boolean VISIBLE_EDEFAULT = false;
+  protected Condition visible;
 
   /**
-   * The cached value of the '{@link #isVisible() <em>Visible</em>}' attribute.
+   * The cached value of the '{@link #getObligatoire() <em>Obligatoire</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isVisible()
+   * @see #getObligatoire()
    * @generated
    * @ordered
    */
-  protected boolean visible = VISIBLE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #isObligatoire() <em>Obligatoire</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isObligatoire()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean OBLIGATOIRE_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isObligatoire() <em>Obligatoire</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isObligatoire()
-   * @generated
-   * @ordered
-   */
-  protected boolean obligatoire = OBLIGATOIRE_EDEFAULT;
+  protected Condition obligatoire;
 
   /**
    * The cached value of the '{@link #getPersonneElements() <em>Personne Elements</em>}' containment reference.
@@ -156,7 +137,27 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
    * @generated
    */
   @Override
-  public boolean isVisible()
+  public Condition getVisible()
+  {
+    if (visible != null && visible.eIsProxy())
+    {
+      InternalEObject oldVisible = (InternalEObject)visible;
+      visible = (Condition)eResolveProxy(oldVisible);
+      if (visible != oldVisible)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.PERSONNE__VISIBLE, oldVisible, visible));
+      }
+    }
+    return visible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Condition basicGetVisible()
   {
     return visible;
   }
@@ -167,9 +168,9 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
    * @generated
    */
   @Override
-  public void setVisible(boolean newVisible)
+  public void setVisible(Condition newVisible)
   {
-    boolean oldVisible = visible;
+    Condition oldVisible = visible;
     visible = newVisible;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.PERSONNE__VISIBLE, oldVisible, visible));
@@ -181,7 +182,27 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
    * @generated
    */
   @Override
-  public boolean isObligatoire()
+  public Condition getObligatoire()
+  {
+    if (obligatoire != null && obligatoire.eIsProxy())
+    {
+      InternalEObject oldObligatoire = (InternalEObject)obligatoire;
+      obligatoire = (Condition)eResolveProxy(oldObligatoire);
+      if (obligatoire != oldObligatoire)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GamePackage.PERSONNE__OBLIGATOIRE, oldObligatoire, obligatoire));
+      }
+    }
+    return obligatoire;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Condition basicGetObligatoire()
   {
     return obligatoire;
   }
@@ -192,9 +213,9 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
    * @generated
    */
   @Override
-  public void setObligatoire(boolean newObligatoire)
+  public void setObligatoire(Condition newObligatoire)
   {
-    boolean oldObligatoire = obligatoire;
+    Condition oldObligatoire = obligatoire;
     obligatoire = newObligatoire;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.PERSONNE__OBLIGATOIRE, oldObligatoire, obligatoire));
@@ -279,9 +300,11 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
       case GamePackage.PERSONNE__NAME:
         return getName();
       case GamePackage.PERSONNE__VISIBLE:
-        return isVisible();
+        if (resolve) return getVisible();
+        return basicGetVisible();
       case GamePackage.PERSONNE__OBLIGATOIRE:
-        return isObligatoire();
+        if (resolve) return getObligatoire();
+        return basicGetObligatoire();
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
         return getPersonneElements();
     }
@@ -302,10 +325,10 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
         setName((String)newValue);
         return;
       case GamePackage.PERSONNE__VISIBLE:
-        setVisible((Boolean)newValue);
+        setVisible((Condition)newValue);
         return;
       case GamePackage.PERSONNE__OBLIGATOIRE:
-        setObligatoire((Boolean)newValue);
+        setObligatoire((Condition)newValue);
         return;
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
         setPersonneElements((Interaction)newValue);
@@ -328,10 +351,10 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
         setName(NAME_EDEFAULT);
         return;
       case GamePackage.PERSONNE__VISIBLE:
-        setVisible(VISIBLE_EDEFAULT);
+        setVisible((Condition)null);
         return;
       case GamePackage.PERSONNE__OBLIGATOIRE:
-        setObligatoire(OBLIGATOIRE_EDEFAULT);
+        setObligatoire((Condition)null);
         return;
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
         setPersonneElements((Interaction)null);
@@ -353,9 +376,9 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
       case GamePackage.PERSONNE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.PERSONNE__VISIBLE:
-        return visible != VISIBLE_EDEFAULT;
+        return visible != null;
       case GamePackage.PERSONNE__OBLIGATOIRE:
-        return obligatoire != OBLIGATOIRE_EDEFAULT;
+        return obligatoire != null;
       case GamePackage.PERSONNE__PERSONNE_ELEMENTS:
         return personneElements != null;
     }
@@ -375,10 +398,6 @@ public class PersonneImpl extends MinimalEObjectImpl.Container implements Person
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", visible: ");
-    result.append(visible);
-    result.append(", obligatoire: ");
-    result.append(obligatoire);
     result.append(')');
     return result.toString();
   }
